@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { generate160Catalog } from '@/lib/products-160-data';
 import { ShopCatalogPageClient } from '@/components/ShopCatalogPageClient';
 
@@ -18,5 +19,9 @@ export const metadata: Metadata = {
 
 export default function ShopIndexPage() {
   const products = generate160Catalog();
-  return <ShopCatalogPageClient initialProducts={products} />;
+  return (
+    <Suspense fallback={null}>
+      <ShopCatalogPageClient initialProducts={products} />
+    </Suspense>
+  );
 }

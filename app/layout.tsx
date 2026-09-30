@@ -17,9 +17,77 @@ export const metadata: Metadata = {
   },
 };
 
+const ORG_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://themeatdirect.com.au/#organization',
+      name: 'The Meat Agent',
+      alternateName: 'Meat Direct',
+      legalName: 'LPJH HOLDINGS PTY LTD',
+      url: 'https://themeatdirect.com.au/',
+      logo: 'https://themeatdirect.com.au/favicon.ico',
+      email: 'sales@themeatdirect.com.au',
+      identifier: {
+        '@type': 'PropertyValue',
+        propertyID: 'ABN',
+        value: '55 657 961 058',
+      },
+      address: [
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '22 Wilson Pl',
+          addressLocality: 'Harrisville',
+          addressRegion: 'QLD',
+          postalCode: '4307',
+          addressCountry: 'AU',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '164 Brisbane St',
+          addressLocality: 'Ipswich',
+          addressRegion: 'QLD',
+          postalCode: '4305',
+          addressCountry: 'AU',
+        },
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        email: 'sales@themeatdirect.com.au',
+        telephone: '+61-480-804-189',
+        areaServed: 'AU',
+        availableLanguage: 'en',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://themeatdirect.com.au/#website',
+      url: 'https://themeatdirect.com.au/',
+      name: 'The Meat Agent',
+      publisher: { '@id': 'https://themeatdirect.com.au/#organization' },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://themeatdirect.com.au/shop?q={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}
+        />
+      </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Product160Item,
   ShopCategory160,
@@ -38,11 +38,12 @@ interface ShopCatalogPageClientProps {
 
 export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClientProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { cart, cartCount, cartTotal, addToCart, updateQuantity, removeItem, clearCart } = useCart();
 
   const [viewMode, setViewMode] = useState<'raw' | 'cooked'>('raw');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>(searchParams.get('q') ?? '');
   const [page, setPage] = useState<number>(1);
   const [addedSku, setAddedSku] = useState<string | null>(null);
 

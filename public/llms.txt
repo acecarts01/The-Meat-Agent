@@ -1,0 +1,32 @@
+# The Meat Agent (Meat Direct)
+
+> Australian direct-to-consumer and wholesale butcher. Farm-gate allocation of MSA-graded beef, Wagyu MB9+, lamb, pork, chicken, smallgoods, seafood, kangaroo/game, veal, and curated meat boxes, with cold-chain courier delivery across Australia (QLD, NSW, VIC). Legal entity: LPJH HOLDINGS PTY LTD, ABN 55 657 961 058.
+
+Minimum order: $423.00 AUD. Free shipping over $2,000 AUD. Cold-chain delivery maintains under 2.5°C for 48 hours.
+
+## Catalog
+
+- [Full catalog (160 cuts)](https://themeatdirect.com.au/shop/): every cut, filterable by department, with raw and cooked/plated photography.
+- [Australian Beef](https://themeatdirect.com.au/shop/beef/)
+- [Wagyu](https://themeatdirect.com.au/shop/wagyu/)
+- [Lamb](https://themeatdirect.com.au/shop/lamb/)
+- [Pork](https://themeatdirect.com.au/shop/pork/)
+- [Chicken](https://themeatdirect.com.au/shop/chicken/)
+- [Veal](https://themeatdirect.com.au/shop/veal/)
+- [Kangaroo & Game](https://themeatdirect.com.au/shop/kangaroo-game/)
+- [Seafood](https://themeatdirect.com.au/shop/seafood/)
+- [Smallgoods & Charcuterie](https://themeatdirect.com.au/shop/smallgoods/)
+- [Meat Boxes & Bundles](https://themeatdirect.com.au/shop/meatboxes/)
+- [Butcher Equipment](https://themeatdirect.com.au/shop/equipment/)
+
+## Company
+
+- Principal place of business: 22 Wilson Pl, Harrisville QLD 4307, Australia
+- Registered office: 164 Brisbane St, Ipswich QLD 4305, Australia
+- Contact: sales@themeatdirect.com.au · WhatsApp +61 480 804 189
+- Operating hours: Mon–Sat 6:00 AM – 7:00 PM AEST
+- ABN 55 657 961 058, verifiable at https://abr.business.gov.au/ABN/View?id=55657961058
+
+## Full documentation
+
+See [/llms-full.txt](https://themeatdirect.com.au/llms-full.txt) for a complete Markdown export of every department's FAQs and policies.
