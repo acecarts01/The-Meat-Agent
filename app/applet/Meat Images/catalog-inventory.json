@@ -1,0 +1,151 @@
+{
+  "curationDate": "2026-09-28",
+  "market": "Australia (AUD)",
+  "totalTargetProducts": 130,
+  "summary": {
+    "totalImagesUploaded": 276,
+    "uniqueProductAssetClusters": 26,
+    "exactDuplicatesRemoved": 224,
+    "brandedCompetitorImagesRemoved": 11,
+    "editorialAndHeroImagesRetained": 8,
+    "categoriesCount": 6,
+    "subCategoriesCount": 18,
+    "accreditedProvenanceBrands": 8
+  },
+  "categories": [
+    {
+      "id": "premium-beef-steaks",
+      "slug": "premium-beef-steaks",
+      "name": "Premium Australian Beef & Steaks",
+      "tagline": "MSA Graded, 100% Grass-Fed Angus & Marble Score Wagyu",
+      "heroImage": "category_hero_steaks_sliced_timber.webp",
+      "inelasticityRating": "Very High (Luxury Dining & Weekend Indulgence)",
+      "subcategories": [
+        "Dry-Aged & Tomahawks",
+        "Scotch Fillet & Ribeye",
+        "Eye Fillet & Tenderloin",
+        "Bistecca & T-Bone",
+        "Wagyu Shabu & Yakiniku"
+      ],
+      "productCount": 35
+    },
+    {
+      "id": "low-and-slow-bbq",
+      "slug": "low-and-slow-bbq",
+      "name": "Low & Slow American BBQ & Roasts",
+      "tagline": "Competition Grade Briskets, Beef Short Ribs & Smoker Primals",
+      "heroImage": "category_hero_bbq_smoker_grill.webp",
+      "inelasticityRating": "Extremely High (Passionate Pitmasters & Weekend Enthusiasts)",
+      "subcategories": [
+        "Beef Brisket Point & Flat",
+        "Asado Short Ribs & Dino Bones",
+        "Slow-Braised Beef Cheeks & Shanks",
+        "Pork Ribs & Pork Butts"
+      ],
+      "productCount": 20
+    },
+    {
+      "id": "everyday-family-staples",
+      "slug": "everyday-family-staples",
+      "name": "Everyday Family Staples & Bulk Packs",
+      "tagline": "Pure Mince, Handcrafted Sausages, Burgers & High-Protein Bundles",
+      "heroImage": "category_hero_bangers_mash_lifestyle.webp",
+      "inelasticityRating": "Maximum Inelasticity (Household Grocery Essentials)",
+      "subcategories": [
+        "Premium Beef Mince (1kg / 2kg Mega)",
+        "Artisan Sausages & Bangers",
+        "Angus Smashed Burger Patties",
+        "Gym & High-Protein Meal Prep Packs",
+        "Diced Beef & Casserole Cuts"
+      ],
+      "productCount": 25
+    },
+    {
+      "id": "pasture-lamb-pork",
+      "slug": "pasture-lamb-pork",
+      "name": "Pasture-Raised Lamb & Heritage Pork",
+      "tagline": "Free-Range Southern Highlands Lamb & Free-Range Kurobuta Pork",
+      "heroImage": "category_hero_pork_chop_lifestyle.webp",
+      "inelasticityRating": "High (Traditional Sunday Roasts & Midweek Dinners)",
+      "subcategories": [
+        "Lamb Cutlets & Loin Chops",
+        "Slow-Cook Lamb Shanks & Shoulders",
+        "Heritage Pork Chops & Cutlets",
+        "Artisanal Dry-Cured Bacon Rashers"
+      ],
+      "productCount": 20
+    },
+    {
+      "id": "free-range-poultry",
+      "slug": "free-range-poultry",
+      "name": "Free-Range Poultry & Game",
+      "tagline": "100% Antibiotic-Free, Pastured Whole Chickens & Lean Fillets",
+      "heroImage": "category_hero_roast_chicken_skillet.webp",
+      "inelasticityRating": "Very High (Clean Eating & Daily Healthy Protein)",
+      "subcategories": [
+        "Whole Roasting Chickens",
+        "Skinless Chicken Breast Fillets",
+        "Bone-In Chicken Thighs & Drumsticks",
+        "Marinated Midweek Chicken & Duck"
+      ],
+      "productCount": 15
+    },
+    {
+      "id": "wild-seafood-pantry",
+      "slug": "wild-seafood-pantry",
+      "name": "Wild Australian Seafood & Butcher's Pantry",
+      "tagline": "Sustainable Native Fish, Australian Caviar & Artisan Condiments",
+      "heroImage": "category_hero_seafood_platter_ice.webp",
+      "inelasticityRating": "Moderate to High (Special Occasions & High AOV Builders)",
+      "subcategories": [
+        "Wild Barramundi & Murray Cod Fillets",
+        "Australian Black Pearl Salmon Caviar",
+        "Artisanal Crackers & Sea Salts",
+        "House Rubs, Glazes & Gravies"
+      ],
+      "productCount": 15
+    }
+  ],
+  "provenanceBrands": [
+    {
+      "name": "O'Connor Superior Beef",
+      "origin": "Gippsland, Victoria",
+      "specialty": "100% Grass-Fed Angus & 30-Day Dry Aged Primals"
+    },
+    {
+      "name": "Aquna Murray Cod",
+      "origin": "Riverina Basin, New South Wales",
+      "specialty": "Pond-Grown Native Freshwater Murray Cod"
+    },
+    {
+      "name": "Coral Coast Barramundi",
+      "origin": "Hinchinbrook, Far North Queensland",
+      "specialty": "Ocean-Farm Sustainable Barramundi Mid-Cut Fillets"
+    },
+    {
+      "name": "Black Pearl",
+      "origin": "Tasmania / Southern Ocean, Australia",
+      "specialty": "Cold-Water Hand-Harvested Salmon Caviar 50g"
+    },
+    {
+      "name": "Stone Axe / Westholme Wagyu",
+      "origin": "New South Wales & Queensland",
+      "specialty": "Fullblood Australian Wagyu MS 7-9+"
+    },
+    {
+      "name": "Borrowdale Free Range Pork",
+      "origin": "Goondiwindi, Queensland",
+      "specialty": "Certified Free-Range Heritage Breed Pork"
+    },
+    {
+      "name": "Roaring Forties Lamb",
+      "origin": "Tasmania & South Australia",
+      "specialty": "Pasture-Raised Maritime Lamb"
+    },
+    {
+      "name": "The Fine Cheese Co. Provisions",
+      "origin": "Imported & Local Artisan Selection",
+      "specialty": "Extra Virgin Olive Oil & Basil Crackers"
+    }
+  ]
+}

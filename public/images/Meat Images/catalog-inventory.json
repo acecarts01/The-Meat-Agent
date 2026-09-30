@@ -1,0 +1,94 @@
+{
+  "curationDate": "2026-09-28",
+  "market": "Australia (AUD)",
+  "targetProducts": 130,
+  "assetAnalysis": {
+    "totalRawImagesUploaded": 276,
+    "exactDuplicatesPruned": 224,
+    "competitorBrandedImagesDeleted": 11,
+    "retainedProductStockPairs": 23,
+    "retainedCategoryHeroBanners": 6,
+    "retainedHomepageHeroBanners": 2,
+    "retainedBlogEditorialAssets": 8
+  },
+  "departments": [
+    {
+      "id": "premium-beef-steaks",
+      "name": "Premium Australian Beef & Steaks",
+      "subcategories": [
+        "Dry-Aged & Tomahawks",
+        "Scotch Fillet & Ribeye",
+        "Eye Fillet & Tenderloin",
+        "Bistecca & T-Bone",
+        "Wagyu Shabu & Yakiniku"
+      ],
+      "productQuota": 35
+    },
+    {
+      "id": "low-and-slow-bbq",
+      "name": "Low & Slow American BBQ & Roasts",
+      "subcategories": [
+        "Beef Brisket Point & Flat",
+        "Asado Short Ribs & Dino Bones",
+        "Slow-Braised Beef Cheeks & Shanks",
+        "Pork Ribs & Pork Butts"
+      ],
+      "productQuota": 20
+    },
+    {
+      "id": "everyday-family-staples",
+      "name": "Everyday Family Staples & Bulk Packs",
+      "subcategories": [
+        "Premium Beef Mince (1kg / 2kg Mega)",
+        "Artisan Sausages & Bangers",
+        "Angus Smashed Burger Patties",
+        "Gym & High-Protein Meal Prep Packs",
+        "Diced Beef & Casserole Cuts"
+      ],
+      "productQuota": 25
+    },
+    {
+      "id": "pasture-lamb-pork",
+      "name": "Pasture-Raised Lamb & Heritage Pork",
+      "subcategories": [
+        "Lamb Cutlets & Loin Chops",
+        "Slow-Cook Lamb Shanks & Shoulders",
+        "Heritage Pork Chops & Cutlets",
+        "Artisanal Dry-Cured Bacon Rashers"
+      ],
+      "productQuota": 20
+    },
+    {
+      "id": "free-range-poultry",
+      "name": "Free-Range Poultry & Game",
+      "subcategories": [
+        "Whole Roasting Chickens",
+        "Skinless Chicken Breast Fillets",
+        "Bone-In Chicken Thighs & Drumsticks",
+        "Marinated Midweek Chicken & Duck"
+      ],
+      "productQuota": 15
+    },
+    {
+      "id": "wild-seafood-pantry",
+      "name": "Wild Australian Seafood & Butcher Provisions",
+      "subcategories": [
+        "Wild Barramundi & Murray Cod Fillets",
+        "Australian Black Pearl Salmon Caviar",
+        "Artisanal Crackers & Sea Salts",
+        "House Rubs, Glazes & Gravies"
+      ],
+      "productQuota": 15
+    }
+  ],
+  "brands": [
+    "O'Connor Superior Beef (Gippsland VIC)",
+    "Stone Axe Fullblood Wagyu (NSW/QLD)",
+    "Borrowdale Free Range Pork (Goondiwindi QLD)",
+    "Roaring Forties Pasture Lamb (TAS/SA)",
+    "Aquna Sustainable Murray Cod (Riverina NSW)",
+    "Coral Coast Barramundi (Hinchinbrook QLD)",
+    "Black Pearl Australian Salmon Caviar (TAS)",
+    "The Fine Cheese Co. Provisions"
+  ]
+}
