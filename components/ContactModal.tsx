@@ -26,12 +26,33 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [subject, setSubject] = useState('Order & Cut Availability Inquiry');
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState('');
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setSendError('');
+    setIsSending(true);
+    try {
+      const res = await fetch('/api/zoho', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, subject, message }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send message.');
+      }
+      setIsSubmitted(true);
+    } catch (err) {
+      setSendError(
+        err instanceof Error ? err.message : 'We could not send your message right now. Please try WhatsApp instead.'
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const handleWhatsAppDirect = () => {
@@ -195,6 +216,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               />
             </div>
 
+            {sendError && (
+              <div className="bg-red-950/50 border border-red-500/50 text-red-300 text-xs px-3 py-2 rounded-lg">
+                {sendError}
+              </div>
+            )}
+
             <div className="pt-2 flex items-center justify-between gap-3">
               <button
                 type="button"
@@ -207,10 +234,11 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
               <button
                 type="submit"
-                className="bg-red-600 hover:bg-red-500 text-white font-bold py-2.5 px-5 rounded-lg text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
+                disabled={isSending}
+                className="bg-red-600 hover:bg-red-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-2.5 px-5 rounded-lg text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
               >
                 <Send className="w-3.5 h-3.5" />
-                <span>Send Inquiry</span>
+                <span>{isSending ? 'Sending…' : 'Send Inquiry'}</span>
               </button>
             </div>
           </form>
