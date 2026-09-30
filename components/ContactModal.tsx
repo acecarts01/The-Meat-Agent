@@ -102,15 +102,30 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
           </a>
 
-          <div className="bg-stone-950 border border-stone-800 p-3.5 rounded-xl flex items-center gap-3">
+          <a
+            href="mailto:sales@themeatdirect.com.au"
+            className="bg-stone-950 border border-stone-800 hover:border-amber-500/40 hover:bg-stone-900 p-3.5 rounded-xl transition-all flex items-center gap-3 cursor-pointer group"
+          >
             <div className="w-9 h-9 rounded-lg bg-stone-900 border border-stone-700 text-amber-400 flex items-center justify-center shrink-0">
-              <Clock className="w-4 h-4" />
+              <Mail className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-[11px] text-stone-400">Operating Hours</div>
-              <div className="text-xs font-semibold text-stone-200">
-                Mon–Sat 6:00 AM – 7:00 PM AEST
+              <div className="text-[11px] text-stone-400">Email Us</div>
+              <div className="text-xs font-bold text-white group-hover:text-amber-400 transition-colors">
+                sales@themeatdirect.com.au
               </div>
+            </div>
+          </a>
+        </div>
+
+        <div className="bg-stone-950 border border-stone-800 p-3.5 rounded-xl flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-stone-900 border border-stone-700 text-amber-400 flex items-center justify-center shrink-0">
+            <Clock className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="text-[11px] text-stone-400">Operating Hours</div>
+            <div className="text-xs font-semibold text-stone-200">
+              Mon–Sat 6:00 AM – 7:00 PM AEST
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://themeatdirect.com.au'),
   title: 'The Meat Agent — Meat Direct | Australian Wholesale Butcher & Wagyu',
   description: 'Direct farm-gate wholesale allocation of MSA-graded Wagyu MB9+, 45-day dry-aged steaks, and smoker primals. Delivered cold-chain across Australia.',
   openGraph: {

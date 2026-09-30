@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
   Product160Item,
@@ -162,11 +163,13 @@ export function ProductDetailClient({
           {/* LEFT COLUMN: Dual-Perspective Imagery & Visual Spec (Cols 1-7) */}
           <div className="lg:col-span-7 space-y-4">
             <div className="relative aspect-[4/3] rounded-2xl bg-stone-950 border border-stone-800 overflow-hidden shadow-2xl group">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={currentImage}
                 alt={`${product.name} - ${viewMode === 'raw' ? 'Raw Butcher Specification cut' : 'Cooked / Plated Presentation'}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
               {/* Angle Indicator Pill */}
@@ -230,24 +233,22 @@ export function ProductDetailClient({
                 <button
                   type="button"
                   onClick={() => setViewMode('raw')}
-                  className={`w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                  className={`relative w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
                     viewMode === 'raw' ? 'border-red-500 scale-105' : 'border-stone-800 opacity-60 hover:opacity-100'
                   }`}
                   title="View Raw Butcher Cut"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={product.images.rawFallback} alt="Raw View" className="w-full h-full object-cover" />
+                  <Image src={product.images.rawFallback} alt="Raw View" fill sizes="64px" className="object-cover" />
                 </button>
                 <button
                   type="button"
                   onClick={() => setViewMode('cooked')}
-                  className={`w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                  className={`relative w-16 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
                     viewMode === 'cooked' ? 'border-amber-500 scale-105' : 'border-stone-800 opacity-60 hover:opacity-100'
                   }`}
                   title="View Plated Cooked Presentation"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={product.images.cookedFallback} alt="Cooked View" className="w-full h-full object-cover" />
+                  <Image src={product.images.cookedFallback} alt="Cooked View" fill sizes="64px" className="object-cover" />
                 </button>
                 <div className="text-[11px] text-stone-400 font-mono pl-1">
                   Dual-angle butcher verification
@@ -687,11 +688,12 @@ export function ProductDetailClient({
                     href={`/shop/${rel.categorySlug}/${rel.slug}/`}
                     className="relative aspect-[4/3] bg-stone-950 overflow-hidden block"
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={rel.images.rawFallback}
                       alt={rel.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-2 left-2">
                       <span className="bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase">
@@ -752,7 +754,10 @@ export function ProductDetailClient({
       <footer className="mt-16 bg-stone-950 border-t border-stone-900 py-8 px-4 sm:px-6 lg:px-8 text-xs text-stone-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            © 2023–2026 The Meat Agent (LPJH HOLDINGS PTY LTD). ABN 55 657 961 058.
+            © 2023–2026 The Meat Agent (LPJH HOLDINGS PTY LTD). ABN 55 657 961 058.{' '}
+            <a href="mailto:sales@themeatdirect.com.au" className="hover:text-amber-400 transition-colors">
+              sales@themeatdirect.com.au
+            </a>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/" className="hover:text-amber-400 transition-colors">

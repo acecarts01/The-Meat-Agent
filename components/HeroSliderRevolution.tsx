@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   Flame,
   ShieldCheck,
@@ -131,11 +132,14 @@ export function HeroSliderRevolution({
             idx === currentSlide ? 'opacity-100 z-0' : 'opacity-0 z-0'
           }`}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={slide.bgImage}
             alt={slide.headlinePrefix}
-            className={`w-full h-full object-cover brightness-110 saturate-[1.08] ${
+            fill
+            priority={idx === 0}
+            loading={idx === 0 ? undefined : 'eager'}
+            sizes="100vw"
+            className={`object-cover brightness-110 saturate-[1.08] ${
               idx === currentSlide ? 'hero-kenburns' : ''
             }`}
           />

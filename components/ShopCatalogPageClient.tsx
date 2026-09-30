@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
   Product160Item,
@@ -225,11 +226,12 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
                   href={`/shop/${p.categorySlug}/${p.slug}/`}
                   className="relative aspect-[4/3] bg-stone-950 overflow-hidden block"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={currentImg}
                     alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-2 left-2 flex flex-col gap-1 items-start">
                     <span className="bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase shadow">

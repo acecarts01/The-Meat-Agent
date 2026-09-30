@@ -1525,6 +1525,13 @@ export default function MeatStoreExperiencePage() {
                 <MessageCircle className="w-4 h-4 text-[#25D366]" />
                 <span>WhatsApp: +61 480 804 189</span>
               </a>
+              <a
+                href="mailto:sales@themeatdirect.com.au"
+                className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors font-mono"
+              >
+                <Mail className="w-4 h-4 text-amber-400" />
+                <span>sales@themeatdirect.com.au</span>
+              </a>
               <div className="text-[11px] text-stone-500">
                 Operating Hours: Mon–Sat 6:00 AM – 7:00 PM AEST
               </div>

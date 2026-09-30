@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Product160Item } from '@/lib/products-160-data';
 import {
   Scale,
@@ -89,8 +90,7 @@ export function CutCompareTool({ isOpen, onClose, products, onAddToCart }: CutCo
           {itemA && (
             <div className="bg-stone-950 border border-stone-800 rounded-xl p-5 space-y-4">
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-stone-900 border border-stone-800">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={itemA.images.rawFallback} alt={itemA.name} className="w-full h-full object-cover" />
+                <Image src={itemA.images.rawFallback} alt={itemA.name} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
                 <span className="absolute top-2 left-2 bg-amber-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
                   {itemA.badge}
                 </span>
@@ -140,8 +140,7 @@ export function CutCompareTool({ isOpen, onClose, products, onAddToCart }: CutCo
           {itemB && (
             <div className="bg-stone-950 border border-stone-800 rounded-xl p-5 space-y-4">
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-stone-900 border border-stone-800">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={itemB.images.rawFallback} alt={itemB.name} className="w-full h-full object-cover" />
+                <Image src={itemB.images.rawFallback} alt={itemB.name} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />
                 <span className="absolute top-2 left-2 bg-cyan-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
                   {itemB.badge}
                 </span>
