@@ -70,7 +70,7 @@ export const HOMEPAGE_FAQS: FaqItem[] = [
     category: 'payment',
     categoryLabel: 'Payment & Crypto',
     question: 'What payment methods are supported for wholesale and consumer orders?',
-    answer: 'We accept instantaneous Australian PayID (Osko) transfers, direct corporate bank BSB/account transfers, and cryptocurrency settlement (BTC and USDT on TRC20/ERC20). Every order generates an immediate tax invoice bearing our registered business details (ABN: 84 629 184 032, LPJH HOLDINGS PTY LTD) for tax accounting and commercial compliance.',
+    answer: 'We accept instantaneous Australian PayID (Osko) transfers, direct corporate bank BSB/account transfers, and cryptocurrency settlement (BTC and USDT on TRC20/ERC20). Every order generates an immediate tax invoice bearing our registered business details (ABN: 55 657 961 058, LPJH HOLDINGS PTY LTD) for tax accounting and commercial compliance.',
     tags: ['payid', 'osko', 'bank transfer', 'invoice', 'abn', 'settlement']
   },
   {
@@ -169,7 +169,7 @@ export function HomepageFaqSection({
             <span>·</span>
             <span>Direct Commercial Allocation</span>
             <span>·</span>
-            <span className="text-emerald-400 font-semibold">ABN: 84 629 184 032</span>
+            <span className="text-emerald-400 font-semibold">ABN: 55 657 961 058</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">

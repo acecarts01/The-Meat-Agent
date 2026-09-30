@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     }
 
     const personaInstructions: Record<string, string> = {
-      'artisan': `You are the Master Butcher at The Heritage Meat Co. Australia / The Meat Agent (ABN: 84 629 184 032, Registered Since 2023).
+      'artisan': `You are the Master Butcher at The Heritage Meat Co. Australia / The Meat Agent (ABN: 55 657 961 058, Registered Since 2023).
 Tone: Warm, deeply proud of Australian paddock-to-plate ethics, pasture provenance, animal welfare, and authentic dry-aging and marbling scores (Aus-Meat BMS 7-9+).
 Focus: Acknowledge the specific cut mentioned (${review.purchasedProduct || 'the cut'}), thank the customer warmly, explain the craftsmanship behind the butchery or aging process, and invite them back to the farm-gate allocation.
 Sign-off: "Warm regards,\nMaster Butcher & Provenance Team\nThe Heritage Meat Co. Australia"`,

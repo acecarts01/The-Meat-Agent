@@ -216,7 +216,7 @@ export function EnterpriseMerchantPortal({
               </span>
             </div>
             <div className="text-xs text-stone-500 mt-1 font-mono">
-              ABN: 84 629 184 032 · Registered Australian Entity · TrustScore 4.4 / 5.0 (2,837 Total Ratings)
+              ABN: 55 657 961 058 · Registered Australian Entity · TrustScore 4.4 / 5.0 (2,837 Total Ratings)
             </div>
           </div>
 

@@ -71,7 +71,7 @@ export function ProductDetailClient({
   // Direct Product URL
   const currentUrl = typeof window !== 'undefined'
     ? `${window.location.origin}/shop/${product.categorySlug}/${product.slug}/`
-    : `https://meatdirect.com.au/shop/${product.categorySlug}/${product.slug}/`;
+    : `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}/`;
 
   const handleCopyLink = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -622,6 +622,36 @@ export function ProductDetailClient({
             </div>
           )}
         </section>
+
+        {/* ========================================================================= */}
+        {/* PRODUCT FAQ — matches the FAQPage JSON-LD emitted in page.tsx */}
+        {/* ========================================================================= */}
+        {product.faqs && product.faqs.length > 0 && (
+          <section aria-labelledby="product-faq-heading" className="pt-8 border-t border-stone-800 space-y-4">
+            <div>
+              <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-wider">
+                Common Questions
+              </span>
+              <h2 id="product-faq-heading" className="text-xl sm:text-2xl font-black text-white tracking-tight mt-1">
+                About This Cut
+              </h2>
+            </div>
+            <div className="space-y-2">
+              {product.faqs.map((faq, i) => (
+                <details
+                  key={i}
+                  className="group bg-stone-900 border border-stone-800 rounded-xl p-4 open:border-amber-600/50"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-white gap-3 list-none">
+                    <span>{faq.question}</span>
+                    <span className="shrink-0 text-amber-400 text-lg leading-none group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <p className="text-sm text-stone-300 leading-relaxed mt-3">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* ========================================================================= */}
         {/* RELATED BUTCHER CUTS & ALLOCATIONS */}

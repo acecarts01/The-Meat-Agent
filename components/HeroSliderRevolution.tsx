@@ -35,7 +35,7 @@ export function HeroSliderRevolution({
       headlineHighlight: "MEAT DIRECT",
       headlineSuffix: "TO YOUR DOOR",
       subheading: "Bypass supermarket cold storage & boutique middleman markups. Commercial wholesale allocation of MSA-graded Wagyu MB9+, 45-day dry-aged ribeyes, and competition smoker primals.",
-      bgImage: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1920&q=85",
+      bgImage: "/images/products/beef/Beef_0053.webp",
       badge: "ABN: 55 657 961 058 • Trading Since 2023",
       techSpecs: ["MSA Graded Wagyu MB9+", "45-Day Dry Aging", "<2.5°C Cold-Chain 48hr"]
     },
@@ -46,7 +46,7 @@ export function HeroSliderRevolution({
       headlineHighlight: "FULL PACKER",
       headlineSuffix: "BRISKETS & ASADO",
       subheading: "Uniform 6mm fat cap, thick flat ends, and marbled point muscles. Untrimmed primal cuts that hold moisture and develop deep mahogany bark over long offset smokes.",
-      bgImage: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=85",
+      bgImage: "/images/products/beef/Beef_0062.webp",
       badge: "Competition Grade Primals",
       techSpecs: ["5.5kg+ Packer Briskets", "Flanken Asado Cuts", "English Plate Dino Ribs"]
     },
@@ -57,7 +57,7 @@ export function HeroSliderRevolution({
       headlineHighlight: "FAMILY BULK PACKS",
       headlineSuffix: "FROM $423 AUD",
       subheading: "100% pure grass-fed beef mince, handcrafted artisan snags, and 10-pack lean gym rumps. Zero fillers, zero added water, packed in heavy-duty vacuum seal.",
-      bgImage: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1920&q=85",
+      bgImage: "/images/blog/Hero_MeatBoxes_019.webp",
       badge: "Wholesale Farm Gate Pricing",
       techSpecs: ["100% Pure Mince (No Water)", "Gluten-Free Snags", "10-Pack Lean Rumps"]
     },
@@ -68,7 +68,7 @@ export function HeroSliderRevolution({
       headlineHighlight: "THERMAL FREIGHT",
       headlineSuffix: "NATIONWIDE",
       subheading: "Delivered via dedicated refrigerated couriers with double-thick thermal wool insulation and solid ice gel bricks. Verified <2.5°C core temp upon arrival even in 38°C heat.",
-      bgImage: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=1920&q=85",
+      bgImage: "/images/blog/Hero_MeatBoxes_020.webp",
       badge: "Sub-Zero Thermal Seal",
       techSpecs: ["Insulated Wool Liners", "Solid Dry Ice Bricks", "Real-Time Courier Tracking"]
     }
@@ -123,7 +123,7 @@ export function HeroSliderRevolution({
 
   return (
     <section className="relative w-full min-h-[540px] md:min-h-[620px] lg:min-h-[660px] overflow-hidden bg-stone-950 flex flex-col justify-between border-b border-stone-800">
-      {/* Background Slides with Ken Burns Effect */}
+      {/* Background Slides — Ken Burns zoom+pan, warm spotlight, light sweep */}
       {slides.map((slide, idx) => (
         <div
           key={slide.id}
@@ -135,15 +135,56 @@ export function HeroSliderRevolution({
           <img
             src={slide.bgImage}
             alt={slide.headlinePrefix}
-            className={`w-full h-full object-cover transform transition-transform duration-[7000ms] ease-out ${
-              idx === currentSlide ? 'scale-105' : 'scale-100'
+            className={`w-full h-full object-cover brightness-110 saturate-[1.08] ${
+              idx === currentSlide ? 'hero-kenburns' : ''
             }`}
           />
-          {/* Deep dark gradient scrim for maximum text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/90 to-stone-950/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-stone-950/70" />
+
+          {/* Warm studio spotlight glow behind the product, right-of-centre */}
+          <div
+            className="absolute inset-0 mix-blend-soft-light opacity-90"
+            style={{
+              background:
+                'radial-gradient(ellipse 60% 70% at 72% 50%, rgba(255,196,110,0.55) 0%, rgba(255,196,110,0.18) 35%, transparent 70%)'
+            }}
+          />
+
+          {/* Diagonal light sweep — subtle, repeats slowly, adds life without hiding the product */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div
+              className={`absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/12 to-transparent ${
+                idx === currentSlide ? 'hero-sweep' : ''
+              }`}
+            />
+          </div>
+
+          {/* Text-legibility scrim: strong only behind the copy (left), light over the product (right) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/70 to-stone-950/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-stone-950/30" />
         </div>
       ))}
+
+      <style jsx global>{`
+        @keyframes heroKenBurns {
+          0% { transform: scale(1) translate(0, 0); }
+          100% { transform: scale(1.14) translate(-1.5%, -1%); }
+        }
+        .hero-kenburns {
+          animation: heroKenBurns 9000ms ease-out forwards;
+        }
+        @keyframes heroSweep {
+          0% { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+          15% { opacity: 1; }
+          40% { opacity: 0; }
+          100% { transform: translateX(220%) skewX(-12deg); opacity: 0; }
+        }
+        .hero-sweep {
+          animation: heroSweep 6000ms ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-kenburns, .hero-sweep { animation: none !important; }
+        }
+      `}</style>
 
       {/* Main Slide Content */}
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6 md:pt-14 md:pb-10 flex-1 flex flex-col justify-center">

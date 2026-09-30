@@ -291,7 +291,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "Master edge-to-edge medium-rare doneness with a sizzling cast-iron crust and green peppercorn pan jus.",
     targetKeyword: "how to cook scotch fillet reverse sear",
     curatedImageName: "2bf30b98583e44c0819d0385152254d2.thumbnail.0000000.webp",
-    imageFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/blog/Hero_Beef_009.webp"
   },
   {
     id: "blog-2",
@@ -301,7 +301,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "Why beef cheeks contain the highest collagen content of any cut, yielding gelatinous, spoon-tender richness.",
     targetKeyword: "braised beef cheeks slow cooker recipe",
     curatedImageName: "BOFLVO10-beef-cheeks-100-trimmed-900g-619672.webp",
-    imageFallback: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/blog/Hero_Beef_010.webp"
   },
   {
     id: "blog-3",
@@ -311,7 +311,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "Shabu-shabu ribbons seared with sweet soy, mirin, toasted sesame seeds, and crisp butter lettuce wraps.",
     targetKeyword: "wagyu beef yakiniku bowl",
     curatedImageName: "b1f410d73925070153717c09b927d0756526a662-6082x4054.jpg",
-    imageFallback: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/blog/Hero_Wagyu_126.webp"
   },
   {
     id: "blog-4",
@@ -321,7 +321,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "The science of browning 2kg of pure grass-fed beef mince to build fond for the ultimate multi-layer lasagna.",
     targetKeyword: "authentic beef bolognese family lasagna",
     curatedImageName: "b76f96bfac42519d2d62d08d5293389a0188705f-1080x1080.png",
-    imageFallback: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/blog/Hero_Beef_011.webp"
   },
   {
     id: "blog-5",
@@ -331,7 +331,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "Tender, hand-rolled beef meatballs simmered gently so they stay juicy and melt on the palate.",
     targetKeyword: "grass fed beef meatballs recipe",
     curatedImageName: "beef-mince-premium-1kg-737866.webp",
-    imageFallback: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/products/beef/Beef_0027.webp"
   },
   {
     id: "blog-6",
@@ -341,7 +341,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "Flanken-cut beef ribs seared over red-hot charcoal and basted with chopped parsley, garlic, and red wine vinegar.",
     targetKeyword: "asado beef short ribs chimichurri",
     curatedImageName: "beef-asado-style-short-ribs-oconnor-superior-250g-x-3-pieces-376938.webp",
-    imageFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/products/beef/Beef_0053.webp"
   },
   {
     id: "blog-7",
@@ -351,7 +351,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "A delicate, aromatic broth-poached chicken dish packed with collagen and immune-boosting fresh aromatics.",
     targetKeyword: "poached free range chicken broth",
     curatedImageName: "6cecad0bf6468a693fb1c412363280b307634cf1-1200x1200.jpg",
-    imageFallback: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/blog/Hero_Chicken_001.webp"
   },
   {
     id: "blog-8",
@@ -361,7 +361,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "Why internal juice redistribution depends on a 5-minute rest at room temperature on a warm timber board.",
     targetKeyword: "how to rest scotch fillet steak",
     curatedImageName: "How_to_cook_Scotch_Fillet_Steak.webp",
-    imageFallback: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80"
+    imageFallback: "/images/products/beef/Beef_0062.webp"
   }
 ];
 

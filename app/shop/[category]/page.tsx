@@ -5,6 +5,8 @@ import {
   generate160Catalog,
   getCategoryBySlug,
 } from '@/lib/products-160-data';
+import { CATEGORY_KEYWORDS } from '@/lib/seo-keywords';
+import { getCategoryFAQs } from '@/lib/content-generator';
 import { CategoryPageClient } from '@/components/CategoryPageClient';
 
 interface PageProps {
@@ -31,9 +33,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${category.name} (${category.itemCount} Cuts) | The Meat Agent`;
+  // Real Semrush primary keyword for this category (see lib/seo-keywords.ts) — worked
+  // naturally into the title rather than stuffed or repeated.
+  const kw = CATEGORY_KEYWORDS[category.slug];
+  const title = kw
+    ? `${category.name} — ${kw.primaryKeyword} (${category.itemCount} Cuts) | The Meat Agent`
+    : `${category.name} (${category.itemCount} Cuts) | The Meat Agent`;
   const description = `${category.heroTagline}. Direct wholesale allocation across Australia with refrigerated cold-chain courier delivery.`;
-  const canonicalUrl = `https://meatdirect.com.au/shop/${category.slug}/`;
+  const canonicalUrl = `https://themeatdirect.com.au/shop/${category.slug}/`;
 
   return {
     title,
@@ -67,13 +74,14 @@ export default async function CategoryPage({ params }: PageProps) {
 
   const catalog = generate160Catalog();
   const products = catalog.filter((p) => p.categorySlug === category.slug);
+  const faqs = getCategoryFAQs(category.slug);
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: `${category.name} | The Meat Agent`,
     description: category.heroTagline,
-    url: `https://meatdirect.com.au/shop/${category.slug}/`,
+    url: `https://themeatdirect.com.au/shop/${category.slug}/`,
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -81,23 +89,36 @@ export default async function CategoryPage({ params }: PageProps) {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://meatdirect.com.au/',
+          item: 'https://themeatdirect.com.au/',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Shop',
-          item: 'https://meatdirect.com.au/shop/',
+          item: 'https://themeatdirect.com.au/shop/',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: category.name,
-          item: `https://meatdirect.com.au/shop/${category.slug}/`,
+          item: `https://themeatdirect.com.au/shop/${category.slug}/`,
         },
       ],
     },
   };
+
+  const faqJsonLd = faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  } : null;
 
   return (
     <>
@@ -105,7 +126,13 @@ export default async function CategoryPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CategoryPageClient category={category} products={products} />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
+      <CategoryPageClient category={category} products={products} faqs={faqs} />
     </>
   );
 }

@@ -8,6 +8,7 @@ import {
   ShopCategory160,
   SHOP_CATEGORIES_160,
 } from '@/lib/products-160-data';
+import { FaqItem } from '@/lib/content-generator';
 import { useCart } from '@/lib/cart-store';
 import { Navbar, ActivePage } from '@/components/Navbar';
 import { CartAndCheckoutModal } from '@/components/CartAndCheckoutModal';
@@ -32,9 +33,10 @@ import {
 interface CategoryPageClientProps {
   category: ShopCategory160;
   products: Product160Item[];
+  faqs?: FaqItem[];
 }
 
-export function CategoryPageClient({ category, products }: CategoryPageClientProps) {
+export function CategoryPageClient({ category, products, faqs = [] }: CategoryPageClientProps) {
   const router = useRouter();
   const { cart, cartCount, cartTotal, addToCart, updateQuantity, removeItem, clearCart } = useCart();
 
@@ -317,6 +319,33 @@ export function CategoryPageClient({ category, products }: CategoryPageClientPro
             );
           })}
         </div>
+
+        {faqs.length > 0 && (
+          <section aria-labelledby="category-faq-heading" className="mt-12 pt-8 border-t border-stone-800 space-y-4 max-w-4xl">
+            <div>
+              <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-wider">
+                Common Questions
+              </span>
+              <h2 id="category-faq-heading" className="text-xl sm:text-2xl font-black text-white tracking-tight mt-1">
+                About {category.name}
+              </h2>
+            </div>
+            <div className="space-y-2">
+              {faqs.map((faq, i) => (
+                <details
+                  key={i}
+                  className="group bg-stone-900 border border-stone-800 rounded-xl p-4 open:border-amber-600/50"
+                >
+                  <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-white gap-3 list-none">
+                    <span>{faq.question}</span>
+                    <span className="shrink-0 text-amber-400 text-lg leading-none group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <p className="text-sm text-stone-300 leading-relaxed mt-3">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
       </main>
 
       <CartAndCheckoutModal

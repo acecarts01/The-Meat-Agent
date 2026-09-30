@@ -1,3 +1,38 @@
+import {
+  BEEF_IMAGES, CHICKEN_IMAGES, LAMB_IMAGES, SMALLGOODS_IMAGES, MEATBOXES_IMAGES,
+  PORK_IMAGES, SEAFOOD_IMAGES, WAGYU_IMAGES, KANGAROO_GAME_IMAGES, VEAL_IMAGES, EQUIPMENT_IMAGES,
+} from "./product-images";
+import { PRODUCT_KEYWORDS, CATEGORY_KEYWORDS } from "./seo-keywords";
+import { generateProductDescription, generateProductFAQs, FaqItem } from "./content-generator";
+
+// Cycles through the real photo pool for a category so each product index gets a distinct
+// real image; wraps around (modulo) when a category has fewer photos than products.
+function pickImages(pool: string[], idx: number) {
+  const raw = pool[idx % pool.length];
+  const cooked = pool[(idx + 1) % pool.length];
+  return { rawFallback: raw, cookedFallback: cooked };
+}
+
+// Looks up real Semrush keyword data for a product by its exact name (see lib/seo-keywords.ts).
+// Falls back to the category's own verified keyword if a product is somehow missing an entry —
+// this should never happen for the live 160-product catalog, but keeps the build from breaking.
+function lookupKeywords(name: string, categorySlug: string) {
+  return PRODUCT_KEYWORDS[name] || CATEGORY_KEYWORDS[categorySlug] || {
+    primaryKeyword: categorySlug, primaryVolume: 0, primaryKd: 0, primaryIntent: "Informational",
+    supporting: [], weakPrimaryGated: true,
+  };
+}
+
+function buildProductContent(fields: {
+  name: string; category: string; categorySlug: string; subcategory: string;
+  weight: string; price: number; badge: string; marbling: string; dryAging: string;
+}) {
+  const kw = lookupKeywords(fields.name, fields.categorySlug);
+  const description = generateProductDescription(fields, kw.primaryKeyword);
+  const faqs = generateProductFAQs(fields, kw.primaryKeyword, kw.supporting);
+  return { kw, description, faqs };
+}
+
 export interface Product160Item {
   slug: string;
   sku: string;
@@ -13,12 +48,16 @@ export interface Product160Item {
   dryAging: string;
   thermalRetention: string;
   targetKeyword: string;
+  primaryKeywordVolume: number;
+  primaryKeywordKd: number;
+  supportingKeywords: string[];
   inelastic: boolean;
   images: {
     rawFallback: string;
     cookedFallback: string;
   };
   shortDescription: string;
+  faqs: FaqItem[];
 }
 
 export interface ShopCategory160 {
@@ -41,7 +80,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Curated High-AOV Family Essentials, Pitmaster Feasts & Gym Prep Boxes",
     inelasticRank: 1,
     inelasticTier: "Maximum",
-    heroImage: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+    heroImage: MEATBOXES_IMAGES[0]
   },
   {
     id: "beef",
@@ -51,7 +90,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "MSA-Graded Scotch Fillets, Eye Fillets, Tomahawks & Dry-Aged Steaks",
     inelasticRank: 2,
     inelasticTier: "Maximum",
-    heroImage: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80"
+    heroImage: BEEF_IMAGES[0]
   },
   {
     id: "wagyu",
@@ -61,7 +100,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Ultra-High Marble Score Cube Rolls, Rib Caps, Shabu Shabu & Tomahawks",
     inelasticRank: 5,
     inelasticTier: "High",
-    heroImage: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+    heroImage: WAGYU_IMAGES[0]
   },
   {
     id: "smallgoods",
@@ -71,7 +110,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Pure Meat Sausages, Natural Hog Casings, Double-Smoked Bacon & Salumi",
     inelasticRank: 3,
     inelasticTier: "Maximum",
-    heroImage: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=80"
+    heroImage: SMALLGOODS_IMAGES[0]
   },
   {
     id: "pork",
@@ -81,7 +120,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Crisp Crackling Bellies, St. Louis BBQ Ribs & Thick Berkshire Cutlets",
     inelasticRank: 6,
     inelasticTier: "Very High",
-    heroImage: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+    heroImage: PORK_IMAGES[0]
   },
   {
     id: "chicken",
@@ -91,7 +130,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "100% Air-Chilled, Chemical-Free Skinless Breasts, Thighs & Roasting Birds",
     inelasticRank: 4,
     inelasticTier: "Maximum",
-    heroImage: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=1200&q=80"
+    heroImage: CHICKEN_IMAGES[0]
   },
   {
     id: "kangaroo-game",
@@ -101,7 +140,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Ultra-Lean Native Australian Kangaroo Fillets, Wild Boar & Venison",
     inelasticRank: 8,
     inelasticTier: "High",
-    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
+    heroImage: KANGAROO_GAME_IMAGES[0]
   },
   {
     id: "lamb",
@@ -111,7 +150,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "French-Trimmed Cutlets, Slow-Roast Lamb Shoulders & Shanks",
     inelasticRank: 7,
     inelasticTier: "Very High",
-    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
+    heroImage: LAMB_IMAGES[0]
   },
   {
     id: "seafood",
@@ -121,7 +160,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Coral Coast Barramundi, Aquna Murray Cod & Yarra Valley Salmon Caviar",
     inelasticRank: 9,
     inelasticTier: "Moderate",
-    heroImage: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1200&q=80"
+    heroImage: SEAFOOD_IMAGES[0]
   },
   {
     id: "veal",
@@ -131,7 +170,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Osso Buco Cross-Cuts, Tender Veal Cutlets & Scallopini",
     inelasticRank: 10,
     inelasticTier: "Moderate",
-    heroImage: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+    heroImage: VEAL_IMAGES[0]
   },
   {
     id: "equipment",
@@ -141,7 +180,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     heroTagline: "Butcher Cleavers, Thermal Temp Probes, Ironbark Chunks & Rub Tins",
     inelasticRank: 11,
     inelasticTier: "High",
-    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
+    heroImage: EQUIPMENT_IMAGES[0]
   }
 ];
 
@@ -192,6 +231,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   beefCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Australian Beef", categorySlug: "beef",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `BF-${100 + idx}`,
       name: c.name,
@@ -205,13 +248,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: c.mb,
       dryAging: c.age,
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Hand-selected Australian beef cut from accredited southern pastures. Yields exceptional depth of flavour, precise butcher trimming, and complete cold-chain thermal integrity.`
+      images: pickImages(BEEF_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -230,6 +274,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   wagyuCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Luxury Wagyu (MB7–MB9+)", categorySlug: "wagyu",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `WY-${200 + idx}`,
       name: c.name,
@@ -243,13 +291,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: c.mb,
       dryAging: c.age,
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: false,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Top-tier Australian Wagyu featuring pristine intramuscular fat distribution that melts at human body temperature for decadent umami richness.`
+      images: pickImages(WAGYU_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -279,6 +328,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   boxCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Meat Boxes & Bundles", categorySlug: "meatboxes",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `BX-${300 + idx}`,
       name: c.name,
@@ -292,13 +345,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: c.mb,
       dryAging: c.age,
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Curated direct from farm gate processing. Delivers bulk wholesale value, zero-spoilage vacuum packaging, and reliable cold-chain delivery.`
+      images: pickImages(MEATBOXES_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -321,6 +375,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   chickenCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Pasture-Raised Poultry", categorySlug: "chicken",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `CK-${400 + idx}`,
       name: c.name,
@@ -334,13 +392,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Air-Chilled Lean",
       dryAging: "Zero Chlorine Washed",
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `100% pasture-raised Australian poultry, chemical-free and air-chilled so it browns in the pan without water seepage.`
+      images: pickImages(CHICKEN_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -358,6 +417,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   lambCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Southern Pasture Lamb", categorySlug: "lamb",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `LM-${500 + idx}`,
       name: c.name,
@@ -371,13 +434,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Pasture Raised",
       dryAging: "14 Days Aged",
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Pure pasture-fed Australian lamb from fertile southern grazing country. Delicate, sweet fat profile and tender texture.`
+      images: pickImages(LAMB_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -409,6 +473,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   smallgoodsCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Artisan Smallgoods & Snags", categorySlug: "smallgoods",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `SG-${600 + idx}`,
       name: c.name,
@@ -422,13 +490,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Natural Casing",
       dryAging: "Wood-Smoked",
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Artisanal wood-smoked smallgoods and sausages crafted with 100% real meat cuts and zero synthetic fillers.`
+      images: pickImages(SMALLGOODS_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -451,6 +520,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   porkCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Free-Range Heritage Pork", categorySlug: "pork",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `PK-${700 + idx}`,
       name: c.name,
@@ -464,13 +537,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Female Pork Only",
       dryAging: "Dry-Chilled",
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Female-only, free-range Australian pork guaranteed sweet and free of boar taint, with fat that blisters into crisp crackling.`
+      images: pickImages(PORK_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -492,6 +566,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   gameCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Kangaroo & Wild Native Game", categorySlug: "kangaroo-game",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `GM-${800 + idx}`,
       name: c.name,
@@ -505,13 +583,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Ultra-Lean",
       dryAging: "Sustainable Harvest",
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: false,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Sustainably harvested wild native Australian game meats. Rich in iron and CLA, with less than 2% fat.`
+      images: pickImages(KANGAROO_GAME_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -526,6 +605,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   seafoodCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Wild Australian Seafood", categorySlug: "seafood",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `SF-${900 + idx}`,
       name: c.name,
@@ -539,13 +622,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Omega-3 Rich",
       dryAging: "Sub-Zero Chilled",
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: false,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Sustainably caught wild Australian seafood vacuum-packed and snap-chilled to lock in fresh sea brininess.`
+      images: pickImages(SEAFOOD_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -559,6 +643,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   vealCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Milk-Fed Australian Veal", categorySlug: "veal",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `VL-${950 + idx}`,
       name: c.name,
@@ -572,13 +660,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Milk-Fed Pale",
       dryAging: "Tender Aged",
       thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: false,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Milk-fed pasture veal renowned for pale rosy hue, velvety tender grain, and subtle savoury delicacy.`
+      images: pickImages(VEAL_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
@@ -593,6 +682,10 @@ export function generate160Catalog(): Product160Item[] {
   ];
 
   equipmentCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Pitmaster Equipment & Rubs", categorySlug: "equipment",
+      subcategory: (c as any).sub || "", weight: c.weight, price: c.price, badge: c.badge, marbling: (c as any).mb || "", dryAging: (c as any).age || "",
+    });
     items.push({
       sku: `EQ-${980 + idx}`,
       name: c.name,
@@ -606,13 +699,14 @@ export function generate160Catalog(): Product160Item[] {
       marbling: "Tool Grade",
       dryAging: "N/A",
       thermalRetention: "Freight Safe",
-      targetKeyword: c.kw,
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
       inelastic: false,
-      images: {
-        rawFallback: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80",
-        cookedFallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
-      },
-      shortDescription: `Professional butchery and pitmaster essentials tested to withstand intense commercial smokehouse use.`
+      images: pickImages(EQUIPMENT_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
     });
   });
 
