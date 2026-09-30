@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     title: 'The Meat Agent — Meat Direct | Australian Wholesale Butcher',
     description: 'Direct farm-gate wholesale allocation of MSA-graded Wagyu MB9+, 45-day dry-aged steaks, and smoker primals. Delivered cold-chain across Australia.',
   },
+  verification: {
+    other: {
+      'msvalidate.01': 'F87FCDC8ECE60BCB60172DBD5BF60B04',
+    },
+  },
 };
 
 const ORG_JSON_LD = {
