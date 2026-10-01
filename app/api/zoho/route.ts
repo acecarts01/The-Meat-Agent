@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { escapeHtml, shell, field, divider, button } from '@/lib/emailTemplates';
 
 export const runtime = 'nodejs';
 
@@ -13,13 +14,15 @@ interface ContactPayload {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+// Zoho silently drops SMTP-submitted mail addressed to the exact same mailbox that
+// authenticated the send (self-loop suppression — confirmed: it lands in Sent, never Inbox).
+// Plus-addressing the admin copy keeps it routed to the same inbox while being a distinct
+// RCPT TO, which Zoho delivers normally.
+function adminRecipient(fromAddress: string, toAddress: string): string {
+  if (toAddress.toLowerCase() !== fromAddress.toLowerCase()) return toAddress;
+  const at = fromAddress.indexOf('@');
+  if (at === -1) return toAddress;
+  return `${fromAddress.slice(0, at)}+orders@${fromAddress.slice(at + 1)}`;
 }
 
 function validate(body: Partial<ContactPayload>): { ok: true; data: ContactPayload } | { ok: false; error: string } {
@@ -91,12 +94,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const sellerTo = adminRecipient(fromAddress, toAddress);
+
   try {
     const transporter = getTransporter();
 
     await transporter.sendMail({
       from: `"The Meat Agent — Website" <${fromAddress}>`,
-      to: toAddress,
+      to: sellerTo,
       replyTo: `"${name}" <${email}>`,
       subject: `[Website Inquiry] ${subject} — ${name}`,
       text:
@@ -106,16 +111,20 @@ export async function POST(req: NextRequest) {
         `Phone: ${phone}\n` +
         `Subject: ${subject}\n\n` +
         `Message:\n${message}\n`,
-      html:
-        `<div style="font-family:Arial,sans-serif;font-size:14px;color:#1c1917;line-height:1.5;">` +
-        `<h2 style="margin:0 0 12px;">New Website Enquiry</h2>` +
-        `<p><strong>Name:</strong> ${escapeHtml(name)}<br/>` +
-        `<strong>Email:</strong> ${escapeHtml(email)}<br/>` +
-        `<strong>Phone:</strong> ${escapeHtml(phone)}<br/>` +
-        `<strong>Subject:</strong> ${escapeHtml(subject)}</p>` +
-        `<p style="white-space:pre-wrap;border-top:1px solid #e7e5e4;padding-top:12px;">${escapeHtml(message)}</p>` +
-        `<p style="color:#78716c;font-size:12px;margin-top:16px;">Sent via the Reply Portal on themeatdirect.com.au</p>` +
-        `</div>`,
+      html: shell({
+        preheader: `New enquiry from ${name}: ${subject}`,
+        title: 'New Website Enquiry',
+        bodyHtml:
+          `<h1 style="margin:0 0 16px;font-size:18px;">New Website Enquiry</h1>` +
+          `<table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;">` +
+          field('Name', escapeHtml(name)) +
+          field('Email', `<a href="mailto:${escapeHtml(email)}" style="color:#b91c1c;">${escapeHtml(email)}</a>`) +
+          field('Phone', escapeHtml(phone)) +
+          field('Subject', escapeHtml(subject)) +
+          `</table>` +
+          divider() +
+          `<p style="white-space:pre-wrap;font-size:13px;">${escapeHtml(message)}</p>`,
+      }),
     });
 
     await transporter.sendMail({
@@ -128,14 +137,16 @@ export async function POST(req: NextRequest) {
         `("${subject}") and will reply within one business day.\n\n` +
         `For an instant response, message us on WhatsApp: https://wa.me/61480804189\n\n` +
         `The Meat Agent — Meat Direct\n22 Wilson Pl, Harrisville QLD 4307\n`,
-      html:
-        `<div style="font-family:Arial,sans-serif;font-size:14px;color:#1c1917;line-height:1.5;">` +
-        `<p>Hi ${escapeHtml(name)},</p>` +
-        `<p>Thanks for reaching out to <strong>The Meat Agent</strong>. Our butchery concierge team has received ` +
-        `your enquiry (<em>${escapeHtml(subject)}</em>) and will reply within one business day.</p>` +
-        `<p>For an instant response, message us on <a href="https://wa.me/61480804189">WhatsApp</a>.</p>` +
-        `<p style="color:#78716c;font-size:12px;margin-top:16px;">The Meat Agent — Meat Direct<br/>22 Wilson Pl, Harrisville QLD 4307</p>` +
-        `</div>`,
+      html: shell({
+        preheader: 'We received your enquiry and will reply within one business day.',
+        title: 'Enquiry Received',
+        bodyHtml:
+          `<p style="margin:0 0 12px;">Hi ${escapeHtml(name)},</p>` +
+          `<p>Thanks for reaching out to <strong>The Meat Agent</strong>. Our butchery concierge team has received ` +
+          `your enquiry (<em>${escapeHtml(subject)}</em>) and will reply within one business day.</p>` +
+          `<p style="font-size:13px;">For an instant response, message us on WhatsApp.</p>` +
+          button('https://wa.me/61480804189', 'Message Us on WhatsApp'),
+      }),
     });
 
     return NextResponse.json({ ok: true });

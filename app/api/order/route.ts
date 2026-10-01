@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { escapeHtml, shell, field, divider, callout, itemsTable, button } from '@/lib/emailTemplates';
 
 export const runtime = 'nodejs';
 
@@ -29,15 +30,6 @@ interface OrderPayload {
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
 
 function generateOrderRef(): string {
   const stamp = Date.now().toString(36).toUpperCase();
@@ -139,16 +131,15 @@ function buildItemsText(items: OrderItem[]): string {
     .join('\n');
 }
 
-function buildItemsHtml(items: OrderItem[]): string {
-  const rows = items
-    .map(
-      (i) =>
-        `<tr><td style="padding:6px 8px;border-bottom:1px solid #e7e5e4;">${escapeHtml(i.quantity.toString())}x ${escapeHtml(i.name)} (${escapeHtml(i.weight)})</td>` +
-        `<td style="padding:6px 8px;border-bottom:1px solid #e7e5e4;font-family:monospace;color:#78716c;">${escapeHtml(i.sku)}</td>` +
-        `<td style="padding:6px 8px;border-bottom:1px solid #e7e5e4;text-align:right;">$${(i.price * i.quantity).toFixed(2)}</td></tr>`
-    )
-    .join('');
-  return `<table style="width:100%;border-collapse:collapse;font-size:13px;"><tbody>${rows}</tbody></table>`;
+// Zoho silently drops SMTP-submitted mail addressed to the exact same mailbox that
+// authenticated the send (self-loop suppression — confirmed: it lands in Sent, never Inbox).
+// Plus-addressing the admin copy keeps it routed to the same inbox while being a distinct
+// RCPT TO, which Zoho delivers normally.
+function adminRecipient(fromAddress: string, toAddress: string): string {
+  if (toAddress.toLowerCase() !== fromAddress.toLowerCase()) return toAddress;
+  const at = fromAddress.indexOf('@');
+  if (at === -1) return toAddress;
+  return `${fromAddress.slice(0, at)}+orders@${fromAddress.slice(at + 1)}`;
 }
 
 export async function POST(req: NextRequest) {
@@ -178,6 +169,7 @@ export async function POST(req: NextRequest) {
 
   const orderRef = generateOrderRef();
   const placedAt = new Date().toLocaleString('en-AU', { timeZone: 'Australia/Brisbane', dateStyle: 'full', timeStyle: 'short' });
+  const sellerTo = adminRecipient(fromAddress, toAddress);
 
   try {
     const transporter = getTransporter();
@@ -185,7 +177,7 @@ export async function POST(req: NextRequest) {
     // 1. Notify the seller (admin) with full order detail.
     await transporter.sendMail({
       from: `"The Meat Agent — Order System" <${fromAddress}>`,
-      to: toAddress,
+      to: sellerTo,
       replyTo: `"${order.fullName}" <${order.email}>`,
       subject: `[New Order ${orderRef}] ${order.fullName} — $${order.total.toFixed(2)} AUD`,
       text:
@@ -200,22 +192,27 @@ export async function POST(req: NextRequest) {
         `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}\n` +
         (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}\n` : '') +
         `TOTAL: $${order.total.toFixed(2)} AUD\n`,
-      html:
-        `<div style="font-family:Arial,sans-serif;font-size:14px;color:#1c1917;line-height:1.5;">` +
-        `<h2 style="margin:0 0 4px;">New Order — ${escapeHtml(orderRef)}</h2>` +
-        `<p style="color:#78716c;margin:0 0 16px;">${escapeHtml(placedAt)} AEST</p>` +
-        `<p><strong>Customer:</strong> ${escapeHtml(order.fullName)}<br/>` +
-        `<strong>Email:</strong> ${escapeHtml(order.email)}<br/>` +
-        `<strong>Phone:</strong> ${escapeHtml(order.phone)}</p>` +
-        `<p><strong>Delivery Address:</strong><br/>${escapeHtml(order.address)}<br/>${escapeHtml(order.suburb)} ${escapeHtml(order.state)} ${escapeHtml(order.postcode)}</p>` +
-        `<p><strong>Delivery Notes:</strong> ${escapeHtml(order.deliveryNotes || 'None')}</p>` +
-        `<p><strong>Payment Method:</strong> ${escapeHtml(PAYMENT_LABELS[order.paymentMethod])}</p>` +
-        buildItemsHtml(order.items) +
-        `<p style="margin-top:12px;">Subtotal: $${order.subtotal.toFixed(2)}<br/>` +
-        `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}<br/>` +
-        (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}<br/>` : '') +
-        `<strong style="font-size:16px;">TOTAL: $${order.total.toFixed(2)} AUD</strong></p>` +
-        `</div>`,
+      html: shell({
+        preheader: `New order ${orderRef} from ${order.fullName} — $${order.total.toFixed(2)} AUD`,
+        title: `New Order — ${orderRef}`,
+        bodyHtml:
+          `<h1 style="margin:0 0 4px;font-size:18px;">New Order — ${escapeHtml(orderRef)}</h1>` +
+          `<p style="margin:0 0 16px;color:#78716c;font-size:12px;">${escapeHtml(placedAt)} AEST</p>` +
+          `<table role="presentation" cellspacing="0" cellpadding="0" style="width:100%;">` +
+          field('Customer', escapeHtml(order.fullName)) +
+          field('Email', `<a href="mailto:${escapeHtml(order.email)}" style="color:#b91c1c;">${escapeHtml(order.email)}</a>`) +
+          field('Phone', escapeHtml(order.phone)) +
+          field('Delivery', `${escapeHtml(order.address)}<br/>${escapeHtml(order.suburb)} ${escapeHtml(order.state)} ${escapeHtml(order.postcode)}`) +
+          field('Notes', escapeHtml(order.deliveryNotes || 'None')) +
+          field('Payment', escapeHtml(PAYMENT_LABELS[order.paymentMethod])) +
+          `</table>` +
+          divider() +
+          itemsTable(order.items) +
+          `<p style="margin-top:12px;font-size:13px;">Subtotal: $${order.subtotal.toFixed(2)}<br/>` +
+          `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}<br/>` +
+          (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}<br/>` : '') +
+          `<strong style="font-size:17px;color:#1c1917;">TOTAL: $${order.total.toFixed(2)} AUD</strong></p>`,
+      }),
     });
 
     // 2. Send the customer their order-received confirmation.
@@ -236,21 +233,25 @@ export async function POST(req: NextRequest) {
         `Our logistics desk will contact you via WhatsApp/SMS with courier tracking and live temperature logs. ` +
         `For anything urgent, message us directly: https://wa.me/61480804189\n\n` +
         `The Meat Agent — Meat Direct\nABN 55 657 961 058\n22 Wilson Pl, Harrisville QLD 4307\n`,
-      html:
-        `<div style="font-family:Arial,sans-serif;font-size:14px;color:#1c1917;line-height:1.5;">` +
-        `<p>Hi ${escapeHtml(order.fullName)},</p>` +
-        `<p>Thanks for your order! We've received it and our boning room coordinators at 164 Brisbane St, Ipswich QLD ` +
-        `are preparing your cold-chain allocation.</p>` +
-        `<p><strong>Order Reference:</strong> ${escapeHtml(orderRef)}<br/>` +
-        `<strong>Placed:</strong> ${escapeHtml(placedAt)} AEST</p>` +
-        buildItemsHtml(order.items) +
-        `<p style="margin-top:12px;"><strong style="font-size:16px;">TOTAL: $${order.total.toFixed(2)} AUD</strong><br/>` +
-        `Payment Method: ${escapeHtml(PAYMENT_LABELS[order.paymentMethod])}</p>` +
-        `<p><strong>Delivering to:</strong><br/>${escapeHtml(order.address)}<br/>${escapeHtml(order.suburb)} ${escapeHtml(order.state)} ${escapeHtml(order.postcode)}</p>` +
-        `<p>Our logistics desk will contact you via WhatsApp/SMS with courier tracking and live temperature logs. ` +
-        `For anything urgent, message us on <a href="https://wa.me/61480804189">WhatsApp</a>.</p>` +
-        `<p style="color:#78716c;font-size:12px;margin-top:16px;">The Meat Agent — Meat Direct<br/>ABN 55 657 961 058<br/>22 Wilson Pl, Harrisville QLD 4307</p>` +
-        `</div>`,
+      html: shell({
+        preheader: `Order ${orderRef} received — your cold-chain allocation is being prepared.`,
+        title: `Order Received — ${orderRef}`,
+        bodyHtml:
+          `<p style="margin:0 0 12px;">Hi ${escapeHtml(order.fullName)},</p>` +
+          `<p>Thanks for your order! We've received it and our boning room coordinators at 164 Brisbane St, Ipswich QLD ` +
+          `are preparing your cold-chain allocation.</p>` +
+          `<p style="margin:16px 0 4px;"><strong>Order Reference:</strong> ${escapeHtml(orderRef)}<br/>` +
+          `<strong>Placed:</strong> ${escapeHtml(placedAt)} AEST</p>` +
+          divider() +
+          itemsTable(order.items) +
+          `<p style="margin-top:12px;"><strong style="font-size:17px;">TOTAL: $${order.total.toFixed(2)} AUD</strong><br/>` +
+          `<span style="font-size:13px;">Payment Method: ${escapeHtml(PAYMENT_LABELS[order.paymentMethod])}</span></p>` +
+          callout(
+            `<strong>Delivering to:</strong><br/>${escapeHtml(order.address)}<br/>${escapeHtml(order.suburb)} ${escapeHtml(order.state)} ${escapeHtml(order.postcode)}`
+          ) +
+          `<p style="font-size:13px;">Our logistics desk will contact you via WhatsApp/SMS with courier tracking and live temperature logs.</p>` +
+          button('https://wa.me/61480804189', 'Message Us on WhatsApp'),
+      }),
     });
 
     return NextResponse.json({ ok: true, orderRef });
