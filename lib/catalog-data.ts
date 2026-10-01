@@ -311,7 +311,7 @@ export const BLOG_POSTS: BlogPostItem[] = [
     hook: "Shabu-shabu ribbons seared with sweet soy, mirin, toasted sesame seeds, and crisp butter lettuce wraps.",
     targetKeyword: "wagyu beef yakiniku bowl",
     curatedImageName: "b1f410d73925070153717c09b927d0756526a662-6082x4054.jpg",
-    imageFallback: "/images/blog/Hero_Wagyu_126.webp"
+    imageFallback: "/images/blog/Hero_Wagyu_127.webp"
   },
   {
     id: "blog-4",
