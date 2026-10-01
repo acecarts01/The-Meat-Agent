@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 const BASE_URL = 'https://themeatdirect.com.au';
 
-const DISALLOWED_PATHS = ['/api/', '/merchant-portal', '/merchant-portal/'];
+const DISALLOWED_PATHS = ['/api/', '/merchant-portal', '/merchant-portal/', '/admin/', '/order/payment-details'];
 
 export default function robots(): MetadataRoute.Robots {
   return {

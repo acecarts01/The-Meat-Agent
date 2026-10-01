@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { escapeHtml, shell, field, divider, callout, itemsTable, button } from '@/lib/emailTemplates';
+import { signPayload } from '@/lib/orderToken';
+import type { OrderTokenPayload } from '@/lib/orderToken';
 
 export const runtime = 'nodejs';
 
@@ -171,6 +173,33 @@ export async function POST(req: NextRequest) {
   const placedAt = new Date().toLocaleString('en-AU', { timeZone: 'Australia/Brisbane', dateStyle: 'full', timeStyle: 'short' });
   const sellerTo = adminRecipient(fromAddress, toAddress);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://themeatdirect.com.au';
+  let adminOrderLink = '';
+  try {
+    const tokenPayload: OrderTokenPayload = {
+      v: 1,
+      orderRef,
+      placedAt,
+      fullName: order.fullName,
+      email: order.email,
+      phone: order.phone,
+      address: order.address,
+      suburb: order.suburb,
+      state: order.state,
+      postcode: order.postcode,
+      deliveryNotes: order.deliveryNotes,
+      paymentMethod: order.paymentMethod,
+      items: order.items,
+      subtotal: order.subtotal,
+      shippingFee: order.shippingFee,
+      cryptoDiscount: order.cryptoDiscount,
+      total: order.total,
+    };
+    adminOrderLink = `${siteUrl}/admin/orders/view?t=${encodeURIComponent(signPayload(tokenPayload))}`;
+  } catch (err) {
+    console.error('Failed to sign admin order token (ORDER_TOKEN_SECRET missing?):', err);
+  }
+
   try {
     const transporter = getTransporter();
 
@@ -191,7 +220,8 @@ export async function POST(req: NextRequest) {
         `Subtotal: $${order.subtotal.toFixed(2)}\n` +
         `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}\n` +
         (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}\n` : '') +
-        `TOTAL: $${order.total.toFixed(2)} AUD\n`,
+        `TOTAL: $${order.total.toFixed(2)} AUD\n` +
+        (adminOrderLink ? `\nView Order in Admin: ${adminOrderLink}\n` : ''),
       html: shell({
         preheader: `New order ${orderRef} from ${order.fullName} — $${order.total.toFixed(2)} AUD`,
         title: `New Order — ${orderRef}`,
@@ -211,7 +241,10 @@ export async function POST(req: NextRequest) {
           `<p style="margin-top:12px;font-size:13px;">Subtotal: $${order.subtotal.toFixed(2)}<br/>` +
           `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}<br/>` +
           (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}<br/>` : '') +
-          `<strong style="font-size:17px;color:#1c1917;">TOTAL: $${order.total.toFixed(2)} AUD</strong></p>`,
+          `<strong style="font-size:17px;color:#1c1917;">TOTAL: $${order.total.toFixed(2)} AUD</strong></p>` +
+          (adminOrderLink
+            ? button(adminOrderLink, 'View Order in Admin →')
+            : ''),
       }),
     });
 
