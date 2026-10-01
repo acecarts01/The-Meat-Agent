@@ -17,12 +17,13 @@ import {
   Scale,
   MessageSquare,
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  BookOpen
 } from 'lucide-react';
 import { SHOP_CATEGORIES_160 } from '@/lib/products-160-data';
 import { TopAnnouncementSlider } from '@/components/TopAnnouncementSlider';
 
-export type ActivePage = 'home' | 'shop' | 'about' | 'contact' | 'wholesale' | 'merchant-portal';
+export type ActivePage = 'home' | 'shop' | 'blog' | 'about' | 'contact' | 'wholesale' | 'merchant-portal';
 
 interface NavbarProps {
   currentPage: ActivePage;
@@ -176,6 +177,19 @@ export function Navbar({
             )}
           </div>
 
+          {/* Blog */}
+          <Link
+            href="/blog/"
+            className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+              currentPage === 'blog'
+                ? 'bg-stone-800 text-white shadow-sm'
+                : 'text-stone-300 hover:text-white hover:bg-stone-900/80'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+            <span>Blog</span>
+          </Link>
+
           {/* About Us */}
           <button
             onClick={() => handleNavigate('about')}
@@ -306,6 +320,17 @@ export function Navbar({
                 ))}
               </div>
             </div>
+
+            <Link
+              href="/blog/"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`w-full text-left py-2.5 px-3 rounded-lg font-medium flex items-center justify-between transition-colors ${
+                currentPage === 'blog' ? 'bg-stone-800 text-white font-bold' : 'text-stone-300 hover:bg-stone-900'
+              }`}
+            >
+              <span>Blog</span>
+              <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+            </Link>
 
             <button
               onClick={() => handleNavigate('about')}

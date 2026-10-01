@@ -1449,6 +1449,14 @@ export default function MeatStoreExperiencePage() {
                 </button>
               </li>
               <li>
+                <Link
+                  href="/blog/"
+                  className="hover:text-amber-400 transition-colors cursor-pointer text-left"
+                >
+                  • The Butcher&apos;s Journal (Blog)
+                </Link>
+              </li>
+              <li>
                 <button
                   onClick={() => handleNavigate('about')}
                   className="hover:text-amber-400 transition-colors cursor-pointer text-left"
