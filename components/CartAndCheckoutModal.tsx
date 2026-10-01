@@ -45,6 +45,9 @@ export function CartAndCheckoutModal({
   const [step, setStep] = useState<'cart' | 'checkout' | 'success'>('cart');
   const [paymentMethod, setPaymentMethod] = useState<'payid' | 'bank' | 'crypto'>('payid');
   const [copiedInfo, setCopiedInfo] = useState<string | null>(null);
+  const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
+  const [orderError, setOrderError] = useState('');
+  const [orderRef, setOrderRef] = useState('');
 
   // Form Fields
   const [formData, setFormData] = useState({
@@ -98,10 +101,45 @@ export function CartAndCheckoutModal({
     setStep('success');
   };
 
-  const handleDirectSubmit = (e: React.FormEvent) => {
+  const handleDirectSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isMinOrderMet) return;
-    setStep('success');
+
+    setOrderError('');
+    setIsSubmittingOrder(true);
+    try {
+      const res = await fetch('/api/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          paymentMethod,
+          items: cart.map((item) => ({
+            sku: item.product.sku,
+            name: item.product.name,
+            weight: item.product.weight,
+            quantity: item.quantity,
+            price: item.product.price,
+          })),
+          subtotal,
+          shippingFee,
+          cryptoDiscount,
+          total,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to place order.');
+      }
+      setOrderRef(data.orderRef || '');
+      setStep('success');
+    } catch (err) {
+      setOrderError(
+        err instanceof Error ? err.message : 'We could not process your order right now. Please try WhatsApp Order instead.'
+      );
+    } finally {
+      setIsSubmittingOrder(false);
+    }
   };
 
   return (
@@ -252,7 +290,7 @@ export function CartAndCheckoutModal({
           )}
 
           {step === 'checkout' && (
-            <form onSubmit={handleDirectSubmit} className="space-y-4">
+            <form id="checkout-form" onSubmit={handleDirectSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-semibold text-stone-300 mb-1">Full Legal / Business Name *</label>
@@ -432,6 +470,12 @@ export function CartAndCheckoutModal({
                   </div>
                 )}
               </div>
+
+              {orderError && (
+                <div className="bg-red-950/50 border border-red-500/50 text-red-300 text-xs px-3 py-2 rounded-lg">
+                  {orderError}
+                </div>
+              )}
             </form>
           )}
 
@@ -443,9 +487,12 @@ export function CartAndCheckoutModal({
               <h4 className="text-xl font-bold text-white">Order Received & Dispatched to Boning Room</h4>
               <p className="text-xs text-stone-300 max-w-md mx-auto leading-relaxed">
                 Thank you! Your cold-chain order allocation has been sent to our boning room coordinators at 164 Brisbane St, Ipswich QLD.
-                Our logistics desk will contact you via WhatsApp / SMS with courier live temperature logs.
+                A confirmation has been emailed to {formData.email}. Our logistics desk will contact you via WhatsApp / SMS with courier live temperature logs.
               </p>
               <div className="p-4 bg-stone-950 border border-stone-800 rounded-xl text-xs max-w-sm mx-auto space-y-1 text-left">
+                {orderRef && (
+                  <div>Order Reference: <strong className="text-amber-400 font-mono">{orderRef}</strong></div>
+                )}
                 <div>Order Status: <strong className="text-emerald-400 font-mono">Processing Cold-Chain Pack</strong></div>
                 <div>Support Phone / WhatsApp: <strong className="text-white font-mono">+61 480 804 189</strong></div>
                 <div>ABN: <strong className="text-stone-400 font-mono">55 657 961 058</strong></div>
@@ -502,16 +549,27 @@ export function CartAndCheckoutModal({
                 <>
                   <button
                     onClick={() => setStep('cart')}
-                    className="bg-stone-800 hover:bg-stone-700 text-stone-300 font-semibold px-4 py-2.5 rounded-lg text-xs"
+                    disabled={isSubmittingOrder}
+                    className="bg-stone-800 hover:bg-stone-700 text-stone-300 font-semibold px-4 py-2.5 rounded-lg text-xs disabled:opacity-50"
                   >
                     Back to Cart
                   </button>
                   <button
                     onClick={handleWhatsAppCheckout}
-                    className="bg-[#25D366] hover:bg-[#20ba59] text-stone-950 font-bold px-5 py-2.5 rounded-lg text-xs flex items-center gap-2 cursor-pointer"
+                    disabled={isSubmittingOrder}
+                    className="bg-[#25D366] hover:bg-[#20ba59] text-stone-950 font-bold px-4 py-2.5 rounded-lg text-xs flex items-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Confirm & Pay via WhatsApp</span>
+                    <span>WhatsApp Instead</span>
+                  </button>
+                  <button
+                    type="submit"
+                    form="checkout-form"
+                    disabled={isSubmittingOrder}
+                    className="bg-red-700 hover:bg-red-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold px-5 py-2.5 rounded-lg text-xs flex items-center gap-2 cursor-pointer shadow-lg shadow-red-950"
+                  >
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>{isSubmittingOrder ? 'Placing Order…' : 'Place Order'}</span>
                   </button>
                 </>
               )}
