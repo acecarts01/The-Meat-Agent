@@ -139,6 +139,18 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
           </div>
         )}
 
+        <div className="flex flex-wrap items-center gap-2 pt-2">
+          <span className="text-[10px] font-mono text-stone-500 uppercase">Related searches:</span>
+          {[post.primaryKeyword, ...post.supportingKeywords].map((kw) => (
+            <span
+              key={kw}
+              className="text-[10px] font-mono text-stone-400 bg-stone-900 border border-stone-800 px-2 py-1 rounded-full"
+            >
+              {kw}
+            </span>
+          ))}
+        </div>
+
         <div className="border-t border-stone-800 pt-6 bg-stone-900 border border-stone-800 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h3 className="text-base font-bold text-white">Ready to order direct from the source?</h3>

@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${post.title} | The Meat Agent`,
     description: post.excerpt,
+    keywords: [post.primaryKeyword, ...post.supportingKeywords],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: post.title,
@@ -64,6 +65,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         '@id': `https://themeatdirect.com.au/blog/${post.slug}/#article`,
         headline: post.title,
         description: post.excerpt,
+        keywords: [post.primaryKeyword, ...post.supportingKeywords].join(', '),
         image: post.heroImage,
         datePublished: post.publishedDate,
         dateModified: post.publishedDate,

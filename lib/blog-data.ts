@@ -12,6 +12,11 @@ export interface BlogPost {
   categorySlug: string;
   publishedDate: string;
   readingMinutes: number;
+  /** Real Semrush keyword (AU dataset), chosen for topical and volume fit. */
+  primaryKeyword: string;
+  primaryKeywordVolume: number;
+  /** Five real supporting Semrush keywords from the same niche cluster. */
+  supportingKeywords: string[];
   sections: { heading: string; body: string[] }[];
   faqs: BlogFaq[];
 }
@@ -27,6 +32,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'beef',
     publishedDate: '2026-01-12',
     readingMinutes: 6,
+    primaryKeyword: 'beef mince',
+    primaryKeywordVolume: 4400,
+    supportingKeywords: [
+      'extra lean beef mince',
+      'lean beef mince',
+      'bulk beef mince',
+      'premium beef mince',
+      'grass fed beef mince',
+    ],
     sections: [
       {
         heading: 'What "mince" actually means on a label',
@@ -64,6 +78,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Yes — a wholesale butcher working from whole primals can grind to a specified cut on request, which a supermarket counter sourcing pre-ground product generally cannot offer.',
       },
+      {
+        question: 'Is extra lean beef mince actually better for everyday cooking?',
+        answer:
+          'Not universally — extra lean mince (often 95/5) suits dishes where you drain or skim fat anyway, like a lean bolognese, but it dries out faster in a hot pan than an 85/15 blend and needs added moisture or fat for burgers.',
+      },
+      {
+        question: 'Why is grass-fed beef mince often a different colour to grain-fed?',
+        answer:
+          'Grass-fed beef tends to carry a slightly deeper red colour and a leaner fat profile due to diet, not because it is fresher or older — colour alone is not a reliable freshness indicator across different feeding programs.',
+      },
+      {
+        question: 'Does bulk-buying mince in a wholesale order save money per kilo?',
+        answer:
+          'Generally yes — bulk beef mince bought as part of a larger wholesale allocation typically carries a lower per-kilo price than small-pack retail mince, since packaging and handling costs are spread across a larger volume.',
+      },
     ],
   },
   {
@@ -76,6 +105,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'wagyu',
     publishedDate: '2026-01-19',
     readingMinutes: 7,
+    primaryKeyword: 'wagyu beef marbling',
+    primaryKeywordVolume: 110,
+    supportingKeywords: [
+      'marbling score wagyu',
+      'beef marbling score chart',
+      'what is marbling in beef',
+      'marbling score meaning',
+      'wagyu beef',
+    ],
     sections: [
       {
         heading: 'What the number is actually measuring',
@@ -110,9 +148,24 @@ export const BLOG_POSTS: BlogPost[] = [
           'Higher-marbled cuts cook faster to a safe serving temperature because fat conducts and retains heat differently to lean muscle, and they are far more forgiving of a slightly-over sear since the fat keeps basting the meat. Pull Wagyu a touch earlier than you would a lean cut of the same thickness.',
       },
       {
+        question: 'Does a higher marbling score always mean better quality overall?',
+        answer:
+          'Marbling score measures one specific attribute — intramuscular fat. Tenderness, flavour depth, and overall quality are also influenced by aging, cut selection, and cooking technique, so a well-prepared MB5 steak can outperform a poorly cooked MB9+ one.',
+      },
+      {
         question: 'Is full-blood Wagyu always MB9+?',
         answer:
           'Not automatically — genetics set the ceiling, but feeding program length, individual animal variation, and age at slaughter all affect the final score. A full-blood animal fed for a shorter period can still grade lower than MB9.',
+      },
+      {
+        question: 'What does the beef marbling score chart actually look like?',
+        answer:
+          'The AUS-MEAT BMS reference chart shows photographed ribeye cross-sections at each score from 0 to 9+, with graders comparing a chilled carcass cross-section against those references rather than using a measuring device — it is a trained visual assessment, not an automated scan.',
+      },
+      {
+        question: 'Why do two cuts with the same marbling score sometimes taste different?',
+        answer:
+          'Marbling score reflects fat density at one cross-section point, but aging, cut location, and cooking method all still influence the final eating experience — score is a strong predictor, not an absolute guarantee of identical results.',
       },
     ],
   },
@@ -126,6 +179,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'beef',
     publishedDate: '2026-01-26',
     readingMinutes: 7,
+    primaryKeyword: 'dry aged beef online',
+    primaryKeywordVolume: 70,
+    supportingKeywords: [
+      'dry aged tomahawk',
+      'dry aged rib eye',
+      'dry aged wagyu',
+      'dry aged beef melbourne',
+      'aged beef meat',
+    ],
     sections: [
       {
         heading: 'The shared mechanism: enzymatic tenderisation',
@@ -163,6 +225,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'It is not recommended without dedicated humidity and airflow control — a standard fridge does not hold the stable conditions needed to favour the right surface activity, and the risk of spoilage rises significantly without it.',
       },
+      {
+        question: 'Does a dry-aged tomahawk need a different cooking method to a fresh one?',
+        answer:
+          'The core method is the same (reverse-sear suits its thickness well), but a dry-aged tomahawk benefits from slightly less added fat in the pan, since the concentrated flavour is already strong, and a shorter rest given the lower moisture content.',
+      },
+      {
+        question: 'How long can dry-aged beef be kept once purchased?',
+        answer:
+          'Once cut into steaks and vacuum-sealed, treat it like any fresh cut — 3-5 days refrigerated or several months frozen. The aging process itself has already finished by the time it reaches you.',
+      },
+      {
+        question: 'Is dry-aged wagyu worth the combined premium of both processes?',
+        answer:
+          'It is the most expensive combination for a reason — you get Wagyu\'s marbling-driven richness plus dry-aging\'s concentrated, nutty flavour. Whether it is "worth it" depends on budget, but it is a genuinely different eating experience to either attribute alone.',
+      },
     ],
   },
   {
@@ -175,6 +252,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'meatboxes',
     publishedDate: '2026-02-02',
     readingMinutes: 6,
+    primaryKeyword: 'meat box',
+    primaryKeywordVolume: 2400,
+    supportingKeywords: [
+      'meat boxes',
+      'meat packs',
+      'bulk meat packs',
+      'bbq meat packs',
+      'butcher meat packs',
+    ],
     sections: [
       {
         heading: 'Why wholesale minimums exist at all',
@@ -212,6 +298,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Yes — this is common, and splitting a $423+ order between two families often brings the effective per-household spend well under typical fortnightly grocery meat spend.',
       },
+      {
+        question: 'Are BBQ meat packs a good way to trial a wholesale order for the first time?',
+        answer:
+          'Yes — a BBQ-focused pack is a lower-commitment way to test allocation quality before building toward a full multi-cut family box, since it usually spans a few crowd-friendly cuts rather than a wide variety.',
+      },
+      {
+        question: 'Do butcher meat packs include both raw and ready-to-cook items?',
+        answer:
+          'It varies by supplier — check the listed contents of a specific pack rather than assuming, since some butcher meat packs mix raw cuts with marinated or crumbed items while others are raw-only.',
+      },
+      {
+        question: 'What happens if my order is slightly under the minimum threshold?',
+        answer:
+          'Most wholesale suppliers will prompt you to add a small additional item (extra mince, a sausage pack) to clear the threshold rather than rejecting the order outright — it is worth checking what top-up items are available at checkout.',
+      },
     ],
   },
   {
@@ -224,6 +325,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'chicken',
     publishedDate: '2026-02-09',
     readingMinutes: 6,
+    primaryKeyword: 'free range chicken',
+    primaryKeywordVolume: 1600,
+    supportingKeywords: [
+      'free range chicken breast',
+      'organic free range chicken',
+      'chicken thigh price',
+      'whole free range chicken',
+      'free range chicken near me',
+    ],
     sections: [
       {
         heading: 'Growth rate changes muscle structure',
@@ -260,6 +370,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Thigh meat is far more forgiving of longer cook times than breast meat because of its higher fat and connective tissue content — it is genuinely difficult to overcook into dryness, which is why it suits braises, roasts, and the BBQ equally well.',
       },
+      {
+        question: 'Why does chicken thigh price fluctuate more than breast price?',
+        answer:
+          'Thigh demand has grown significantly as home cooks favour its flavour and forgiveness, which combined with a fixed supply ratio per bird (every bird yields the same proportion of thigh to breast) creates more price movement than the historically higher-demand breast cut.',
+      },
+      {
+        question: 'Is a whole free range chicken better value than buying pieces?',
+        answer:
+          'Usually yes per kilo, since you are not paying for the butchery labour of portioning — it suits households comfortable jointing a bird themselves or using it for a whole roast.',
+      },
+      {
+        question: 'Does organic certification mean the same thing as free range?',
+        answer:
+          'No — organic certification relates primarily to feed inputs (no synthetic pesticides or fertilisers in feed crops) and management practices, while free range specifically refers to the bird having outdoor access. A chicken can be one, both, or neither.',
+      },
     ],
   },
   {
@@ -272,6 +397,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'kangaroo-game',
     publishedDate: '2026-02-16',
     readingMinutes: 6,
+    primaryKeyword: 'buy kangaroo mince online',
+    primaryKeywordVolume: 70,
+    supportingKeywords: [
+      'bulk kangaroo mince',
+      'kangaroo mince bulk',
+      'kangaroo mince vs beef mince',
+      'what is kangaroo mince',
+      'kangaroo mince protein',
+    ],
     sections: [
       {
         heading: 'The nutritional profile most people don\'t know about',
@@ -308,6 +442,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Some people with red meat sensitivities report better tolerance to kangaroo, though this varies individually — it is worth discussing with a health professional if intolerance is a specific concern rather than a general preference.',
       },
+      {
+        question: 'How does kangaroo mince compare nutritionally to beef mince?',
+        answer:
+          'Kangaroo mince is typically much leaner than even extra-lean beef mince, with a comparable or higher protein-per-gram density, but it lacks the fat content that carries flavour and moisture in beef mince, which is why it suits well-seasoned dishes with added moisture.',
+      },
+      {
+        question: 'Can kangaroo mince be substituted directly in a beef mince recipe?',
+        answer:
+          'It can, but expect a drier result unless you add extra fat or moisture (olive oil, a splash of stock, or combining with a fattier mince) — a straight 1:1 swap in a recipe calibrated for 80/20 beef mince will cook noticeably differently.',
+      },
+      {
+        question: 'Is bulk kangaroo mince cheaper per kilo than beef mince?',
+        answer:
+          'It varies by supplier and season, but kangaroo mince is frequently price-competitive with or cheaper than beef mince per kilo, reflecting its wild-harvest supply chain which carries none of the feed or land costs of farmed beef.',
+      },
     ],
   },
   {
@@ -320,6 +469,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'meatboxes',
     publishedDate: '2026-02-23',
     readingMinutes: 7,
+    primaryKeyword: 'meat delivery',
+    primaryKeywordVolume: 1300,
+    supportingKeywords: [
+      'grass fed meat delivery',
+      'organic meat delivery',
+      'meat delivery box',
+      'bulk meat delivery',
+      'online meat delivery',
+    ],
     sections: [
       {
         heading: 'The core problem: insulation alone is not enough',
@@ -356,6 +514,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'It uses more packaging material than an unrefrigerated parcel, but the alternative — food spoilage and waste from inadequate cooling — carries its own significant environmental cost, which properly engineered cold-chain packaging is designed to prevent.',
       },
+      {
+        question: 'Does organic meat delivery require different cold-chain handling than standard?',
+        answer:
+          'No — the cold-chain engineering is identical regardless of farming program; organic certification relates to how the animal was raised and feed, not to how the finished product is transported.',
+      },
+      {
+        question: 'Can I track a bulk meat delivery in transit?',
+        answer:
+          'Most cold-chain couriers provide standard parcel tracking, though temperature-specific tracking (a logged thermal record for the journey) is a separate, less universally offered feature — check with your specific supplier if this matters to you.',
+      },
+      {
+        question: 'Is online meat delivery reliable in regional areas, or just metro?',
+        answer:
+          'Cold-chain engineering works the same regardless of distance, but longer regional freight times eat into the 48-hour safety margin more than a short metro run — check a supplier\'s stated delivery zones before ordering to a remote address.',
+      },
     ],
   },
   {
@@ -368,6 +541,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'smallgoods',
     publishedDate: '2026-03-02',
     readingMinutes: 7,
+    primaryKeyword: 'butcher beef brisket',
+    primaryKeywordVolume: 110,
+    supportingKeywords: [
+      'buy beef brisket online',
+      'wagyu brisket',
+      'beef brisket price',
+      'grass fed beef brisket',
+      'beef brisket price per kg',
+    ],
     sections: [
       {
         heading: 'Why "packer" matters as a specification',
@@ -404,6 +586,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'For a long, low-and-slow cook the extra marbling in a Wagyu brisket does translate to a richer result, though the return on investment is less dramatic than it is for a fast-seared steak, since the long cook already develops significant tenderness and flavour on its own.',
       },
+      {
+        question: 'How does beef brisket price per kg compare between grass-fed and grain-fed?',
+        answer:
+          'Grass-fed beef brisket is often priced similarly to or slightly below grain-fed for the same grade, since the premium in brisket pricing is driven more by cut demand and size than by feeding program, unlike with higher-marbled cuts such as scotch fillet.',
+      },
+      {
+        question: 'Should I buy beef brisket online or select it in person?',
+        answer:
+          'Buying beef brisket online works well when the supplier states weight, fat cap thickness, and whether it is a full packer or flat-only — the same information you would check in person, just provided up front rather than assessed by eye.',
+      },
+      {
+        question: 'Does a butcher-cut beef brisket differ from a supermarket one?',
+        answer:
+          'A butcher sourcing whole primals can select for flex, fat cap evenness, and marbling at the point end, where a supermarket brisket is typically pre-portioned to a standard weight without that selection process applied per piece.',
+      },
     ],
   },
   {
@@ -416,6 +613,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'veal',
     publishedDate: '2026-03-09',
     readingMinutes: 6,
+    primaryKeyword: 'meat veal',
+    primaryKeywordVolume: 6600,
+    supportingKeywords: [
+      'veal mince',
+      'grass fed veal',
+      'veal near me',
+      'buy veal online',
+      'veal rump',
+    ],
     sections: [
       {
         heading: 'What actually makes veal different from beef',
@@ -452,6 +658,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           "Yes, generally — iron content in red meat tends to increase with the animal's age, so standard beef typically carries a higher iron density than veal from the same breed.",
       },
+      {
+        question: 'Does grass-fed veal taste different from grain-fed veal?',
+        answer:
+          'Grass-fed veal tends to carry a slightly more pronounced flavour and firmer texture than the very pale, mild milk-fed veal common in some overseas markets, since Australian veal programs typically allow more pasture access.',
+      },
+      {
+        question: 'What is veal rump best used for?',
+        answer:
+          'Veal rump suits quick pan-searing or grilling similarly to a small beef rump steak, but benefits from a shorter cook time and lower heat given its finer fibre and lack of protective marbling.',
+      },
+      {
+        question: 'Is veal mince a good substitute for beef mince in meatballs?',
+        answer:
+          'Yes, and it is traditional in many European recipes — veal mince produces a lighter, more tender meatball than beef mince alone, though it is often blended with pork or beef mince to add back some fat for moisture.',
+      },
     ],
   },
   {
@@ -464,6 +685,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'smallgoods',
     publishedDate: '2026-03-16',
     readingMinutes: 6,
+    primaryKeyword: 'beef sausages',
+    primaryKeywordVolume: 880,
+    supportingKeywords: [
+      'preservative free sausages',
+      'grass fed beef sausages',
+      'bulk sausages',
+      'organic beef sausages',
+      'how many sausages to a kilo',
+    ],
     sections: [
       {
         heading: 'What a "filler" actually is and why it is used',
@@ -500,6 +730,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Typically 3-4 days refrigerated or 2-3 months frozen, similar to other fresh minced-meat products — check the specific use-by date on your order as recipes without heavy preservatives have a shorter fresh shelf life than some commercial equivalents.',
       },
+      {
+        question: 'Does "preservative free" mean a sausage spoils faster?',
+        answer:
+          'Preservative-free sausages generally do have a shorter fresh refrigerated shelf life than preserved equivalents, which is why they are typically sold frozen or dispatched on tighter cold-chain timelines — freeze promptly if not using within a few days.',
+      },
+      {
+        question: 'How many sausages make up a kilo?',
+        answer:
+          'It varies by recipe and casing size, but a standard thick beef or pork sausage typically runs 8-10 per kilo — always check the specific pack weight and count stated by your supplier rather than assuming a fixed number.',
+      },
+      {
+        question: 'Are bulk sausage orders cheaper per kilo than small packs?',
+        answer:
+          'Generally yes — buying sausages in bulk as part of a larger order spreads packaging and handling costs across more product, typically bringing the per-kilo price below standard small-pack retail pricing.',
+      },
     ],
   },
   {
@@ -512,6 +757,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'seafood',
     publishedDate: '2026-03-23',
     readingMinutes: 6,
+    primaryKeyword: 'best price butcher & seafood',
+    primaryKeywordVolume: 480,
+    supportingKeywords: [
+      'frozen fish supplier',
+      'meat and seafood subscription box',
+      'seafood hamper delivery',
+      'organic meat and seafood delivery',
+      'frozen fish meat',
+    ],
     sections: [
       {
         heading: 'What "fresh" legally means (and doesn\'t)',
@@ -548,6 +802,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Minimal impact — properly flash-frozen seafood retains the large majority of its protein, omega-3, and micronutrient content, since freezing itself does not meaningfully degrade these compounds the way extended time at refrigeration temperature can.',
       },
+      {
+        question: 'Is a combined meat and seafood subscription box worth it over separate orders?',
+        answer:
+          'It can simplify cold-chain logistics into a single dispatch rather than two separate deliveries, which is convenient, but check the actual seafood variety and portion sizes included rather than assuming it matches a seafood-only order.',
+      },
+      {
+        question: 'How do I choose a reliable frozen fish supplier?',
+        answer:
+          'Look for clear labelling of the catch method and freezing timeline (ideally frozen at sea or within hours of landing), transparent species naming rather than generic terms, and proper cold-chain delivery to your door.',
+      },
+      {
+        question: 'Does a seafood hamper delivery arrive frozen or fresh?',
+        answer:
+          'This varies by supplier — always check the product listing or ask directly before ordering, since the correct storage instructions on arrival depend entirely on whether the contents were dispatched fresh or frozen.',
+      },
     ],
   },
   {
@@ -560,6 +829,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'pork',
     publishedDate: '2026-03-30',
     readingMinutes: 6,
+    primaryKeyword: 'pork crackle near me',
+    primaryKeywordVolume: 90,
+    supportingKeywords: [
+      'pork scotch fillet',
+      'buy pork online',
+      'organic pork',
+      'pork wholesale',
+      'pork shoulder price',
+    ],
     sections: [
       {
         heading: 'Why crackling fails: it is almost always water',
@@ -602,6 +880,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Overnight, uncovered in the fridge is the commonly recommended maximum — beyond that, the texture of the skin itself can start to change before it ever reaches the oven.',
       },
+      {
+        question: 'Is pork scotch fillet a good cut for crackling, or just roasting pork belly?',
+        answer:
+          'Pork scotch fillet is a shoulder cut usually sold without skin attached, so it is better suited to roasting, pulled pork, or steaks rather than crackling — for guaranteed crackling, choose a cut explicitly sold skin-on, such as a pork belly or leg roast.',
+      },
+      {
+        question: 'Does organic pork crackle differently to standard pork?',
+        answer:
+          'Not due to certification itself — crackling success depends on skin dryness, scoring, and cooking method regardless of farming program, though individual fat layer thickness can vary by breed and feeding regardless of organic status.',
+      },
+      {
+        question: 'Why does pork shoulder price differ from pork belly price per kilo?',
+        answer:
+          'Pork belly commands a premium largely due to crackling and bacon demand, while shoulder (often sold as scotch fillet or used for pulled pork) is typically priced lower despite similar fat content, reflecting differing consumer demand per cut.',
+      },
     ],
   },
   {
@@ -614,6 +907,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'meatboxes',
     publishedDate: '2026-04-06',
     readingMinutes: 6,
+    primaryKeyword: 'meat packs',
+    primaryKeywordVolume: 720,
+    supportingKeywords: [
+      'bulk meat',
+      'meat packages',
+      'bulk meat packs',
+      'butcher meat packs',
+      'meat box',
+    ],
     sections: [
       {
         heading: 'Starting with a per-person, per-meal baseline',
@@ -650,6 +952,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Audit your freezer\'s actual usable capacity before ordering (most households underestimate how much space is already taken by non-meat items) and order to roughly 70-80% of that capacity, leaving room for airflow and future purchases.',
       },
+      {
+        question: 'Are butcher meat packs sized for a specific household size?',
+        answer:
+          'Most listed packs state an intended serving count or household size, but always check the actual weight and cut breakdown against your own monthly formula rather than assuming a pack labelled "family size" matches your specific household\'s consumption.',
+      },
+      {
+        question: 'Is a meat package better value than ordering individual cuts separately?',
+        answer:
+          'Typically yes — a pre-built package spreads the supplier\'s packaging and handling cost across a larger combined order, usually landing at a lower effective per-kilo price than assembling the same variety through separate individual purchases.',
+      },
+      {
+        question: 'How often should a family of four reorder a meat box?',
+        answer:
+          'Based on the 14-16kg monthly estimate and typical freezer capacity, every 6-8 weeks is a common reorder cadence for a mid-sized wholesale allocation, though this depends on your specific freezer space and consumption rate.',
+      },
     ],
   },
   {
@@ -662,6 +979,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'wagyu',
     publishedDate: '2026-04-13',
     readingMinutes: 6,
+    primaryKeyword: 'wagyu beef',
+    primaryKeywordVolume: 8100,
+    supportingKeywords: [
+      'a5 beef wagyu',
+      'wagyu rump',
+      'wagyu sirloin',
+      'wagyu scotch fillet',
+      'wagyu eye fillet',
+    ],
     sections: [
       {
         heading: 'The price curve is not linear',
@@ -689,14 +1015,29 @@ export const BLOG_POSTS: BlogPost[] = [
           'Many people find a full 250-300g steak portion at MB9+ quite heavy to finish — a smaller 150-200g portion, or thin-slicing for hot pot or yakiniku style, is a common and often preferred approach at this marbling tier.',
       },
       {
-        question: 'Does a higher marbling score always mean better quality overall?',
-        answer:
-          'Marbling score measures one specific attribute — intramuscular fat. Tenderness, flavour depth, and overall quality are also influenced by aging, cut selection, and cooking technique, so a well-prepared MB5 steak can outperform a poorly cooked MB9+ one.',
-      },
-      {
         question: 'Can I mix marbling tiers in one order to compare them myself?',
         answer:
           'Yes — ordering the same cut (for example scotch fillet) across two different marbling tiers and cooking them side by side on the same night is the most direct way to decide where your own preference sits on the scale.',
+      },
+      {
+        question: 'How does A5 Wagyu grading relate to the MSA/BMS marbling score?',
+        answer:
+          'A5 is a Japanese grading system (combining a yield grade and a quality grade from 1-5) distinct from the Australian MSA/BMS 0-9+ marbling scale, though A5 beef typically corresponds to the very top end of the BMS marbling range when compared directly.',
+      },
+      {
+        question: 'Is wagyu rump a lower-marbling cut than wagyu sirloin?',
+        answer:
+          'Rump is generally a leaner muscle group than sirloin or scotch fillet even within the same animal, so at the same overall carcass marbling grade, a wagyu rump typically shows less visible marbling than a wagyu sirloin or scotch fillet from the same animal.',
+      },
+      {
+        question: 'Does wagyu eye fillet make sense given it is a naturally lean cut?',
+        answer:
+          'Eye fillet is naturally the leanest premium cut regardless of breed, so Wagyu eye fillet offers more tenderness-from-marbling benefit than a dramatic richness increase — it is a good choice for someone who wants Wagyu\'s texture without an intensely rich mouthfeel.',
+      },
+      {
+        question: 'Why do wagyu scotch fillet and wagyu sirloin differ in price at the same marbling score?',
+        answer:
+          'Even at an identical marbling grade, cut-specific demand and portioning yield affect price — scotch fillet is often in higher demand for its balance of tenderness and marbling, which can place it at a different price point to sirloin from the same carcass grade.',
       },
     ],
   },
@@ -710,6 +1051,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'equipment',
     publishedDate: '2026-04-20',
     readingMinutes: 6,
+    primaryKeyword: 'butcher knife shop near me',
+    primaryKeywordVolume: 30,
+    supportingKeywords: [
+      'knife sharpening canberra',
+      'butcher knife store near me',
+      'wagyu knife',
+      'frozen meat knife',
+      'knife for frozen meat',
+    ],
     sections: [
       {
         heading: 'The three knives that cover almost everything',
@@ -746,6 +1096,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Honing realigns an existing edge that has rolled slightly out of true — it does not remove metal. Sharpening actually grinds a new edge and removes a small amount of metal, which is why it is needed far less often than honing.',
       },
+      {
+        question: 'Do I need a special knife for cutting frozen meat?',
+        answer:
+          'A standard sharp boning or chef\'s knife is not designed for cutting through fully frozen meat and can be damaged or slip — either partially thaw the meat first, or use a purpose-made serrated frozen-meat knife if you regularly portion straight from frozen.',
+      },
+      {
+        question: 'Is a dedicated wagyu knife actually different from a standard steak knife?',
+        answer:
+          'Wagyu-marketed knives are typically very thin, sharp blades designed to cut cleanly through soft, high-fat marbled beef without compressing it — a genuine benefit for very high-marbling cuts, though a quality standard sharp knife performs similarly for most everyday cuts.',
+      },
+      {
+        question: 'Where can I get a butcher knife professionally sharpened?',
+        answer:
+          'Many butcher supply shops, knife specialty stores, and some hardware stores offer professional sharpening services — search for a butcher knife shop or knife sharpening service in your local area if you do not own a sharpening stone or steel.',
+      },
     ],
   },
   {
@@ -758,6 +1123,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'meatboxes',
     publishedDate: '2026-04-27',
     readingMinutes: 5,
+    primaryKeyword: 'online butchers',
+    primaryKeywordVolume: 390,
+    supportingKeywords: [
+      'online butcher',
+      'butcher online',
+      'online butcher melbourne',
+      'online butcher brisbane',
+      'best online butchers',
+    ],
     sections: [
       {
         heading: 'Where card surcharges actually come from',
@@ -772,9 +1146,9 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        heading: 'Why some direct-wholesale businesses pass savings through as a crypto discount',
+        heading: 'Why some direct-wholesale online butchers pass savings through as a crypto discount',
         body: [
-          'Cryptocurrency settlement (commonly BTC or stablecoins like USDT) similarly bypasses traditional card processing fees and chargeback risk entirely — a merchant genuinely saving on processing cost has a direct, verifiable reason to offer a discount for crypto settlement, rather than it being an arbitrary promotional gimmick.',
+          'Cryptocurrency settlement (commonly BTC or stablecoins like USDT) similarly bypasses traditional card processing fees and chargeback risk entirely — an online butcher genuinely saving on processing cost has a direct, verifiable reason to offer a discount for crypto settlement, rather than it being an arbitrary promotional gimmick.',
         ],
       },
     ],
@@ -794,6 +1168,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Yes — you would need an existing wallet holding the relevant currency (commonly BTC or USDT) before checkout, as this is not something a merchant can set up on your behalf during an order.',
       },
+      {
+        question: 'Do most online butchers in Melbourne and Brisbane accept PayID?',
+        answer:
+          'Adoption varies by business — PayID support is becoming more common among direct wholesale and online butchers as a way to avoid card fees, but it is worth checking a specific supplier\'s checkout page rather than assuming it is universally offered.',
+      },
+      {
+        question: 'What should I check before trusting an online butcher with a bank transfer payment?',
+        answer:
+          'Confirm the business has a verifiable ABN, a real registered address, and clear order confirmation details before sending a PayID or bank transfer payment, since these transfers are harder to reverse than a card payment if something goes wrong.',
+      },
+      {
+        question: 'Are card surcharges legal in Australia?',
+        answer:
+          'Yes, within limits — Australian rules generally require surcharges to reflect no more than the actual cost of accepting that payment method, which is part of why some merchants prefer to avoid surcharging altogether by offering fee-free alternatives like PayID.',
+      },
     ],
   },
   {
@@ -806,6 +1195,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'lamb',
     publishedDate: '2026-05-04',
     readingMinutes: 6,
+    primaryKeyword: 'lamb meat',
+    primaryKeywordVolume: 1000,
+    supportingKeywords: [
+      'grass fed lamb meat',
+      'grass fed lamb',
+      'free range lamb',
+      'lamb shoulder price',
+      'leg of lamb cost',
+    ],
     sections: [
       {
         heading: 'Cutlets: the rack, portioned',
@@ -842,6 +1240,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'It refers to cleaning the rib bone of excess fat, meat, and membrane so it is exposed and presentable — purely a presentation technique, with no effect on the flavour of the meat itself.',
       },
+      {
+        question: 'Does grass-fed lamb cook differently from grain-fed lamb?',
+        answer:
+          'Grass-fed lamb is typically slightly leaner, which means it can dry out a touch faster over high heat than a grain-finished equivalent — a slightly shorter cook time or a light oil baste helps compensate for the lower fat content.',
+      },
+      {
+        question: 'Why does lamb shoulder price differ so much from leg of lamb cost?',
+        answer:
+          'Leg of lamb is a leaner, more universally popular roasting cut with higher consistent demand, while shoulder — despite being flavourful when slow-cooked — is often priced lower, reflecting its higher connective tissue content and the extra cooking time it requires.',
+      },
+      {
+        question: 'Is free range lamb different from grass-fed lamb?',
+        answer:
+          'They describe different things — free range relates to the animal having outdoor access and space, while grass-fed describes the diet. Most Australian lamb is both grass-fed and free range by default, since paddock grazing is the standard rearing method.',
+      },
     ],
   },
   {
@@ -854,6 +1267,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'beef',
     publishedDate: '2026-05-11',
     readingMinutes: 6,
+    primaryKeyword: 'vacuum sealed frozen meat',
+    primaryKeywordVolume: 20,
+    supportingKeywords: [
+      'frozen vacuum sealed meat',
+      'vacuum packed mince',
+      'vacuum sealed mince',
+      'vacuum packed lamb',
+      'beef mince vacuum packed',
+    ],
     sections: [
       {
         heading: 'What a use-by date is actually calculated against',
@@ -890,6 +1312,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Yes, significantly — freezer burn is caused by moisture loss to the surrounding air, and a correctly holding vacuum seal removes the air gap that would otherwise allow that moisture migration to happen.',
       },
+      {
+        question: 'Why does vacuum sealed frozen meat sometimes look slightly discoloured through the bag?',
+        answer:
+          'A darker purplish-red colour under vacuum is normal — it is caused by the absence of oxygen (myoglobin in the meat reacts differently without it) and the colour typically brightens back to a normal red within minutes of the seal being opened and the meat exposed to air.',
+      },
+      {
+        question: 'Is vacuum packed mince riskier than vacuum packed whole cuts?',
+        answer:
+          'Mince has more exposed surface area and a larger bacterial load relative to its volume even before packing, so while the vacuum seal still extends its life versus loose wrapping, mince should still be used or frozen sooner than an equivalent whole cut.',
+      },
+      {
+        question: 'Can I vacuum seal lamb or other cuts myself at home for longer storage?',
+        answer:
+          'Yes, with a home vacuum sealer — it meaningfully extends freezer storage life compared to standard freezer bags by removing most of the air, though a home unit will not achieve quite the same seal integrity as commercial-grade cryovac equipment.',
+      },
     ],
   },
   {
@@ -902,6 +1339,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'beef',
     publishedDate: '2026-05-18',
     readingMinutes: 6,
+    primaryKeyword: 'eye fillet steak',
+    primaryKeywordVolume: 4400,
+    supportingKeywords: [
+      'eye fillet',
+      'beef eye fillet',
+      'wholesale ribeye steaks',
+      'whole beef eye fillet',
+      'eye fillet price per kg',
+    ],
     sections: [
       {
         heading: 'What you are actually paying for in a pre-cut steak',
@@ -912,7 +1358,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: 'The math on cutting your own steaks from a primal',
         body: [
-          'A whole striploin or scotch fillet primal typically prices noticeably lower per kilo than the same weight bought as individually portioned steaks, because you are absorbing the cutting labour and packaging cost yourself. For a household already comfortable handling a sharp knife, the time cost of portioning a primal into steaks (typically 15-20 minutes) is modest relative to the savings on a larger order.',
+          'A whole striploin or eye fillet primal typically prices noticeably lower per kilo than the same weight bought as individually portioned steaks, because you are absorbing the cutting labour and packaging cost yourself. For a household already comfortable handling a sharp knife, the time cost of portioning a primal into steaks (typically 15-20 minutes) is modest relative to the savings on a larger order.',
         ],
       },
       {
@@ -926,7 +1372,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         question: 'Do I need special equipment to portion a whole primal at home?',
         answer:
-          'A sharp chef\'s or butcher\'s knife and a large enough cutting board are genuinely all that is required for most primals — a boning knife helps for primals still carrying bone, but is not essential for a boneless striploin or scotch fillet.',
+          'A sharp chef\'s or butcher\'s knife and a large enough cutting board are genuinely all that is required for most primals — a boning knife helps for primals still carrying bone, but is not essential for a boneless eye fillet or striploin.',
       },
       {
         question: 'Does a whole primal keep longer than pre-cut steaks?',
@@ -937,6 +1383,21 @@ export const BLOG_POSTS: BlogPost[] = [
         question: 'Is it harder to cook consistently from a primal I cut myself?',
         answer:
           'Not if you weigh or measure thickness consistently — the main risk is uneven portioning, which is easily solved with a kitchen scale or a consistent-width guide while cutting.',
+      },
+      {
+        question: 'Why is whole beef eye fillet priced so much lower per kilo than individual steaks?',
+        answer:
+          'A whole eye fillet skips the labour-intensive portioning, trimming, and individual packaging a butcher or retailer would otherwise charge for, so the saving reflects avoided processing cost rather than any difference in the meat itself.',
+      },
+      {
+        question: 'How do I find the current eye fillet price per kg to compare value?',
+        answer:
+          'Check a supplier\'s current wholesale listing directly, since eye fillet price per kg fluctuates with seasonal supply and demand — comparing a whole-primal price against a pre-cut steak price from the same supplier at the same time gives the fairest comparison.',
+      },
+      {
+        question: 'Are wholesale ribeye steaks typically sold as primals or pre-cut?',
+        answer:
+          'Both options are common — many wholesale suppliers offer a ribeye (scotch fillet) primal for self-portioning as well as pre-cut steaks at a higher per-kilo price, so check which format a specific listing refers to before ordering.',
       },
     ],
   },
@@ -950,6 +1411,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'smallgoods',
     publishedDate: '2026-05-25',
     readingMinutes: 7,
+    primaryKeyword: 'bbq meat',
+    primaryKeywordVolume: 1300,
+    supportingKeywords: [
+      'bbq meat packs',
+      'bbq wagyu',
+      'bbq scotch fillet',
+      'bbq packs',
+      'best beef for bbq',
+    ],
     sections: [
       {
         heading: 'Why wood density changes your cook, not just the flavour',
@@ -986,6 +1456,21 @@ export const BLOG_POSTS: BlogPost[] = [
         answer:
           'Significantly — properly seasoned (dried) wood burns cleaner and hotter, while wet or green wood produces excess creosote and a bitter, acrid smoke flavour rather than the clean smoke needed for good bark development.',
       },
+      {
+        question: 'Is bbq wagyu worth smoking low-and-slow versus a fast sear?',
+        answer:
+          'Wagyu\'s high fat content renders beautifully over a long, low smoke, producing an exceptionally rich result, but it is genuinely a different style of eating to a fast-seared Wagyu steak — both are valid depending on the cut and the occasion.',
+      },
+      {
+        question: 'What is the best beef for a BBQ pack versus a dedicated smoker cook?',
+        answer:
+          'Quick-cooking cuts like scotch fillet, rump, or sausages suit a standard BBQ pack for direct high-heat grilling, while brisket, short rib, and other collagen-rich cuts are better reserved for a dedicated low-and-slow smoker session.',
+      },
+      {
+        question: 'Can bbq scotch fillet be cooked on a smoker instead of direct grilling?',
+        answer:
+          'Yes, though scotch fillet is naturally tender and well-marbled enough that it is more commonly grilled hot and fast — a smoker is better suited to tougher, collagen-rich cuts that need the extended low-heat time to become tender.',
+      },
     ],
   },
   {
@@ -998,6 +1483,15 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'meatboxes',
     publishedDate: '2026-06-01',
     readingMinutes: 5,
+    primaryKeyword: 'butcher wholesale',
+    primaryKeywordVolume: 260,
+    supportingKeywords: [
+      'wholesale beef',
+      'butcher wholesale near me',
+      'online butcher',
+      'wholesale beef suppliers',
+      'wholesale beef near me',
+    ],
     sections: [
       {
         heading: 'What an ABN lookup actually confirms',
@@ -1033,6 +1527,21 @@ export const BLOG_POSTS: BlogPost[] = [
         question: 'What else should I check beyond the ABN for an online meat supplier?',
         answer:
           'A clearly stated physical business address, transparent cold-chain and delivery information, genuine customer reviews, and clear contact details (phone, email, or direct messaging) are all reasonable additional checks before placing a first order with a new supplier.',
+      },
+      {
+        question: 'Is there a difference between a wholesale butcher and a retail butcher I should know about?',
+        answer:
+          'A wholesale butcher typically operates on volume-based pricing with minimum order requirements and direct allocation from primals, while a retail butcher sells smaller individual quantities at shop prices — the ABN check matters equally for both, but minimum order terms are specific to wholesale.',
+      },
+      {
+        question: 'How do I find a butcher wholesale supplier near me versus ordering online?',
+        answer:
+          'A local search for "butcher wholesale near me" surfaces businesses that may offer in-person collection, while an online wholesale butcher typically ships via cold-chain courier — the ABN and business verification steps apply the same way to either option.',
+      },
+      {
+        question: 'Do wholesale beef suppliers need additional certifications beyond an ABN?',
+        answer:
+          'Depending on scale and state, a wholesale meat supplier may also require food safety accreditation and relevant state health department registration — an ABN confirms business registration specifically, not these additional industry-specific certifications, so it is worth asking a supplier directly about food safety compliance if it is a concern.',
       },
     ],
   },
