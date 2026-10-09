@@ -72,9 +72,12 @@ export function CartAndCheckoutModal({
   const isFreeShipping = subtotal >= freeShippingThreshold;
   const shippingFee = isFreeShipping ? 0 : 25.00; // Flat courier fee if below threshold
 
+  // GST (10%) is calculated on the subtotal and added on top of the displayed prices
+  const gst = subtotal * 0.10;
+
   // 10% Crypto discount auto-applied if crypto is selected
   const cryptoDiscount = paymentMethod === 'crypto' ? subtotal * 0.10 : 0;
-  const total = subtotal + shippingFee - cryptoDiscount;
+  const total = subtotal + gst + shippingFee - cryptoDiscount;
 
   const handleCopy = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
@@ -91,6 +94,7 @@ export function CartAndCheckoutModal({
       `*Delivery Suburb:* ${formData.suburb || ''} ${formData.state || ''} ${formData.postcode || ''}%0A%0A` +
       `*Items Ordered:*%0A${itemsList}%0A%0A` +
       `*Subtotal:* $${subtotal.toFixed(2)} AUD%0A` +
+      `*GST (10%):* $${gst.toFixed(2)} AUD%0A` +
       `*Shipping:* ${isFreeShipping ? 'FREE (Over $2,000)' : '$' + shippingFee.toFixed(2) + ' AUD'}%0A` +
       (paymentMethod === 'crypto' ? `*Crypto Discount (10%):* -$${cryptoDiscount.toFixed(2)} AUD%0A` : '') +
       `*TOTAL:* $${total.toFixed(2)} AUD%0A%0A` +
@@ -122,6 +126,7 @@ export function CartAndCheckoutModal({
             price: item.product.price,
           })),
           subtotal,
+          gst,
           shippingFee,
           cryptoDiscount,
           total,
@@ -515,6 +520,11 @@ export function CartAndCheckoutModal({
         {step !== 'success' && cart.length > 0 && (
           <div className="p-4 border-t border-stone-800 bg-stone-950 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div>
+              <div className="text-[11px] text-stone-500 font-mono">
+                Subtotal ${subtotal.toFixed(2)} + GST (10%) ${gst.toFixed(2)}
+                {shippingFee > 0 && <> + Shipping ${shippingFee.toFixed(2)}</>}
+                {cryptoDiscount > 0 && <> − Crypto Disc. ${cryptoDiscount.toFixed(2)}</>}
+              </div>
               <div className="text-xs text-stone-400">Total Payable:</div>
               <div className="text-xl font-black text-white font-mono">
                 ${total.toFixed(2)} AUD

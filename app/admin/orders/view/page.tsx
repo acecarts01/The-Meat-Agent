@@ -104,6 +104,7 @@ export default async function AdminOrderViewPage({
             </table>
             <div className="text-right pt-3 space-y-1 text-sm">
               <div>Subtotal: ${order.subtotal.toFixed(2)}</div>
+              <div>GST (10%): ${order.gst.toFixed(2)}</div>
               <div>Shipping: {order.shippingFee === 0 ? 'FREE' : `$${order.shippingFee.toFixed(2)}`}</div>
               {order.cryptoDiscount > 0 && <div>Crypto Discount: -${order.cryptoDiscount.toFixed(2)}</div>}
               <div className="text-lg font-bold text-amber-400">TOTAL: ${order.total.toFixed(2)} AUD</div>

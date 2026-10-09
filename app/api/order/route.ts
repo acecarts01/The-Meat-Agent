@@ -26,6 +26,7 @@ interface OrderPayload {
   paymentMethod: 'payid' | 'bank' | 'crypto';
   items: OrderItem[];
   subtotal: number;
+  gst: number;
   shippingFee: number;
   cryptoDiscount: number;
   total: number;
@@ -67,10 +68,11 @@ function validate(body: Partial<OrderPayload>): { ok: true; data: OrderPayload }
   }
 
   const subtotal = Number(body.subtotal);
+  const gst = Number(body.gst);
   const shippingFee = Number(body.shippingFee);
   const cryptoDiscount = Number(body.cryptoDiscount) || 0;
   const total = Number(body.total);
-  if (!Number.isFinite(subtotal) || !Number.isFinite(shippingFee) || !Number.isFinite(total)) {
+  if (!Number.isFinite(subtotal) || !Number.isFinite(gst) || !Number.isFinite(shippingFee) || !Number.isFinite(total)) {
     return { ok: false, error: 'Invalid order totals.' };
   }
 
@@ -88,6 +90,7 @@ function validate(body: Partial<OrderPayload>): { ok: true; data: OrderPayload }
       paymentMethod: paymentMethod as OrderPayload['paymentMethod'],
       items,
       subtotal,
+      gst,
       shippingFee,
       cryptoDiscount,
       total,
@@ -191,6 +194,7 @@ export async function POST(req: NextRequest) {
       paymentMethod: order.paymentMethod,
       items: order.items,
       subtotal: order.subtotal,
+      gst: order.gst,
       shippingFee: order.shippingFee,
       cryptoDiscount: order.cryptoDiscount,
       total: order.total,
@@ -218,6 +222,7 @@ export async function POST(req: NextRequest) {
         `Payment Method: ${PAYMENT_LABELS[order.paymentMethod]}\n\n` +
         `Items:\n${buildItemsText(order.items)}\n\n` +
         `Subtotal: $${order.subtotal.toFixed(2)}\n` +
+        `GST (10%): $${order.gst.toFixed(2)}\n` +
         `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}\n` +
         (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}\n` : '') +
         `TOTAL: $${order.total.toFixed(2)} AUD\n` +
@@ -239,6 +244,7 @@ export async function POST(req: NextRequest) {
           divider() +
           itemsTable(order.items) +
           `<p style="margin-top:12px;font-size:13px;">Subtotal: $${order.subtotal.toFixed(2)}<br/>` +
+          `GST (10%): $${order.gst.toFixed(2)}<br/>` +
           `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}<br/>` +
           (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}<br/>` : '') +
           `<strong style="font-size:17px;color:#1c1917;">TOTAL: $${order.total.toFixed(2)} AUD</strong></p>` +
@@ -260,6 +266,10 @@ export async function POST(req: NextRequest) {
         `Order Reference: ${orderRef}\n` +
         `Placed: ${placedAt} AEST\n\n` +
         `Items:\n${buildItemsText(order.items)}\n\n` +
+        `Subtotal: $${order.subtotal.toFixed(2)}\n` +
+        `GST (10%): $${order.gst.toFixed(2)}\n` +
+        `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}\n` +
+        (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}\n` : '') +
         `TOTAL: $${order.total.toFixed(2)} AUD\n` +
         `Payment Method: ${PAYMENT_LABELS[order.paymentMethod]}\n\n` +
         `Delivering to:\n${order.address}\n${order.suburb} ${order.state} ${order.postcode}\n\n` +
@@ -277,8 +287,12 @@ export async function POST(req: NextRequest) {
           `<strong>Placed:</strong> ${escapeHtml(placedAt)} AEST</p>` +
           divider() +
           itemsTable(order.items) +
-          `<p style="margin-top:12px;"><strong style="font-size:17px;">TOTAL: $${order.total.toFixed(2)} AUD</strong><br/>` +
-          `<span style="font-size:13px;">Payment Method: ${escapeHtml(PAYMENT_LABELS[order.paymentMethod])}</span></p>` +
+          `<p style="margin-top:12px;font-size:13px;">Subtotal: $${order.subtotal.toFixed(2)}<br/>` +
+          `GST (10%): $${order.gst.toFixed(2)}<br/>` +
+          `Shipping: ${order.shippingFee === 0 ? 'FREE' : '$' + order.shippingFee.toFixed(2)}<br/>` +
+          (order.cryptoDiscount > 0 ? `Crypto Discount: -$${order.cryptoDiscount.toFixed(2)}<br/>` : '') +
+          `<strong style="font-size:17px;">TOTAL: $${order.total.toFixed(2)} AUD</strong><br/>` +
+          `<span>Payment Method: ${escapeHtml(PAYMENT_LABELS[order.paymentMethod])}</span></p>` +
           callout(
             `<strong>Delivering to:</strong><br/>${escapeHtml(order.address)}<br/>${escapeHtml(order.suburb)} ${escapeHtml(order.state)} ${escapeHtml(order.postcode)}`
           ) +

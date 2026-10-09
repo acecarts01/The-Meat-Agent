@@ -23,6 +23,7 @@ export interface OrderTokenPayload {
   paymentMethod: 'payid' | 'bank' | 'crypto';
   items: OrderTokenItem[];
   subtotal: number;
+  gst: number;
   shippingFee: number;
   cryptoDiscount: number;
   total: number;
