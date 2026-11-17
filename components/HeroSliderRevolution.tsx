@@ -193,50 +193,65 @@ export function HeroSliderRevolution({
       {/* Main Slide Content */}
       <div className="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6 md:pt-14 md:pb-10 flex-1 flex flex-col justify-center">
         <div className="max-w-2xl lg:max-w-3xl space-y-4">
-          {/* Tagline Badge */}
-          <div className="inline-flex items-center gap-2 bg-red-950/80 border border-red-600/40 text-red-300 px-3 py-1 rounded text-xs font-mono font-bold tracking-wider uppercase shadow">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>{active.tagline}</span>
-          </div>
+          {/* All slide texts share one grid cell, so the block is always as tall as the tallest slide and
+              changing slides never moves the content below it (fixes the hero layout shift / CLS). */}
+          <div className="grid">
+            {slides.map((slide) => {
+              const isActive = slide.id === active.id;
+              return (
+                <div
+                  key={slide.id}
+                  className={`col-start-1 row-start-1 space-y-4 ${isActive ? '' : 'invisible pointer-events-none'}`}
+                  aria-hidden={!isActive}
+                >
+                {/* Tagline Badge */}
+                <div className="inline-flex items-center gap-2 bg-red-950/80 border border-red-600/40 text-red-300 px-3 py-1 rounded text-xs font-mono font-bold tracking-wider uppercase shadow">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                  <span>{slide.tagline}</span>
+                </div>
 
-          {/* Headline - Exactly ONE <h1> on slide 1 per WebForge Rule #4 */}
-          {active.id === 1 ? (
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
-              {active.headlinePrefix} <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-amber-400 via-red-500 to-amber-500 bg-clip-text text-transparent">
-                {active.headlineHighlight}
-              </span>{' '}
-              {active.headlineSuffix}
-              <span className="block text-base sm:text-xl font-semibold text-amber-400 mt-3 tracking-normal">
-                Best butcher near me? Direct from our Ipswich boning room
-              </span>
-            </h1>
-          ) : (
-            <div className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
-              {active.headlinePrefix} <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-amber-400 via-red-500 to-amber-500 bg-clip-text text-transparent">
-                {active.headlineHighlight}
-              </span>{' '}
-              {active.headlineSuffix}
-            </div>
-          )}
+                {/* Headline - Exactly ONE <h1> on slide 1 per WebForge Rule #4 */}
+                {slide.id === 1 ? (
+                  <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
+                    {slide.headlinePrefix} <br className="hidden sm:inline" />
+                    <span className="bg-gradient-to-r from-amber-400 via-red-500 to-amber-500 bg-clip-text text-transparent">
+                      {slide.headlineHighlight}
+                    </span>{' '}
+                    {slide.headlineSuffix}
+                    <span className="block text-base sm:text-xl font-semibold text-amber-400 mt-3 tracking-normal">
+                      Best butcher near me? Direct from our Ipswich boning room
+                    </span>
+                  </h1>
+                ) : (
+                  <div className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
+                    {slide.headlinePrefix} <br className="hidden sm:inline" />
+                    <span className="bg-gradient-to-r from-amber-400 via-red-500 to-amber-500 bg-clip-text text-transparent">
+                      {slide.headlineHighlight}
+                    </span>{' '}
+                    {slide.headlineSuffix}
+                  </div>
+                )}
 
-          {/* Subheading */}
-          <p className="text-sm sm:text-base md:text-lg text-stone-300 font-normal leading-relaxed max-w-xl">
-            {active.subheading}
-          </p>
+                {/* Subheading */}
+                <p className="text-sm sm:text-base md:text-lg text-stone-300 font-normal leading-relaxed max-w-xl">
+                  {slide.subheading}
+                </p>
 
-          {/* Butchery Tech Specs */}
-          <div className="flex flex-wrap items-center gap-2 pt-1">
-            {active.techSpecs.map((spec) => (
-              <span
-                key={spec}
-                className="bg-stone-900/90 border border-stone-800 text-stone-300 font-mono text-xs px-2.5 py-1 rounded flex items-center gap-1.5 shadow"
-              >
-                <Award className="w-3.5 h-3.5 text-amber-500" />
-                <span>{spec}</span>
-              </span>
-            ))}
+                {/* Butchery Tech Specs */}
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  {slide.techSpecs.map((spec) => (
+                    <span
+                      key={spec}
+                      className="bg-stone-900/90 border border-stone-800 text-stone-300 font-mono text-xs px-2.5 py-1 rounded flex items-center gap-1.5 shadow"
+                    >
+                      <Award className="w-3.5 h-3.5 text-amber-500" />
+                      <span>{spec}</span>
+                    </span>
+                  ))}
+                </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* CTA Buttons */}

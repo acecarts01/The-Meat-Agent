@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { generate160Catalog, TOTAL_CATALOG_COUNT } from '@/lib/products-160-data';
+import { slimProducts } from '@/lib/slim';
 import { ShopCatalogPageClient } from '@/components/ShopCatalogPageClient';
 import { SiteFaqSection } from '@/components/SiteFaq';
 import { SHOP_FAQS } from '@/lib/site-faqs';
@@ -32,7 +33,7 @@ export default function ShopIndexPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <ShopCatalogPageClient
-        initialProducts={products}
+        initialProducts={slimProducts(products)}
         faqSlot={<SiteFaqSection title="Buying meat online: your questions answered" faqs={SHOP_FAQS} />}
       />
     </>

@@ -6,6 +6,7 @@ import {
   getCategoryBySlug,
 } from '@/lib/products-160-data';
 import { categorySeo } from '@/lib/onpage';
+import { slimProducts } from '@/lib/slim';
 import { CATEGORY_KEYWORDS } from '@/lib/seo-keywords';
 import { getCategoryFAQs } from '@/lib/content-generator';
 import { CategoryPageClient } from '@/components/CategoryPageClient';
@@ -134,7 +135,7 @@ export default async function CategoryPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
-      <CategoryPageClient category={category} products={products} faqs={faqs} seo={categorySeo(category)} />
+      <CategoryPageClient category={category} products={slimProducts(products)} faqs={faqs} seo={categorySeo(category)} />
     </>
   );
 }

@@ -1328,7 +1328,7 @@ export function HomePageClient() {
 
             <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-stone-950">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={selectedPost.imageFallback} alt={selectedPost.title} className="w-full h-full object-cover" />
+              <img src={selectedPost.imageFallback} alt={selectedPost.title} width={800} height={600} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </div>
 
             <div className="space-y-3 text-xs sm:text-sm text-stone-300 leading-relaxed pt-2">

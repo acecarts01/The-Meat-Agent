@@ -48,6 +48,7 @@ export function ShopCatalogPageClient({ initialProducts, faqSlot }: ShopCatalogP
   // Read ?q= after mount (instead of useSearchParams) so the page is server-rendered into the initial HTML.
   useEffect(() => {
     const q = new URLSearchParams(window.location.search).get('q');
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time read of ?q= after mount, so the page can be server-rendered
     if (q) setSearchQuery(q);
   }, []);
   const [page, setPage] = useState<number>(1);
