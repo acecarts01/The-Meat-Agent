@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { ProductSeo } from '@/lib/onpage';
+import { TrustSignals, halalStatus } from '@/components/TrustSignals';
 import { useRouter } from 'next/navigation';
 import {
   Product160Item,
@@ -484,6 +485,8 @@ export function ProductDetailClient({
                 <li>• Settlement Rails: PayID (Osko instant), Direct Bank Wire, Crypto</li>
               </ul>
             </div>
+
+            <TrustSignals halal={halalStatus(product.categorySlug, product.name)} />
           </div>
         </div>
 

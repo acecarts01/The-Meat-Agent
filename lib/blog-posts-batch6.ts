@@ -64,6 +64,7 @@ export const BATCH6_POSTS: BlogPost[] = [
           'If you want to buy beef brisket online, the first question is what a fair price looks like, and the answer is that it depends on the grade and on whether you are buying a whole packer brisket or just one muscle. This guide gives real prices from Meat Direct (The Meat Agent), explains how to choose a brisket, shows how to cook it, and explains how cold-chain delivery works anywhere in Australia.',
           'Every price below is the listed price before 10% GST, which is added at checkout. All of our products except pork and pork sausages are halal certified; our primary certifying body is AFIC, and we also hold certification from IFANCA and HCA.',
           'If you simply want to buy brisket for a weekend cook, the packer point end at $148.00 is the simplest place to start.',
+          'If you also want a premium brisket, our guide to [wagyu beef price per kg](/blog/wagyu-beef-price-per-kg-australia) lists the wagyu brisket point end beside the other wagyu cuts.',
         ],
         table: {
           caption: 'Brisket and brisket-led products in our range (price before GST)',
@@ -183,13 +184,7 @@ export const BATCH6_POSTS: BlogPost[] = [
     primaryKeywordVolume: 210,
     primaryKeywordKd: 10,
     navigationalKeyword: 'buy mince beef online',
-    supportingKeywords: [
-      'mince price',
-      'buy beef mince',
-      'buy beef mince online',
-      'beef mince bulk buy',
-      'beef mince 1kg',
-    ],
+    supportingKeywords: ['mince price', 'buy beef mince', 'buy beef mince online', 'beef mince bulk buy', 'beef mince price per kg'],
     informationalKeyword: 'mince',
     tags: [
       'beef mince',
@@ -341,7 +336,7 @@ export const BATCH6_POSTS: BlogPost[] = [
     primaryKeyword: 'kangaroo steak near me',
     primaryKeywordVolume: 320,
     primaryKeywordKd: 24,
-    supportingKeywords: ['kangaroo meat for sale', 'kangaroo meat butcher'],
+    supportingKeywords: ['kangaroo meat for sale', 'kangaroo steaks near me'],
     informationalKeyword: 'kangaroo sizzle steak',
     tags: [
       'kangaroo mince',
@@ -373,6 +368,7 @@ export const BATCH6_POSTS: BlogPost[] = [
         body: [
           'If you search for kangaroo steak near me, you will find that kangaroo is sold in supermarkets as mince and steaks, in specialist butchers as fillets and roasts, and online by game suppliers. It is a distinctly Australian red meat, and many people try it for the first time at a restaurant before looking for it to cook at home. This guide shows where to buy kangaroo meat, real prices from Meat Direct (The Meat Agent), how to cook it, and how cold-chain delivery works.',
           'Every price below is the listed price before 10% GST, which is added at checkout. All of our products except pork and pork sausages are halal certified; our primary certifying body is AFIC, and we also hold certification from IFANCA and HCA.',
+          'Many people searching for kangaroo steaks near me want fillets or a rump roast, and both are listed with their weight and price per kilogram.',
         ],
         table: {
           caption: 'Our kangaroo and game range (price before GST)',
@@ -493,13 +489,7 @@ export const BATCH6_POSTS: BlogPost[] = [
     primaryKeywordVolume: 320,
     primaryKeywordKd: 20,
     navigationalKeyword: 'bulk steak',
-    supportingKeywords: [
-      'meat packs near me',
-      'butcher meat packs near me',
-      'bbq meat packs near me',
-      'bulk meat packs',
-      'butcher meat packs',
-    ],
+    supportingKeywords: ['meat packs near me', 'butcher meat packs near me', 'bbq meat packs near me', 'butcher packs near me', 'buying cow meat in bulk'],
     informationalKeyword: 'meat pack',
     tags: [
       'meat pack delivery',
@@ -530,6 +520,7 @@ export const BATCH6_POSTS: BlogPost[] = [
           'Every price below is the listed price before 10% GST, which is added at checkout. All of our products except pork and pork sausages are halal certified; our primary certifying body is AFIC, and we also hold certification from IFANCA and HCA.',
           'A good way to choose is to work backwards from your week. Count the dinners you cook at home, estimate how many people eat, and decide how many of those meals will be meat-based. A household of four that cooks meat five nights a week uses roughly twenty meal portions a week, so a 12kg box lasts several weeks, while a family that also meal-preps lunches will use it faster. Then check how much freezer space you have, because the box has to fit before it can save you money.',
           'Households that want bulk steak can combine a box with individual steak packs to reach the $423 minimum.',
+          'If you are buying cow meat in bulk, the [Whole Beast Half-Cow Butchery Share](/shop/meatboxes/the-whole-beast-half-cow-butchery-share-90kg-bx-310) is 90kg at $2,150.00, which is $23.89 per kg before GST, and butcher packs near me of any size ship cold-chain across Australia.',
         ],
         table: {
           caption: 'Selected meat boxes and price per kg (price before GST)',

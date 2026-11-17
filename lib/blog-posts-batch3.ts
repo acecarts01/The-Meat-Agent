@@ -67,6 +67,7 @@ export const BATCH3_POSTS: BlogPost[] = [
           'Lamb prices vary far more than most shoppers expect, because one animal is sold as many very different cuts. A bone-in shoulder and a rack of cutlets can sit at opposite ends of the price range, and neither is poor value if it suits the dish. This guide shows real lamb prices per kilogram from Meat Direct (The Meat Agent), explains why each cut costs what it does, and gives you a simple way to compare value, whether you buy from us or anywhere else.',
           'Every price below is the listed price before 10% GST, which is added at checkout, and every figure is taken from our own catalogue. We do not quote other retailers&#39; prices, because prices change weekly and we would rather you compare per-kilogram figures yourself using the method in this guide.',
           'To check the price of a leg of lamb, convert the pack price to price per kilogram and compare the same weight and the same bone-in or boneless state.',
+          'For a lean alternative to lamb, our guide to [kangaroo steak near me](/blog/kangaroo-steak-near-me-kangaroo-meat-for-sale) compares kangaroo cuts and prices from the same catalogue.',
         ],
         table: {
           caption: 'Our lamb range: price and price per kg (before GST)',

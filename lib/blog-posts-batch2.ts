@@ -660,13 +660,7 @@ export const BATCH2_POSTS: BlogPost[] = [
     primaryKeywordVolume: 110,
     primaryKeywordKd: 11,
     navigationalKeyword: 'where to buy turkey',
-    supportingKeywords: [
-      'fresh turkey',
-      'fresh turkey near me',
-      'turkey whole',
-      'fresh turkey breast',
-      'buy turkey breast',
-    ],
+    supportingKeywords: ['where to buy turkey near me', 'fresh turkey near me', 'turkey buy', 'where can you buy a turkey', 'buy turkey breast'],
     informationalKeyword: 'turkey rolled breast',
     tags: [
       'breast of turkey',
@@ -707,6 +701,7 @@ export const BATCH2_POSTS: BlogPost[] = [
           'Planning matters more with turkey than with most meats. Work out your guest numbers, check your oven and fridge space, and order early so the bird arrives with time to spare. Because our minimum is $423 across the cart, many customers add a turkey to a larger order that also stocks the freezer for the weeks around the gathering.',
           'Think too about side dishes and leftovers. A whole bird gives you carcass for stock and plenty of cold meat for sandwiches, pies and salads, while a breast gives you cleaner, more predictable portions. If you want the full festive experience, buy the whole bird. If you are catering for a small group or cooking outside the holiday season, the breast is simpler, quicker and less wasteful.',
           'If you are asking where to buy turkey that is halal certified, the answer is the two turkey products listed on our site, the whole bird and the breast fillet.',
+          'People who ask where to buy turkey near me, or where can you buy a turkey that is halal certified, can order the whole bird or the breast fillet online. For a quick turkey buy, the breast fillet is the faster option.',
         ],
         table: {
           caption: 'Whole turkey versus turkey breast',

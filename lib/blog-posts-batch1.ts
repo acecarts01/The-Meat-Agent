@@ -420,6 +420,7 @@ export const BATCH1_POSTS: BlogPost[] = [
           'Goat vs lamb is a question that comes up the moment someone tries a goat curry or sees goat in a halal butcher and wonders whether it is worth swapping. The short answer is that the two meats are close cousins in the kitchen but not identical. Goat is generally leaner and benefits from slower, moister cooking, while lamb has more fat and is more forgiving. Which one you should buy comes down to the dish, the cut and the price, and this guide compares all three using real numbers from the Meat Direct (The Meat Agent) catalogue.',
           'A caution first: most of what you will read online about lamb vs goat meat is written for overseas readers, with no Australian pricing and no sourcing for the claims. We have tried to do the opposite. Where we give a fact we say where it comes from, and where something is a matter of taste we say so.',
           'When you compare the two, use the lamb per kg price rather than the pack price, and divide the goat price the same way, so the comparison is fair.',
+          'Looking for another lean red meat? Our guide to [kangaroo meat for sale](/blog/kangaroo-steak-near-me-kangaroo-meat-for-sale) covers kangaroo steak, mince and tail.',
         ],
         table: {
           caption: 'Goat meat vs lamb at a glance',

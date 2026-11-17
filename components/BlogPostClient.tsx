@@ -338,12 +338,15 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
             We supply hotels, restaurants, cafés and caterers
           </h2>
           <p className="text-sm text-stone-300 leading-relaxed">
-            Meat Direct (The Meat Agent) supplies hotels and resorts, restaurants and steakhouses, cafés, catering
-            companies, butchers and resellers, and gyms and meal-prep kitchens. Every product except pork and pork sausages is halal certified (AFIC,
-            with IFANCA and HCA also held), and you choose the cut state: whole primal, portioned, diced to spec,
-            vacuum-sealed, fresh chilled or snap-frozen. Daily or weekly cold-chain delivery runs in the Ipswich and
-            Brisbane metro area, weekly delivery runs statewide and interstate by tracked courier, and monthly bulk
-            orders go anywhere in Australia. Trade accounts pay on order by PayID, bank transfer or crypto.
+            Meat Direct (The Meat Agent) supplies hotels, restaurants, cafés, caterers, butchers and resellers on a trade account.
+            You choose the cut state, pay on order by PayID, bank transfer or crypto, and receive daily to monthly cold-chain
+            delivery depending on where you are. The $423 AUD minimum order applies.
+          </p>
+          <p className="text-sm text-stone-300 leading-relaxed">
+            Every product except pork and pork sausages is halal certified (AFIC, with IFANCA and HCA also held). Cut states
+            include whole primal, portioned, diced to spec, vacuum-sealed, fresh chilled or snap-frozen. Daily or weekly delivery
+            runs in the Ipswich and Brisbane metro area, weekly delivery runs statewide and interstate by tracked courier, and
+            monthly bulk orders go anywhere in Australia.
           </p>
           <Link
             href="/wholesale"

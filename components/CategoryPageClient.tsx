@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { CategorySeo } from '@/lib/onpage';
+import { TrustSignals } from '@/components/TrustSignals';
 import { useRouter } from 'next/navigation';
 import {
   Product160Item,
@@ -327,6 +328,10 @@ export function CategoryPageClient({ category, products, faqs = [], seo }: Categ
               </div>
             );
           })}
+        </div>
+
+        <div className="mt-10 max-w-4xl">
+          <TrustSignals halal={category.slug === 'pork' ? 'no' : ['equipment', 'smallgoods', 'meatboxes'].includes(category.slug) ? 'unknown' : 'yes'} compact />
         </div>
 
         {faqs.length > 0 && (

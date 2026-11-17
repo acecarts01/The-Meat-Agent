@@ -223,6 +223,7 @@ export const BATCH7_POSTS: BlogPost[] = [
           'Steak prices vary widely, and the only fair way to compare is price per kilogram. This guide gives real rump steak price figures from Meat Direct (The Meat Agent), compares them with scotch fillet, ribeye, porterhouse, T-bone and eye fillet, and answers the question that sits behind many steak searches: is it cheaper to buy a whole primal and cut your own steaks?',
           'Every price below is the listed price before 10% GST, which is added at checkout. All of our products except pork and pork sausages are halal certified; our primary certifying body is AFIC, and we also hold certification from IFANCA and HCA.',
           'To buy rump steak online, the thick-cut rump pack of four 250g steaks is $32.00, which is $32.00 per kg before GST.',
+          'For steak with more flavour, see our guides to [dry aged beef near me](/blog/dry-aged-beef-near-me-buy-online-australia) and [wagyu beef price per kg](/blog/wagyu-beef-price-per-kg-australia), which compare dry-aged and marbled cuts against everyday steak.',
         ],
         table: {
           caption: 'Our steak range: price and price per kg (before GST)',
@@ -389,6 +390,7 @@ export const BATCH7_POSTS: BlogPost[] = [
           'Price per serve is the clearest way to compare chicken. At a 150g serve before GST, breast costs about $2.24, boneless thigh about $2.55 and tenderloins about $2.70. A pair of drumsticks at roughly 200g costs about $1.49. A crumbed schnitzel from the 6 pack costs $4.00 each, because the pack includes the crumb and the preparation. Plain breast and thigh are the lowest-cost proteins in the range, and the value packs make them cheaper still.',
           'Remember that price per kilogram does not include water loss in cooking. Chicken breast loses weight as it cooks, so a 150g raw serve becomes a smaller cooked serve. If you are tracking portions for fitness, weigh your portion before or after cooking, and use the same method every time, so your numbers are consistent.',
           'If you want to buy packaged chicken breast online, the 2kg bulk pack at $29.90 is the line to start with.',
+          'If you like to age your own steak, our guide to [dry aged beef near me](/blog/dry-aged-beef-near-me-buy-online-australia) explains dry ageing and what it adds to the price.',
         ],
         table: {
           caption: 'Our chicken range: price and price per kg (before GST)',

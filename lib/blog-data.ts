@@ -7,6 +7,7 @@ import { BATCH6_POSTS } from './blog-posts-batch6';
 import { BATCH7_POSTS } from './blog-posts-batch7';
 import { BATCH8_POSTS } from './blog-posts-batch8';
 import { RETIRED_BLOG_SLUGS } from './blog-redirects';
+import { applyAnswerFirst } from './answer-first';
 
 export interface BlogFaq {
   question: string;
@@ -1618,7 +1619,7 @@ const LEGACY_BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
+const RAW_BLOG_POSTS: BlogPost[] = [
   ...LEGACY_BLOG_POSTS.filter((p) => !RETIRED_BLOG_SLUGS.has(p.slug)),
   ...BATCH1_POSTS,
   ...BATCH2_POSTS,
@@ -1629,6 +1630,9 @@ export const BLOG_POSTS: BlogPost[] = [
   ...BATCH7_POSTS,
   ...BATCH8_POSTS,
 ];
+
+// Answer-first formatting (40-60 word opening answer per H2) is applied once here, for every consumer.
+export const BLOG_POSTS: BlogPost[] = RAW_BLOG_POSTS.map(applyAnswerFirst);
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
