@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { ProductSeo } from '@/lib/onpage';
 import { useRouter } from 'next/navigation';
 import {
   Product160Item,
@@ -48,6 +49,7 @@ interface ProductDetailClientProps {
   product: Product160Item;
   category: ShopCategory160 | undefined;
   relatedProducts: Product160Item[];
+  seo?: ProductSeo | null;
 }
 
 // The "Butcher Cutting" note names a real species/accreditation per category — a
@@ -75,6 +77,7 @@ export function ProductDetailClient({
   product,
   category,
   relatedProducts,
+  seo,
 }: ProductDetailClientProps) {
   const router = useRouter();
   const { cart, cartCount, cartTotal, addToCart, updateQuantity, removeItem, clearCart } = useCart();
@@ -188,7 +191,7 @@ export function ProductDetailClient({
             <div className="relative aspect-[4/3] rounded-2xl bg-stone-950 border border-stone-800 overflow-hidden shadow-2xl group">
               <Image
                 src={currentImage}
-                alt={`${product.name} - ${viewMode === 'raw' ? 'Raw Butcher Specification cut' : 'Cooked / Plated Presentation'}`}
+                alt={`${product.name} - ${viewMode === 'raw' ? (seo?.rawAlt ?? 'Raw Butcher Specification cut') : 'Cooked / Plated Presentation'}`}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 60vw"
@@ -334,6 +337,9 @@ export function ProductDetailClient({
               {/* Single H1 per page as required */}
               <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
                 {product.name}
+                {seo && (
+                  <span className="block text-sm sm:text-base font-semibold text-amber-400 mt-1">{seo.h1Tagline}</span>
+                )}
               </h1>
 
               {/* Verified Trustpilot Rating Bar */}
@@ -376,6 +382,7 @@ export function ProductDetailClient({
             </div>
 
             {/* Short Narrative Description */}
+            {seo && <p className="text-sm text-stone-200 leading-relaxed">{seo.intro}</p>}
             <p className="text-sm text-stone-300 leading-relaxed">
               {product.shortDescription}
             </p>
@@ -657,7 +664,7 @@ export function ProductDetailClient({
                 Common Questions
               </span>
               <h2 id="product-faq-heading" className="text-xl sm:text-2xl font-black text-white tracking-tight mt-1">
-                About This Cut
+                Frequently Asked Questions: {product.name}
               </h2>
             </div>
             <div className="space-y-2">

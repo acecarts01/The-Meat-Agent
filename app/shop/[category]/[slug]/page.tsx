@@ -7,6 +7,7 @@ import {
   getRelatedProducts,
   getCategoryBySlug,
 } from '@/lib/products-160-data';
+import { productSeo } from '@/lib/onpage';
 import { ProductDetailClient } from '@/components/ProductDetailClient';
 
 interface PageProps {
@@ -39,8 +40,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Title and meta description are built around the product's real Semrush primary keyword
   // (see lib/seo-keywords.ts) — natural placement, not stuffed, matching the keyword actually
   // assigned to this page.
-  const title = `${product.name} — ${product.weight} | The Meat Agent`;
-  const description = `${product.shortDescription}`.slice(0, 157).replace(/\s+\S*$/, '') + '...';
+  const seo = productSeo(product);
+  const title = seo?.title ?? `${product.name} — ${product.weight} | The Meat Agent`;
+  const description = seo?.description ?? `${product.shortDescription}`.slice(0, 157).replace(/\s+\S*$/, '') + '...';
   const canonicalUrl = `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}`;
 
   return {
@@ -92,6 +94,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   const categoryData = getCategoryBySlug(product.categorySlug);
   const related = getRelatedProducts(product, 4);
+  const seo = productSeo(product);
+  const pageProduct = seo?.extraFaq ? { ...product, faqs: [...product.faqs, seo.extraFaq] } : product;
 
   // JSON-LD Structured Data: Product + Offer + Brand + BreadcrumbList
   const jsonLd = {
@@ -186,7 +190,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       },
       {
         '@type': 'FAQPage',
-        mainEntity: product.faqs.map((faq) => ({
+        mainEntity: pageProduct.faqs.map((faq) => ({
           '@type': 'Question',
           name: faq.question,
           acceptedAnswer: {
@@ -205,7 +209,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ProductDetailClient
-        product={product}
+        product={pageProduct}
+        seo={seo}
         category={categoryData}
         relatedProducts={related}
       />

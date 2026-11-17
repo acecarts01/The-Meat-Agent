@@ -138,6 +138,9 @@ export function ShopCatalogPageClient({ initialProducts, faqSlot }: ShopCatalogP
             </span>
             <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
               {TOTAL_CATALOG_COUNT} Australian Butcher Cuts &amp; Primals
+              <span className="block text-base sm:text-lg font-semibold text-amber-400 mt-1">
+                Meat fresh from the butcher, delivered cold-chain
+              </span>
             </h1>
             <p className="text-sm text-stone-400 max-w-2xl">
               Each product features a dedicated page, full technical butchery specifications, dual-perspective stock photography, and direct cold-chain ordering.

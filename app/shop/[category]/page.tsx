@@ -5,6 +5,7 @@ import {
   generate160Catalog,
   getCategoryBySlug,
 } from '@/lib/products-160-data';
+import { categorySeo } from '@/lib/onpage';
 import { CATEGORY_KEYWORDS } from '@/lib/seo-keywords';
 import { getCategoryFAQs } from '@/lib/content-generator';
 import { CategoryPageClient } from '@/components/CategoryPageClient';
@@ -36,10 +37,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // Real Semrush primary keyword for this category (see lib/seo-keywords.ts) — worked
   // naturally into the title rather than stuffed or repeated.
   const kw = CATEGORY_KEYWORDS[category.slug];
-  const title = kw
+  const seo = categorySeo(category);
+  const title = seo?.title ?? (kw
     ? `${category.name} — ${kw.primaryKeyword} (${category.itemCount} Cuts) | The Meat Agent`
-    : `${category.name} (${category.itemCount} Cuts) | The Meat Agent`;
-  const description = `${category.heroTagline}. Direct wholesale allocation across Australia with refrigerated cold-chain courier delivery.`;
+    : `${category.name} (${category.itemCount} Cuts) | The Meat Agent`);
+  const description = seo?.description ?? `${category.heroTagline}. Direct wholesale allocation across Australia with refrigerated cold-chain courier delivery.`;
   const canonicalUrl = `https://themeatdirect.com.au/shop/${category.slug}`;
 
   return {
@@ -132,7 +134,7 @@ export default async function CategoryPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
-      <CategoryPageClient category={category} products={products} faqs={faqs} />
+      <CategoryPageClient category={category} products={products} faqs={faqs} seo={categorySeo(category)} />
     </>
   );
 }

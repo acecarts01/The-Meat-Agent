@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { CategorySeo } from '@/lib/onpage';
 import { useRouter } from 'next/navigation';
 import {
   Product160Item,
@@ -36,9 +37,10 @@ interface CategoryPageClientProps {
   category: ShopCategory160;
   products: Product160Item[];
   faqs?: FaqItem[];
+  seo?: CategorySeo | null;
 }
 
-export function CategoryPageClient({ category, products, faqs = [] }: CategoryPageClientProps) {
+export function CategoryPageClient({ category, products, faqs = [], seo }: CategoryPageClientProps) {
   const router = useRouter();
   const { cart, cartCount, cartTotal, addToCart, updateQuantity, removeItem, clearCart } = useCart();
 
@@ -139,7 +141,11 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
             </span>
             <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
               {category.name}
+              {seo && (
+                <span className="block text-base sm:text-lg font-semibold text-amber-400 mt-1">{seo.h1Tagline}</span>
+              )}
             </h1>
+            {seo && <p className="text-sm text-stone-200 leading-relaxed">{seo.intro}</p>}
             <p className="text-sm text-stone-300 leading-relaxed">
               {category.heroTagline}. Every cut is individually vacuum-sealed in sub-zero cryovac pouches with guaranteed thermal integrity.
             </p>
@@ -330,7 +336,7 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
                 Common Questions
               </span>
               <h2 id="category-faq-heading" className="text-xl sm:text-2xl font-black text-white tracking-tight mt-1">
-                About {category.name}
+                {seo?.faqHeading ?? `About ${category.name}`}
               </h2>
             </div>
             <div className="space-y-2">

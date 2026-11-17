@@ -144,9 +144,12 @@ export function WholesaleLandingClient() {
           </span>
           <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight max-w-3xl">
             Wholesale Meat Suppliers for Restaurants, Hotels &amp; Eateries — Delivered Your Way
+            <span className="block text-base sm:text-lg font-semibold text-amber-400 mt-2">
+              Bulk meat near me, supplied cold-chain across Australia
+            </span>
           </h1>
           <p className="text-sm sm:text-base text-stone-300 max-w-2xl leading-relaxed">
-            The Meat Agent supplies Australian wholesale meat direct to commercial kitchens — restaurants, hotels, cafés,
+            Looking for bulk meat near me? The Meat Agent supplies Australian wholesale meat direct to commercial kitchens — restaurants, hotels, cafés,
             caterers and resellers. Set your own delivery cadence (daily, weekly or monthly) and order any cut in the
             state your kitchen actually needs: whole primal, portioned to spec, diced, vacuum-sealed, fresh or frozen.
           </p>

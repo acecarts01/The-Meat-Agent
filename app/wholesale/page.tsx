@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import { WholesaleLandingClient } from '@/components/WholesaleLandingClient';
 
 export const metadata: Metadata = {
-  title: 'Wholesale Meat Suppliers for Restaurants & Hotels | The Meat Agent',
+  title: 'Bulk Meat Near Me | Buy Wholesale Meat for Restaurants & Hotels | The Meat Agent',
   description:
-    'Australian wholesale meat supplier for restaurants, hotels, cafés and caterers. Daily, weekly or monthly delivery, any cut state, Halal certified (AFIC) except pork. Apply for a trade account.',
+    'Bulk meat near me for restaurants, hotels and cafés: wholesale beef, lamb, chicken and game, any cut state, daily to monthly delivery. Apply for a trade account.',
   alternates: {
     canonical: 'https://themeatdirect.com.au/wholesale',
   },
   openGraph: {
-    title: 'Wholesale Meat Suppliers for Restaurants & Hotels | The Meat Agent',
+    title: 'Bulk Meat Near Me | Buy Wholesale Meat for Restaurants & Hotels | The Meat Agent',
     description:
       'Direct-from-supplier wholesale meat for restaurants, hotels, cafés and caterers — daily, weekly or monthly delivery, Halal certified (AFIC) except pork.',
     url: 'https://themeatdirect.com.au/wholesale',

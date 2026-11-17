@@ -5,8 +5,8 @@ import { SiteFaqSection } from '@/components/SiteFaq';
 import { SHOP_FAQS } from '@/lib/site-faqs';
 
 export const metadata: Metadata = {
-  title: `Australian Butcher Catalog — ${TOTAL_CATALOG_COUNT} Wholesale Cuts | The Meat Agent`,
-  description: `Browse all ${TOTAL_CATALOG_COUNT} Australian beef steaks, whole smoker primals, MSA Wagyu MB9+, dry-aged ribeyes, Halal goat & mutton, and pasture poultry. Cold-chain delivery nationwide.`,
+  title: `Meat Fresh From The Butcher | Buy ${TOTAL_CATALOG_COUNT} Cuts Online | The Meat Agent`,
+  description: `Meat fresh from our Ipswich boning room: shop ${TOTAL_CATALOG_COUNT} beef, wagyu, lamb, chicken, pork and game cuts. Prices before GST, cold-chain delivery Australia-wide.`,
   alternates: {
     canonical: 'https://themeatdirect.com.au/shop',
   },

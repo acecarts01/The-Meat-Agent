@@ -7,7 +7,7 @@ import { SHOP_FAQS, SITE_LAST_UPDATED, SITE_LAST_UPDATED_LABEL } from '@/lib/sit
 export const metadata: Metadata = {
   title: 'Shipping & Delivery | Cold-Chain Meat Delivery Australia | The Meat Agent',
   description:
-    'Cold-chain meat delivery across Australia: $423 minimum order, $25 shipping under $2,000 and free above, arrival target below 2.5°C, PayID, bank transfer and crypto payment.',
+    'Cold-chain meat delivery across Australia: $423 minimum, $25 shipping under $2,000 and free above, arrival target below 2.5°C, PayID, bank and crypto.',
   alternates: { canonical: 'https://themeatdirect.com.au/shipping' },
   openGraph: { title: 'Shipping & Delivery | The Meat Agent', url: 'https://themeatdirect.com.au/shipping', type: 'website' },
 };

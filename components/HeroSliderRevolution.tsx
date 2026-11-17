@@ -207,6 +207,9 @@ export function HeroSliderRevolution({
                 {active.headlineHighlight}
               </span>{' '}
               {active.headlineSuffix}
+              <span className="block text-base sm:text-xl font-semibold text-amber-400 mt-3 tracking-normal">
+                Best butcher near me? Direct from our Ipswich boning room
+              </span>
             </h1>
           ) : (
             <div className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.08]">
