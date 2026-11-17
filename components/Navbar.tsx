@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  ChefHat,
   ShoppingBag,
   MessageCircle,
   Menu,
@@ -82,9 +81,8 @@ export function Navbar({
           href="/"
           className="flex items-center gap-2.5 text-left group cursor-pointer focus:outline-none"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-red-600 to-amber-700 border border-red-500/50 flex items-center justify-center text-white shadow-lg shadow-red-950/60 group-hover:scale-105 transition-transform">
-            <ChefHat className="w-5 h-5" />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-mark.svg" alt="The Meat Agent logo" width={36} height={36} className="w-9 h-9 rounded-xl shrink-0" />
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-amber-400 transition-colors">

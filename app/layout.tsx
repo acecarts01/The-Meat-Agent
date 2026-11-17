@@ -52,7 +52,14 @@ const ORG_JSON_LD = {
       },
       legalName: 'LPJH HOLDINGS PTY LTD',
       url: 'https://themeatdirect.com.au/',
-      logo: 'https://themeatdirect.com.au/favicon.ico',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://themeatdirect.com.au/logo.png',
+        contentUrl: 'https://themeatdirect.com.au/logo.png',
+        width: 512,
+        height: 512,
+      },
+      image: 'https://themeatdirect.com.au/logo.png',
       email: 'sales@themeatdirect.com.au',
       identifier: {
         '@type': 'PropertyValue',
