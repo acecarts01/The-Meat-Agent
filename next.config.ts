@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   async redirects() {
     return BLOG_REDIRECTS.flatMap((r) => [
-      { source: r.from, destination: r.to + '/', permanent: true },
-      { source: r.from + '/', destination: r.to + '/', permanent: true },
+      { source: r.from, destination: r.to, permanent: true },
+      { source: r.from + '/', destination: r.to, permanent: true },
     ]);
   },
   eslint: {
