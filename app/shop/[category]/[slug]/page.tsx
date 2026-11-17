@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   // assigned to this page.
   const title = `${product.name} — ${product.weight} | The Meat Agent`;
   const description = `${product.shortDescription}`.slice(0, 157).replace(/\s+\S*$/, '') + '...';
-  const canonicalUrl = `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}/`;
+  const canonicalUrl = `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}`;
 
   return {
     title,
@@ -99,7 +99,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
     '@graph': [
       {
         '@type': 'Product',
-        '@id': `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}/#product`,
+        '@id': `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}#product`,
         name: product.name,
         description: product.shortDescription,
         sku: product.sku,
@@ -115,7 +115,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           price: product.price.toFixed(2),
           itemCondition: 'https://schema.org/NewCondition',
           availability: 'https://schema.org/InStock',
-          url: `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}/`,
+          url: `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}`,
           seller: {
             '@type': 'Organization',
             name: 'The Meat Agent',
@@ -142,19 +142,19 @@ export default async function ProductDetailPage({ params }: PageProps) {
             '@type': 'ListItem',
             position: 2,
             name: 'Shop',
-            item: 'https://themeatdirect.com.au/shop/',
+            item: 'https://themeatdirect.com.au/shop',
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: categoryData?.name || product.category,
-            item: `https://themeatdirect.com.au/shop/${product.categorySlug}/`,
+            item: `https://themeatdirect.com.au/shop/${product.categorySlug}`,
           },
           {
             '@type': 'ListItem',
             position: 4,
             name: product.name,
-            item: `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}/`,
+            item: `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}`,
           },
         ],
       },

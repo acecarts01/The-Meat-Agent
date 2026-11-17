@@ -335,7 +335,7 @@ const LEGACY_BLOG_POSTS: BlogPost[] = [
         heading: 'Why wholesale minimums exist at all',
         body: [
           'A $423 minimum order isn\'t an arbitrary gate — it reflects the actual fixed cost of a single cold-chain dispatch: insulated packaging, dry ice, and a dedicated refrigerated courier run cost roughly the same whether the box weighs 5kg or 25kg. Below a certain order size, that fixed logistics cost eats the entire wholesale pricing advantage, which is why direct allocation models set a floor.',
-        'If you are ordering a whole turkey for Christmas, our guide on [where to buy a turkey in Australia](/blog/where-can-i-buy-a-turkey-australia/) covers sizes, cooking times and how a single bird fits into a minimum order.',
+        'If you are ordering a whole turkey for Christmas, our guide on [where to buy a turkey in Australia](/blog/where-can-i-buy-a-turkey-australia) covers sizes, cooking times and how a single bird fits into a minimum order.',
       ],
       },
       {
@@ -553,7 +553,7 @@ const LEGACY_BLOG_POSTS: BlogPost[] = [
         heading: 'The core problem: insulation alone is not enough',
         body: [
           'An insulated box slows heat transfer, but it does not stop it — eventually, ambient heat will equalise with whatever is inside. The actual mechanism that keeps a parcel cold for 48 hours is a combination of insulation that slows the rate of heat gain and a refrigerant mass (solid dry ice or gel ice blocks) that absorbs incoming heat through its own phase change before that heat ever reaches the meat.',
-        'Cold-chain handling matters most for large, expensive items such as a Christmas bird; our [turkey buying guide](/blog/where-can-i-buy-a-turkey-australia/) explains how to plan delivery, thawing and food-safety limits around it.',
+        'Cold-chain handling matters most for large, expensive items such as a Christmas bird; our [turkey buying guide](/blog/where-can-i-buy-a-turkey-australia) explains how to plan delivery, thawing and food-safety limits around it.',
       ],
       },
       {

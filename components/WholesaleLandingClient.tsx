@@ -74,9 +74,9 @@ export function WholesaleLandingClient() {
 
   const handleNavbarNavigate = (pageKey: ActivePage, categorySlug?: string) => {
     if (pageKey === 'home') router.push('/');
-    else if (pageKey === 'shop') router.push(categorySlug ? `/shop/${categorySlug}/` : '/shop/');
+    else if (pageKey === 'shop') router.push(categorySlug ? `/shop/${categorySlug}` : '/shop');
     else if (pageKey === 'contact') setIsContactOpen(true);
-    else if (pageKey === 'wholesale') router.push('/wholesale/');
+    else if (pageKey === 'wholesale') router.push('/wholesale');
     else if (pageKey === 'merchant-portal') router.push('/merchant-portal');
   };
 
@@ -468,7 +468,7 @@ export function WholesaleLandingClient() {
           <div className="flex items-center gap-3">
             <Link href="/" className="hover:text-cyan-400 transition-colors">Home</Link>
             <span>•</span>
-            <Link href="/shop/" className="hover:text-cyan-400 transition-colors">Full {TOTAL_CATALOG_COUNT} Cuts Catalog</Link>
+            <Link href="/shop" className="hover:text-cyan-400 transition-colors">Full {TOTAL_CATALOG_COUNT} Cuts Catalog</Link>
           </div>
         </div>
       </footer>

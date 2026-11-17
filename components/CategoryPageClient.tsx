@@ -88,9 +88,9 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
       router.push('/');
     } else if (page === 'shop') {
       if (categorySlug) {
-        router.push(`/shop/${categorySlug}/`);
+        router.push(`/shop/${categorySlug}`);
       } else {
-        router.push('/shop/');
+        router.push('/shop');
       }
     } else if (page === 'contact') {
       setIsContactOpen(true);
@@ -121,7 +121,7 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
             Home
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-600" />
-          <Link href="/shop/" className="hover:text-amber-400 transition-colors">
+          <Link href="/shop" className="hover:text-amber-400 transition-colors">
             Shop Catalog
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-600" />
@@ -234,7 +234,7 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
                 className="bg-stone-900 border border-stone-800 hover:border-red-500/60 rounded-xl overflow-hidden flex flex-col justify-between group transition-all"
               >
                 <Link
-                  href={`/shop/${p.categorySlug}/${p.slug}/`}
+                  href={`/shop/${p.categorySlug}/${p.slug}`}
                   className="relative aspect-[4/3] bg-stone-950 overflow-hidden block"
                 >
                   <Image
@@ -272,7 +272,7 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
                     </div>
 
                     <Link
-                      href={`/shop/${p.categorySlug}/${p.slug}/`}
+                      href={`/shop/${p.categorySlug}/${p.slug}`}
                       className="font-bold text-sm text-stone-100 group-hover:text-amber-400 transition-colors line-clamp-2 leading-snug mt-1 block"
                     >
                       {p.name}
@@ -295,7 +295,7 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
 
                     <div className="flex items-center gap-2">
                       <Link
-                        href={`/shop/${p.categorySlug}/${p.slug}/`}
+                        href={`/shop/${p.categorySlug}/${p.slug}`}
                         className="flex-1 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold py-2 px-2.5 rounded-lg text-center transition-colors flex items-center justify-center gap-1"
                       >
                         <span>Product Page</span>
@@ -358,7 +358,7 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
               {BLOG_POSTS.filter((b) => b.categorySlug === category.slug && b.publishedDate >= '2026-11-16').map((b) => (
                 <li key={b.slug}>
                   <Link
-                    href={`/blog/${b.slug}/`}
+                    href={`/blog/${b.slug}`}
                     className="text-amber-400 hover:text-amber-300 underline underline-offset-2"
                   >
                     {b.title}

@@ -225,7 +225,7 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
                 className="bg-stone-900 border border-stone-800 hover:border-red-500/60 rounded-xl overflow-hidden flex flex-col justify-between group transition-all"
               >
                 <Link
-                  href={`/shop/${p.categorySlug}/${p.slug}/`}
+                  href={`/shop/${p.categorySlug}/${p.slug}`}
                   className="relative aspect-[4/3] bg-stone-950 overflow-hidden block"
                 >
                   <Image
@@ -263,7 +263,7 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
                     </div>
 
                     <Link
-                      href={`/shop/${p.categorySlug}/${p.slug}/`}
+                      href={`/shop/${p.categorySlug}/${p.slug}`}
                       className="font-bold text-sm text-stone-100 group-hover:text-amber-400 transition-colors line-clamp-2 leading-snug mt-1 block"
                     >
                       {p.name}
@@ -286,7 +286,7 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
 
                     <div className="flex items-center gap-2">
                       <Link
-                        href={`/shop/${p.categorySlug}/${p.slug}/`}
+                        href={`/shop/${p.categorySlug}/${p.slug}`}
                         className="flex-1 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold py-2 px-2.5 rounded-lg text-center transition-colors flex items-center justify-center gap-1"
                       >
                         <span>Individual Page</span>

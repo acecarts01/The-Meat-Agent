@@ -94,8 +94,8 @@ export function ProductDetailClient({
 
   // Direct Product URL
   const currentUrl = typeof window !== 'undefined'
-    ? `${window.location.origin}/shop/${product.categorySlug}/${product.slug}/`
-    : `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}/`;
+    ? `${window.location.origin}/shop/${product.categorySlug}/${product.slug}`
+    : `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}`;
 
   const handleCopyLink = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -127,9 +127,9 @@ export function ProductDetailClient({
       router.push('/');
     } else if (page === 'shop') {
       if (categorySlug) {
-        router.push(`/shop/${categorySlug}/`);
+        router.push(`/shop/${categorySlug}`);
       } else {
-        router.push('/shop/');
+        router.push('/shop');
       }
     } else if (page === 'contact') {
       setIsContactOpen(true);
@@ -165,12 +165,12 @@ export function ProductDetailClient({
             Home
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-600" />
-          <Link href="/shop/" className="hover:text-amber-400 transition-colors">
+          <Link href="/shop" className="hover:text-amber-400 transition-colors">
             Shop Catalog
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-600" />
           <Link
-            href={`/shop/${product.categorySlug}/`}
+            href={`/shop/${product.categorySlug}`}
             className="text-stone-300 hover:text-amber-400 transition-colors font-medium"
           >
             {category?.name || product.category}
@@ -687,7 +687,7 @@ export function ProductDetailClient({
               {BLOG_POSTS.filter((b) => b.relatedSkus?.includes(product.sku)).map((b) => (
                 <li key={b.slug}>
                   <Link
-                    href={`/blog/${b.slug}/`}
+                    href={`/blog/${b.slug}`}
                     className="text-amber-400 hover:text-amber-300 underline underline-offset-2"
                   >
                     {b.title}
@@ -714,7 +714,7 @@ export function ProductDetailClient({
               </div>
 
               <Link
-                href={`/shop/${product.categorySlug}/`}
+                href={`/shop/${product.categorySlug}`}
                 className="text-xs text-amber-400 hover:text-white font-mono flex items-center gap-1 transition-colors"
               >
                 <span>View all {category?.name || 'department'}</span>
@@ -729,7 +729,7 @@ export function ProductDetailClient({
                   className="bg-stone-900 border border-stone-800 hover:border-red-500/60 rounded-xl overflow-hidden flex flex-col justify-between group transition-all"
                 >
                   <Link
-                    href={`/shop/${rel.categorySlug}/${rel.slug}/`}
+                    href={`/shop/${rel.categorySlug}/${rel.slug}`}
                     className="relative aspect-[4/3] bg-stone-950 overflow-hidden block"
                   >
                     <Image
@@ -753,7 +753,7 @@ export function ProductDetailClient({
                     <div>
                       <div className="text-[10px] text-amber-500 font-mono truncate">{rel.subcategory}</div>
                       <Link
-                        href={`/shop/${rel.categorySlug}/${rel.slug}/`}
+                        href={`/shop/${rel.categorySlug}/${rel.slug}`}
                         className="font-bold text-xs text-white group-hover:text-amber-400 transition-colors line-clamp-2 leading-snug mt-0.5 block"
                       >
                         {rel.name}
@@ -765,7 +765,7 @@ export function ProductDetailClient({
                         ${rel.price.toFixed(2)} AUD
                       </div>
                       <Link
-                        href={`/shop/${rel.categorySlug}/${rel.slug}/`}
+                        href={`/shop/${rel.categorySlug}/${rel.slug}`}
                         className="bg-stone-800 hover:bg-red-600 text-white text-[11px] font-semibold px-2.5 py-1 rounded transition-colors flex items-center gap-1"
                       >
                         <span>View Cut</span>
@@ -808,7 +808,7 @@ export function ProductDetailClient({
               Home
             </Link>
             <span>•</span>
-            <Link href="/shop/" className="hover:text-amber-400 transition-colors">
+            <Link href="/shop" className="hover:text-amber-400 transition-colors">
               Full {TOTAL_CATALOG_COUNT} Cuts Catalog
             </Link>
             <span>•</span>

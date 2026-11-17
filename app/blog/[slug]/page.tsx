@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const canonicalUrl = `https://themeatdirect.com.au/blog/${post.slug}/`;
+  const canonicalUrl = `https://themeatdirect.com.au/blog/${post.slug}`;
 
   return {
     title: `${post.title} | The Meat Agent`,
@@ -62,7 +62,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     '@graph': [
       {
         '@type': 'BlogPosting',
-        '@id': `https://themeatdirect.com.au/blog/${post.slug}/#article`,
+        '@id': `https://themeatdirect.com.au/blog/${post.slug}#article`,
         headline: post.title,
         description: post.metaDescription || post.excerpt,
         keywords: [post.primaryKeyword, ...post.supportingKeywords, ...(post.tags || [])].join(', '),
@@ -79,18 +79,18 @@ export default async function BlogPostPage({ params }: PageProps) {
           name: 'The Meat Agent',
           '@id': 'https://themeatdirect.com.au/#organization',
         },
-        mainEntityOfPage: `https://themeatdirect.com.au/blog/${post.slug}/`,
+        mainEntityOfPage: `https://themeatdirect.com.au/blog/${post.slug}`,
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://themeatdirect.com.au/' },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://themeatdirect.com.au/blog/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://themeatdirect.com.au/blog' },
           {
             '@type': 'ListItem',
             position: 3,
             name: post.title,
-            item: `https://themeatdirect.com.au/blog/${post.slug}/`,
+            item: `https://themeatdirect.com.au/blog/${post.slug}`,
           },
         ],
       },

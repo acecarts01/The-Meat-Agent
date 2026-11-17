@@ -92,7 +92,7 @@ export const BATCH3_POSTS: BlogPost[] = [
       {
         heading: 'Leg of lamb price: the everyday roast',
         body: [
-          'The leg is the classic Australian roast, and leg of lamb price is one of the most searched lamb questions. Our [Boneless Rolled Lamb Leg Roast](/shop/lamb/traditional-boneless-rolled-lamb-leg-roast-with-rosemary-lm-503/) is 1.8kg at $49.00, which is $27.22 per kg, or $53.90 with GST. Because it is boneless, you pay for meat rather than bone, and it carves cleanly.',
+          'The leg is the classic Australian roast, and leg of lamb price is one of the most searched lamb questions. Our [Boneless Rolled Lamb Leg Roast](/shop/lamb/traditional-boneless-rolled-lamb-leg-roast-with-rosemary-lm-503) is 1.8kg at $49.00, which is $27.22 per kg, or $53.90 with GST. Because it is boneless, you pay for meat rather than bone, and it carves cleanly.',
           'When you compare legs of lamb, check whether the weight includes bone. A bone-in leg looks cheaper per kilogram but yields less meat, so the fair comparison is cost per serve rather than cost per kilogram. As a rule of thumb, boneless meat needs less weight per person, and bone-in needs more. Allow roughly 200g of boneless meat per adult, and more if you want leftovers for sandwiches.',
           'Australian Lamb, the Meat and Livestock Australia consumer site, describes the leg as usually roasted whole or boned and butterflied. Butterflied leg suits the barbecue, and bone-in legs are often seared first and finished in the oven. Rest the roast before carving so the juices settle.',
         ],
@@ -100,7 +100,7 @@ export const BATCH3_POSTS: BlogPost[] = [
       {
         heading: 'Lamb cutlets price: why the rack costs more',
         body: [
-          'Lamb cutlets price is high per kilogram for a simple reason: a cutlet is a small, tender portion cut from the rack, and much of the rack&#39;s weight is bone that is trimmed away to present it. Our [French-Trimmed Lamb Cutlets](/shop/lamb/french-trimmed-southern-lamb-cutlets-8-pack-lm-500/) are an 8 pack of 650g at $46.00, which is $5.75 per cutlet and $70.77 per kg before GST.',
+          'Lamb cutlets price is high per kilogram for a simple reason: a cutlet is a small, tender portion cut from the rack, and much of the rack&#39;s weight is bone that is trimmed away to present it. Our [French-Trimmed Lamb Cutlets](/shop/lamb/french-trimmed-southern-lamb-cutlets-8-pack-lm-500) are an 8 pack of 650g at $46.00, which is $5.75 per cutlet and $70.77 per kg before GST.',
           'For a table of four, three cutlets each means twelve cutlets, so one 8 pack plus half of another. If you want a centrepiece, the Whole Crown Roast of Lamb with 16 cutlets tied is 1.4kg at $92.00, which is $65.71 per kg and $5.75 per cutlet. Cutlets are cooked quickly at high heat, so a few minutes on each side in a hot pan is enough, followed by a short rest.',
           'Cutlets are a treat rather than an everyday meal, and that is how most households use them. If you want lamb on the table more often, shoulder, diced leg and mince deliver far more meat for the money, and they reward slow cooking.',
         ],
@@ -114,7 +114,7 @@ export const BATCH3_POSTS: BlogPost[] = [
         heading: 'Whole lamb price and the cost of a whole lamb',
         body: [
           'Searches for whole lamb price and the cost of a whole lamb usually come from people who want to buy in bulk. We do not list a whole lamb, and we do not want to quote a figure that would mislead, so here is how to think about it instead. A whole lamb, or a lamb whole as some shoppers search for it, is sold as a carcass, and the carcass weight includes bone, fat and trim that you will not eat, so the price per kilogram looks low while the price per kilogram of meat you actually cook is higher.',
-          'It also arrives as one large job: breaking the carcass into leg, shoulder, rack, loin and mince needs skill, tools and freezer space. If you have those, a whole lamb can make sense. If you do not, buying the specific cuts you will cook, already portioned and vacuum sealed, usually costs less in time and waste. Our guide to [how much meat a family of four needs](/blog/bulk-meat-packs-near-me-meat-box-australia/) helps you size a freezer order without over-buying.',
+          'It also arrives as one large job: breaking the carcass into leg, shoulder, rack, loin and mince needs skill, tools and freezer space. If you have those, a whole lamb can make sense. If you do not, buying the specific cuts you will cook, already portioned and vacuum sealed, usually costs less in time and waste. Our guide to [how much meat a family of four needs](/blog/bulk-meat-packs-near-me-meat-box-australia) helps you size a freezer order without over-buying.',
           'If you are curious how a whole lamb is divided, Bon Appetit has a butchery video called "How to Butcher an Entire Lamb: Every Cut of Meat Explained". It is a US channel, so some terms differ, but it shows clearly where the leg, shoulder, rack and loin come from.',
         ],
       },
@@ -130,9 +130,9 @@ export const BATCH3_POSTS: BlogPost[] = [
         heading: 'Lamb near me, lamb chops near me and lamb shank near me',
         body: [
           'Searches such as lamb near me, lamb chops near me and lamb shank near me are about convenience. A local butcher is ideal when you want to see the meat and buy a small quantity today. Ordering online makes sense when you want halal-certified lamb, want to buy in bulk, or live where specialty cuts are hard to find.',
-          'Our [Lamb Shoulder, Bone-In Oyster Cut](/shop/lamb/slow-roast-oyster-cut-lamb-shoulder-bone-in-2kg-lm-501/) is 2kg at $54.00, or $27.00 per kg, and is one of the best-value roasts for a slow cook. Our Lamb Shank Duo Pack is 900g at $28.50, and our Rosemary and Garlic Lamb Chops are 1kg at $34.00. You can browse the full range in the [Southern Pasture Lamb category](/shop/lamb/).',
+          'Our [Lamb Shoulder, Bone-In Oyster Cut](/shop/lamb/slow-roast-oyster-cut-lamb-shoulder-bone-in-2kg-lm-501) is 2kg at $54.00, or $27.00 per kg, and is one of the best-value roasts for a slow cook. Our Lamb Shank Duo Pack is 900g at $28.50, and our Rosemary and Garlic Lamb Chops are 1kg at $34.00. You can browse the full range in the [Southern Pasture Lamb category](/shop/lamb).',
           'Orders ship through our cold-chain courier network in insulated liners, with each product page stating the target of arriving below 2.5°C. The store has a $423 AUD minimum across the whole cart, GST of 10% is added at checkout, shipping is $25 below $2,000 and free above, and crypto orders receive an automatic 10% discount. All of our products except pork and pork sausages are halal certified; our primary certifying body is AFIC, and we also hold certification from IFANCA and HCA.',
-          'If you also want lower-cost lamb cuts such as tongue and trotters, see our [guide to beef tongue and offal](/blog/beef-tongue-price-buying-guide-australia/), which prices them per kilogram.',
+          'If you also want lower-cost lamb cuts such as tongue and trotters, see our [guide to beef tongue and offal](/blog/beef-tongue-price-buying-guide-australia), which prices them per kilogram.',
         ],
       },
       {
@@ -140,8 +140,8 @@ export const BATCH3_POSTS: BlogPost[] = [
         body: [
           'Weekly lamb specials can be good value, but they are only a bargain if the cut suits what you plan to cook. Use the same four checks every time. First, compare price per kilogram, not price per pack. Second, check whether the weight includes bone. Third, check the cut: a cheap leg is not a substitute for cutlets, and the other way round. Fourth, work out cost per serve, using about 200g of boneless meat or about 300g of bone-in meat per adult.',
           'Cost per serve at our prices, before GST and using 200g a serve for boneless cuts, comes to about $4.20 for lamb mince, $5.30 for diced leg, $5.44 for the boneless leg roast and about $14.15 for cutlets. That range is exactly why a mixed order beats an all-cutlet order, and why many households buy shoulder and mince for the week and a rack for a weekend.',
-          'Do not forget the other costs that sit around the meat: delivery, minimum order and payment fees. With us, there are no card surcharges when you pay by PayID, bank transfer or crypto, and our guide to [PayID, crypto and the end of card surcharges](/blog/buying-meat-online-australia-delivery-cold-chain-payid/) explains why.',
-          'Chefs and buyers costing a menu can use the same per-kilogram method. We supply lamb to hotels, restaurants, cafés and caterers through our [trade accounts for commercial kitchens](/wholesale/). All of our products except pork and pork sausages are halal certified, you choose the cut state (whole primal, portioned, diced to spec, vacuum-sealed, fresh chilled or snap-frozen), and trade accounts pay on order by PayID, bank transfer or crypto. ',
+          'Do not forget the other costs that sit around the meat: delivery, minimum order and payment fees. With us, there are no card surcharges when you pay by PayID, bank transfer or crypto, and our guide to [PayID, crypto and the end of card surcharges](/blog/buying-meat-online-australia-delivery-cold-chain-payid) explains why.',
+          'Chefs and buyers costing a menu can use the same per-kilogram method. We supply lamb to hotels, restaurants, cafés and caterers through our [trade accounts for commercial kitchens](/wholesale). All of our products except pork and pork sausages are halal certified, you choose the cut state (whole primal, portioned, diced to spec, vacuum-sealed, fresh chilled or snap-frozen), and trade accounts pay on order by PayID, bank transfer or crypto. ',
         ],
       },
       {
@@ -149,7 +149,7 @@ export const BATCH3_POSTS: BlogPost[] = [
         body: [
           'Here is one way to reach the minimum with a useful mix. Two bone-in shoulders at $54.00 each come to $108.00. Two boneless rolled leg roasts at $49.00 each come to $98.00. Three kilograms of lamb mince at $21.00 per kg come to $63.00. Two packs of rosemary and garlic lamb chops at $34.00 each come to $68.00. Two 8 packs of cutlets at $46.00 each come to $92.00.',
           'That adds up to $429.00 before GST, which clears the $423 minimum. GST of $42.90 brings it to $471.90, and shipping of $25 gives $496.90. Paying by crypto takes 10% off, applied automatically at checkout. The order gives you roasts for two Sundays, slow-cook shoulder, mince for weeknights and a rack of cutlets for a special meal, all in vacuum-sealed packs that freeze well.',
-          'If you are weighing up lamb against other sheep meats, our guides to [lamb meat versus mutton](/blog/lamb-meat-vs-mutton-australia/) and to [lamb cutlets versus lamb chops](/blog/lamb-prices-per-kg-australia/) cover the differences, and our [lamb and mutton buying guide](/blog/lamb-and-mutton-near-me-australia/) compares where to buy each.',
+          'If you are weighing up lamb against other sheep meats, our guides to [lamb meat versus mutton](/blog/lamb-meat-vs-mutton-australia) and to [lamb cutlets versus lamb chops](/blog/lamb-prices-per-kg-australia) cover the differences, and our [lamb and mutton buying guide](/blog/lamb-and-mutton-near-me-australia) compares where to buy each.',
         ],
       },
       {

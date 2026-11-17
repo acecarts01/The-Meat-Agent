@@ -95,7 +95,7 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
     if (pageKey === 'home') {
       router.push('/');
     } else if (pageKey === 'shop') {
-      router.push(categorySlug ? `/shop/${categorySlug}/` : '/shop/');
+      router.push(categorySlug ? `/shop/${categorySlug}` : '/shop');
     } else if (pageKey === 'contact') {
       setIsContactOpen(true);
     } else if (pageKey === 'wholesale') {
@@ -124,7 +124,7 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
             Home
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-600" />
-          <Link href="/blog/" className="hover:text-amber-400 transition-colors">
+          <Link href="/blog" className="hover:text-amber-400 transition-colors">
             Blog
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-600" />
@@ -298,7 +298,7 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
           </div>
           <div className="flex items-center gap-2 shrink-0">
             <Link
-              href={`/shop/${post.categorySlug}/`}
+              href={`/shop/${post.categorySlug}`}
               className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-4 py-2.5 rounded-lg flex items-center gap-1.5 transition-colors"
             >
               <span>Shop {post.niche}</span>
@@ -332,7 +332,7 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
             orders go anywhere in Australia. Trade accounts pay on order by PayID, bank transfer or crypto.
           </p>
           <Link
-            href="/wholesale/"
+            href="/wholesale"
             className="inline-flex items-center gap-1.5 bg-amber-500 hover:bg-amber-400 text-stone-950 text-xs font-bold px-4 py-2.5 rounded-lg transition-colors"
           >
             <span>Open a trade account</span>
@@ -347,7 +347,7 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
               {relatedProducts.map((p) => (
                 <Link
                   key={p.sku}
-                  href={`/shop/${p.categorySlug}/${p.slug}/`}
+                  href={`/shop/${p.categorySlug}/${p.slug}`}
                   className="bg-stone-900 border border-stone-800 hover:border-amber-500/60 rounded-xl overflow-hidden flex flex-col group transition-all"
                 >
                   <div className="relative aspect-[4/3] bg-stone-950 overflow-hidden">
@@ -371,7 +371,7 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
               ))}
             </div>
             <Link
-              href={`/shop/${post.categorySlug}/`}
+              href={`/shop/${post.categorySlug}`}
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-amber-400 hover:text-amber-300"
             >
               Browse the full range
@@ -387,7 +387,7 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
               {related.map((r) => (
                 <Link
                   key={r.slug}
-                  href={`/blog/${r.slug}/`}
+                  href={`/blog/${r.slug}`}
                   className="bg-stone-900 border border-stone-800 hover:border-amber-500/60 rounded-xl overflow-hidden flex flex-col group transition-all"
                 >
                   <div className="relative aspect-[4/3] bg-stone-950 overflow-hidden">
@@ -425,11 +425,11 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
               Home
             </Link>
             <span>•</span>
-            <Link href="/blog/" className="hover:text-amber-400 transition-colors">
+            <Link href="/blog" className="hover:text-amber-400 transition-colors">
               Blog
             </Link>
             <span>•</span>
-            <Link href="/shop/" className="hover:text-amber-400 transition-colors">
+            <Link href="/shop" className="hover:text-amber-400 transition-colors">
               Full {TOTAL_CATALOG_COUNT} Cuts Catalog
             </Link>
           </div>

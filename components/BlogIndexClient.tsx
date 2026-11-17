@@ -31,7 +31,7 @@ export function BlogIndexClient({ posts }: BlogIndexClientProps) {
     if (pageKey === 'home') {
       router.push('/');
     } else if (pageKey === 'shop') {
-      router.push(categorySlug ? `/shop/${categorySlug}/` : '/shop/');
+      router.push(categorySlug ? `/shop/${categorySlug}` : '/shop');
     } else if (pageKey === 'contact') {
       setIsContactOpen(true);
     } else if (pageKey === 'wholesale') {
@@ -84,7 +84,7 @@ export function BlogIndexClient({ posts }: BlogIndexClientProps) {
           {posts.map((post) => (
             <Link
               key={post.slug}
-              href={`/blog/${post.slug}/`}
+              href={`/blog/${post.slug}`}
               className="bg-stone-900 border border-stone-800 hover:border-amber-500/60 rounded-xl overflow-hidden flex flex-col group transition-all"
             >
               <div className="relative aspect-[4/3] bg-stone-950 overflow-hidden">
@@ -124,7 +124,7 @@ export function BlogIndexClient({ posts }: BlogIndexClientProps) {
               Home
             </Link>
             <span>•</span>
-            <Link href="/shop/" className="hover:text-amber-400 transition-colors">
+            <Link href="/shop" className="hover:text-amber-400 transition-colors">
               Full {TOTAL_CATALOG_COUNT} Cuts Catalog
             </Link>
           </div>

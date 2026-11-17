@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `${category.name} — ${kw.primaryKeyword} (${category.itemCount} Cuts) | The Meat Agent`
     : `${category.name} (${category.itemCount} Cuts) | The Meat Agent`;
   const description = `${category.heroTagline}. Direct wholesale allocation across Australia with refrigerated cold-chain courier delivery.`;
-  const canonicalUrl = `https://themeatdirect.com.au/shop/${category.slug}/`;
+  const canonicalUrl = `https://themeatdirect.com.au/shop/${category.slug}`;
 
   return {
     title,
@@ -81,7 +81,7 @@ export default async function CategoryPage({ params }: PageProps) {
     '@type': 'CollectionPage',
     name: `${category.name} | The Meat Agent`,
     description: category.heroTagline,
-    url: `https://themeatdirect.com.au/shop/${category.slug}/`,
+    url: `https://themeatdirect.com.au/shop/${category.slug}`,
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -95,13 +95,13 @@ export default async function CategoryPage({ params }: PageProps) {
           '@type': 'ListItem',
           position: 2,
           name: 'Shop',
-          item: 'https://themeatdirect.com.au/shop/',
+          item: 'https://themeatdirect.com.au/shop',
         },
         {
           '@type': 'ListItem',
           position: 3,
           name: category.name,
-          item: `https://themeatdirect.com.au/shop/${category.slug}/`,
+          item: `https://themeatdirect.com.au/shop/${category.slug}`,
         },
       ],
     },

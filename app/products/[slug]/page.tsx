@@ -1,4 +1,4 @@
-import { redirect, notFound } from 'next/navigation';
+import { permanentRedirect, notFound } from 'next/navigation';
 import { getProductBySlug } from '@/lib/products-160-data';
 
 interface PageProps {
@@ -15,5 +15,5 @@ export default async function ProductRedirectPage({ params }: PageProps) {
     notFound();
   }
 
-  redirect(`/shop/${product.categorySlug}/${product.slug}/`);
+  permanentRedirect(`/shop/${product.categorySlug}/${product.slug}`);
 }

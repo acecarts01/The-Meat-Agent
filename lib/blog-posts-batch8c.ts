@@ -86,8 +86,8 @@ export const BATCH8C_POSTS: BlogPost[] = [
       {
         heading: 'Buy mince meat online: the everyday order',
         body: [
-          `Mince is the easiest product to buy online, because it is a staple and the weight is simple to compare. Our [Premium Grass-Fed Beef Mince 1kg Family Pack](/shop/beef/premium-grass-fed-beef-mince-1kg-family-pack-bf-107/) is $18.90, and the [Mega Bulk Beef Mince 2kg Value Pack](/shop/beef/mega-bulk-beef-mince-2kg-value-pack-bf-108/) is $34.90, or $17.45 per kg. If you want to buy mince meat online, those two lines show the trade-off: the 1kg pack is easier to store, and the 2kg pack costs less per kilogram.`,
-          `Because the minimum is $423, a mince-only order needs volume. A 12kg Lean Mince and Burger Box at $195.00 is $16.25 per kg, and combining it with a larger box reaches the minimum with fewer deliveries. Our guide to [beef mince price per kg](/blog/beef-mince-price-per-kg-australia/) explains how to compare packs and portion them for the freezer.`,
+          `Mince is the easiest product to buy online, because it is a staple and the weight is simple to compare. Our [Premium Grass-Fed Beef Mince 1kg Family Pack](/shop/beef/premium-grass-fed-beef-mince-1kg-family-pack-bf-107) is $18.90, and the [Mega Bulk Beef Mince 2kg Value Pack](/shop/beef/mega-bulk-beef-mince-2kg-value-pack-bf-108) is $34.90, or $17.45 per kg. If you want to buy mince meat online, those two lines show the trade-off: the 1kg pack is easier to store, and the 2kg pack costs less per kilogram.`,
+          `Because the minimum is $423, a mince-only order needs volume. A 12kg Lean Mince and Burger Box at $195.00 is $16.25 per kg, and combining it with a larger box reaches the minimum with fewer deliveries. Our guide to [beef mince price per kg](/blog/beef-mince-price-per-kg-australia) explains how to compare packs and portion them for the freezer.`,
         ],
         table: {
           caption: 'Products that suit an online order: price per kg (before GST)',
@@ -107,17 +107,17 @@ export const BATCH8C_POSTS: BlogPost[] = [
       {
         heading: 'Buy game meat online and buy deli meat online',
         body: [
-          `Specialty meat is where online ordering helps most, because few local shops stock a wide range. To buy game meat online, our [Native Australian Game Discovery Box](/shop/meatboxes/native-australian-game-discovery-box-5kg-bx-316/) is 5kg at $155.00, or $31.00 per kg, and our kangaroo range is listed in the game category. Our guide to [kangaroo steak near me](/blog/kangaroo-steak-near-me-kangaroo-meat-for-sale/) covers cuts and cooking in detail.`,
-          `If you want to buy deli meat online, the smallgoods range includes a [Prosciutto Crudo aged 18 months](/shop/smallgoods/prosciutto-crudo-aged-18-months-200g-sliced-sg-613/) at $16.00 for 200g sliced, a Smoked Beef Pastrami at $21.50 for 500g, and Smoked Strasburg Deli Slices at $11.50 for 500g. Check each product page for whether a line is sliced, smoked or ready to eat, because deli items are handled differently from raw cuts.`,
+          `Specialty meat is where online ordering helps most, because few local shops stock a wide range. To buy game meat online, our [Native Australian Game Discovery Box](/shop/meatboxes/native-australian-game-discovery-box-5kg-bx-316) is 5kg at $155.00, or $31.00 per kg, and our kangaroo range is listed in the game category. Our guide to [kangaroo steak near me](/blog/kangaroo-steak-near-me-kangaroo-meat-for-sale) covers cuts and cooking in detail.`,
+          `If you want to buy deli meat online, the smallgoods range includes a [Prosciutto Crudo aged 18 months](/shop/smallgoods/prosciutto-crudo-aged-18-months-200g-sliced-sg-613) at $16.00 for 200g sliced, a Smoked Beef Pastrami at $21.50 for 500g, and Smoked Strasburg Deli Slices at $11.50 for 500g. Check each product page for whether a line is sliced, smoked or ready to eat, because deli items are handled differently from raw cuts.`,
           `People searching for game meat delivery or deli meat delivery usually want the same thing: the product to arrive cold and in good condition. The same cold-chain process applies to every line, so you do not pay extra for delivery on specialty items beyond the standard $25 under $2,000.`,
         ],
       },
       {
         heading: 'Order meat in bulk and buy a meat box Melbourne and beyond',
         body: [
-          `To order meat in bulk, a box is the simplest route. Our [Threshold Gateway Direct Box](/shop/meatboxes/the-423-threshold-gateway-direct-box-22kg-bx-320/) is 22kg at $425.00, which is $19.32 per kg and clears the $423 minimum on its own. It means a single box order meets the minimum, and the price per kilogram is lower than most single packs.`,
+          `To order meat in bulk, a box is the simplest route. Our [Threshold Gateway Direct Box](/shop/meatboxes/the-423-threshold-gateway-direct-box-22kg-bx-320) is 22kg at $425.00, which is $19.32 per kg and clears the $423 minimum on its own. It means a single box order meets the minimum, and the price per kilogram is lower than most single packs.`,
           `Customers who type buy meat box melbourne into a search engine want to know one thing: whether we deliver there. The same question comes up for Canberra and the Gold Coast. We ship statewide and interstate by tracked courier on a weekly schedule, and monthly bulk orders go anywhere in Australia, so a Melbourne household can order a box, as can customers on the Gold Coast, the Sunshine Coast and in Canberra. Delivery times depend on distance, so plan to have freezer space ready and do not order for the same week.`,
-          `If you are weighing up what size box to choose, our guide to [bulk meat packs near me](/blog/bulk-meat-packs-near-me-meat-box-australia/) compares boxes with retail packs and shows cost-per-meal examples, and our [meat boxes category](/shop/meatboxes/) lists every size. A weekly meat delivery suits households that cook meat most nights, and a monthly box suits those with a chest freezer.`,
+          `If you are weighing up what size box to choose, our guide to [bulk meat packs near me](/blog/bulk-meat-packs-near-me-meat-box-australia) compares boxes with retail packs and shows cost-per-meal examples, and our [meat boxes category](/shop/meatboxes) lists every size. A weekly meat delivery suits households that cook meat most nights, and a monthly box suits those with a chest freezer.`,
         ],
       },
       {
@@ -139,8 +139,8 @@ export const BATCH8C_POSTS: BlogPost[] = [
       {
         heading: 'Trade supply and common mistakes when buying meat online',
         body: [
-          `Restaurants, hotels, cafés and caterers can order the same way through our [wholesale supply for restaurants and hotels](/wholesale/) page. ` + TRADE,
-          `The common mistakes are easy to avoid. Do not order without freezer or fridge space ready, because the box arrives cold and needs storing quickly. Do not compare only pack prices, because price per kilogram is the fair measure. Do not forget GST and shipping when you cost an order, and do not buy more than you can use before the use-by dates. For a business, check the supplier's ABN and food safety practices; our guide to [wholesale beef near me](/blog/wholesale-beef-near-me-meat-supplier-restaurants-australia/) lists the checks.`,
+          `Restaurants, hotels, cafés and caterers can order the same way through our [wholesale supply for restaurants and hotels](/wholesale) page. ` + TRADE,
+          `The common mistakes are easy to avoid. Do not order without freezer or fridge space ready, because the box arrives cold and needs storing quickly. Do not compare only pack prices, because price per kilogram is the fair measure. Do not forget GST and shipping when you cost an order, and do not buy more than you can use before the use-by dates. For a business, check the supplier's ABN and food safety practices; our guide to [wholesale beef near me](/blog/wholesale-beef-near-me-meat-supplier-restaurants-australia) lists the checks.`,
           `Lastly, do not treat the first order as a test of price only. Judge the packaging, the temperature on arrival, the accuracy of the weights and how the supplier responds. A supplier that is clear about the cold chain, the minimum and the payment method before you order is usually one that is clear afterwards as well.`,
         ],
       },

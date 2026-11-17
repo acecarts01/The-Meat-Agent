@@ -111,7 +111,7 @@ export function Navbar({
           >
             <div className="flex items-center">
               <Link
-                href="/shop/"
+                href="/shop"
                 className={`px-3 py-2 rounded-l-lg text-xs font-semibold transition-all cursor-pointer ${
                   currentPage === 'shop'
                     ? 'bg-stone-800 text-white shadow-sm'
@@ -142,7 +142,7 @@ export function Navbar({
                     <span>Shop by Category</span>
                   </span>
                   <Link
-                    href="/shop/"
+                    href="/shop"
                     className="text-[10px] text-stone-400 hover:text-white transition-colors cursor-pointer"
                   >
                     View All {TOTAL_CATALOG_COUNT}
@@ -151,7 +151,7 @@ export function Navbar({
 
                 <div className="max-h-72 overflow-y-auto space-y-1 pr-1 [scrollbar-width:none]">
                   <Link
-                    href="/shop/"
+                    href="/shop"
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-bold text-white hover:bg-stone-800 flex items-center justify-between transition-colors cursor-pointer"
                   >
                     <span>🥩 All {TOTAL_CATALOG_COUNT} Wholesale Cuts</span>
@@ -163,7 +163,7 @@ export function Navbar({
                   {SHOP_CATEGORIES_160.map((cat) => (
                     <Link
                       key={cat.slug}
-                      href={`/shop/${cat.slug}/`}
+                      href={`/shop/${cat.slug}`}
                       className="w-full text-left px-3 py-1.5 rounded-lg text-xs font-medium text-stone-300 hover:text-white hover:bg-stone-800 flex items-center justify-between transition-colors cursor-pointer"
                     >
                       <span className="truncate">{cat.name}</span>
@@ -179,7 +179,7 @@ export function Navbar({
 
           {/* Blog */}
           <Link
-            href="/blog/"
+            href="/blog"
             className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
               currentPage === 'blog'
                 ? 'bg-stone-800 text-white shadow-sm'
@@ -231,7 +231,7 @@ export function Navbar({
 
           {/* Wholesale */}
           <Link
-            href="/wholesale/"
+            href="/wholesale"
             className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
               currentPage === 'wholesale' ? 'text-white bg-stone-900/80' : 'text-stone-300 hover:text-white hover:bg-stone-900/80'
             }`}
@@ -299,7 +299,7 @@ export function Navbar({
             {/* Shop Accordion in Mobile */}
             <div className="border border-stone-800 rounded-lg p-2 space-y-2 bg-stone-900/40">
               <Link
-                href="/shop/"
+                href="/shop"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-left font-bold text-amber-400 flex items-center justify-between py-1"
               >
@@ -313,7 +313,7 @@ export function Navbar({
                 {SHOP_CATEGORIES_160.map((cat) => (
                   <Link
                     key={cat.slug}
-                    href={`/shop/${cat.slug}/`}
+                    href={`/shop/${cat.slug}`}
                     onClick={() => setMobileMenuOpen(false)}
                     className="text-left text-[11px] text-stone-300 hover:text-white py-1 px-1.5 rounded hover:bg-stone-800 truncate"
                   >
@@ -324,7 +324,7 @@ export function Navbar({
             </div>
 
             <Link
-              href="/blog/"
+              href="/blog"
               onClick={() => setMobileMenuOpen(false)}
               className={`w-full text-left py-2.5 px-3 rounded-lg font-medium flex items-center justify-between transition-colors ${
                 currentPage === 'blog' ? 'bg-stone-800 text-white font-bold' : 'text-stone-300 hover:bg-stone-900'
@@ -375,7 +375,7 @@ export function Navbar({
             </button>
 
             <Link
-              href="/wholesale/"
+              href="/wholesale"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-left py-2.5 px-3 rounded-lg font-medium text-stone-300 hover:bg-stone-900 flex items-center justify-between"
             >

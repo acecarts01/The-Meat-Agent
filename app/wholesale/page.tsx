@@ -6,13 +6,13 @@ export const metadata: Metadata = {
   description:
     'Australian wholesale meat supplier for restaurants, hotels, cafés and caterers. Daily, weekly or monthly delivery, any cut state, Halal certified (AFIC) except pork. Apply for a trade account.',
   alternates: {
-    canonical: 'https://themeatdirect.com.au/wholesale/',
+    canonical: 'https://themeatdirect.com.au/wholesale',
   },
   openGraph: {
     title: 'Wholesale Meat Suppliers for Restaurants & Hotels | The Meat Agent',
     description:
       'Direct-from-supplier wholesale meat for restaurants, hotels, cafés and caterers — daily, weekly or monthly delivery, Halal certified (AFIC) except pork.',
-    url: 'https://themeatdirect.com.au/wholesale/',
+    url: 'https://themeatdirect.com.au/wholesale',
     type: 'website',
   },
 };
@@ -78,7 +78,7 @@ export default function WholesalePage() {
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://themeatdirect.com.au/' },
-      { '@type': 'ListItem', position: 2, name: 'Wholesale', item: 'https://themeatdirect.com.au/wholesale/' },
+      { '@type': 'ListItem', position: 2, name: 'Wholesale', item: 'https://themeatdirect.com.au/wholesale' },
     ],
   };
 

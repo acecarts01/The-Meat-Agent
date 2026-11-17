@@ -93,7 +93,7 @@ export const BATCH7_POSTS: BlogPost[] = [
         heading: 'Wagyu price per kg by cut: why the range is so wide',
         body: [
           'Wagyu price per kg runs from about $36 for brisket to over $480 for A5 striploin in our range, a spread of more than ten times, and the reason is the cut. Tender, quick-cooking steaks such as cube roll and eye fillet come from small muscles, so there is little of each animal, and they cost the most per kilogram. Hard-working cuts such as brisket and short rib are larger and need slow cooking, so they cost far less.',
-          'That means the cheapest way into wagyu is not a cheaper steak but a different cut. A wagyu brisket cooked slowly, or wagyu burger patties, gives you the rich, marbled flavour at a fraction of the price of a cube roll steak. If you want a steak, the rump cap (picanha) is the value pick: our [Wagyu Whole Rump Cap](/shop/wagyu/wagyu-whole-rump-cap-picanha-mbs-7-wy-202/) is 1.5kg at $110.00, or $73.33 per kg, which is less than most premium wagyu steaks.',
+          'That means the cheapest way into wagyu is not a cheaper steak but a different cut. A wagyu brisket cooked slowly, or wagyu burger patties, gives you the rich, marbled flavour at a fraction of the price of a cube roll steak. If you want a steak, the rump cap (picanha) is the value pick: our [Wagyu Whole Rump Cap](/shop/wagyu/wagyu-whole-rump-cap-picanha-mbs-7-wy-202) is 1.5kg at $110.00, or $73.33 per kg, which is less than most premium wagyu steaks.',
           'Price per serve tells the story better than price per kilogram. At realistic serve sizes before GST, a 180g smash burger patty costs about $7.48, a 200g serve of rump cap costs about $14.67, a 300g serve of short rib costs $25.50, an 80g serve of A5 striploin costs about $38.67, a 150g serve of cube roll costs about $46.88, and a share of tomahawk at 400g per person costs about $48.75. Seen that way, wagyu is far less out of reach than the per-kilogram prices suggest, and a rich cut in a small portion can cost less than a large serve of ordinary premium steak.',
         ],
       },
@@ -109,7 +109,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Buy wagyu beef: cube roll, tomahawk and rump cap',
         body: [
-          'When you buy wagyu beef, three cuts cover most occasions. Our [Wagyu Cube Roll (Scotch Fillet)](/shop/wagyu/wagyu-cube-roll-scotch-fillet-mbs-9-wy-200/) is 400g at $125.00, or $312.50 per kg and $137.50 with GST, and is the steak for a special dinner. Our [Wagyu Long-Bone Tomahawk](/shop/wagyu/wagyu-long-bone-tomahawk-mbs-8-9-wy-201/) is 1.6kg at $195.00, which is $121.88 per kg and serves two to three people as a shared centrepiece. The rump cap is the everyday-value option.',
+          'When you buy wagyu beef, three cuts cover most occasions. Our [Wagyu Cube Roll (Scotch Fillet)](/shop/wagyu/wagyu-cube-roll-scotch-fillet-mbs-9-wy-200) is 400g at $125.00, or $312.50 per kg and $137.50 with GST, and is the steak for a special dinner. Our [Wagyu Long-Bone Tomahawk](/shop/wagyu/wagyu-long-bone-tomahawk-mbs-8-9-wy-201) is 1.6kg at $195.00, which is $121.88 per kg and serves two to three people as a shared centrepiece. The rump cap is the everyday-value option.',
           'Because wagyu is rich, portion sizes are smaller than for standard steak. A 100g to 150g serve of a very high-marbled cut is plenty, served with a simple side. That is part of why wagyu price per kg looks high but the price per serve can be comparable to a larger serve of premium non-wagyu steak.',
           'Each cut has a simple best use. The rump cap, or picanha, is traditionally roasted whole with its fat cap on, then sliced thinly against the grain. The shabu shabu and sukiyaki wafer slices are cut thin enough to cook in seconds in a hot broth or a hot pan, so they suit a hot-pot dinner. The short rib flanken cut is sliced across the bone for fast grilling in the style of Korean barbecue. Choosing the cut with its traditional cooking method in mind gets the best result for the money.',
         ],
@@ -117,7 +117,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'A5 wagyu price and A5 wagyu steak: what to expect',
         body: [
-          'People searching for a5 wagyu price and a5 wagyu steak are usually looking at Japanese black wagyu, which is graded on the Japanese scale; our striploin is named as Japanese on its product page. Our [Japanese A5 Black Wagyu Striploin Cut](/shop/wagyu/japanese-a5-black-wagyu-striploin-cut-wy-203/) is 300g at $145.00, which is $483.33 per kg and $159.50 with GST.',
+          'People searching for a5 wagyu price and a5 wagyu steak are usually looking at Japanese black wagyu, which is graded on the Japanese scale; our striploin is named as Japanese on its product page. Our [Japanese A5 Black Wagyu Striploin Cut](/shop/wagyu/japanese-a5-black-wagyu-striploin-cut-wy-203) is 300g at $145.00, which is $483.33 per kg and $159.50 with GST.',
           'A5 is so heavily marbled that it is served in small portions, usually 50g to 100g per person, and cooked briefly in a very hot pan or on a hot plate. It is closer to a delicacy than a steak, and it is worth buying only if you want to taste it as it is intended. For most households, an Australian wagyu cube roll or rump cap delivers more meat for the money.',
         ],
       },
@@ -134,13 +134,13 @@ export const BATCH7_POSTS: BlogPost[] = [
         heading: 'Wagyu price in an order: reaching the $423 minimum',
         body: [
           'Orders ship through our cold-chain courier network in insulated liners, with each product page stating the target of arriving below 2.5°C. The store has a $423 AUD minimum across the whole cart. For example, one rump cap ($110.00), one brisket ($175.00), two burger patty packs ($59.80), one short rib flanken cut ($68.00) and one bresaola ($32.00) come to $444.80 before GST. GST adds $44.48, and shipping is $25 under $2,000, giving $514.28. Crypto orders receive an automatic 10% discount.',
-          'If you want to try several cuts at once, our [Wagyu Experience Luxury Sample Box](/shop/meatboxes/the-wagyu-experience-luxury-sample-box-3-2kg-bx-308/) is 3.2kg at $340.00, or $106.25 per kg. You can browse the full range in the [Wagyu category](/shop/wagyu/), and our guide to [lamb prices per kg](/blog/lamb-prices-per-kg-australia/) shows how we present per-kilogram pricing for another premium red meat.',
+          'If you want to try several cuts at once, our [Wagyu Experience Luxury Sample Box](/shop/meatboxes/the-wagyu-experience-luxury-sample-box-3-2kg-bx-308) is 3.2kg at $340.00, or $106.25 per kg. You can browse the full range in the [Wagyu category](/shop/wagyu), and our guide to [lamb prices per kg](/blog/lamb-prices-per-kg-australia) shows how we present per-kilogram pricing for another premium red meat.',
         ],
       },
       {
         heading: 'Trade supply: wagyu for restaurants and hotels',
         body: [
-          'Restaurants, hotels and caterers can buy wagyu in volume through our [wholesale supply for restaurants and hotels](/wholesale/). ' + TRADE,
+          'Restaurants, hotels and caterers can buy wagyu in volume through our [wholesale supply for restaurants and hotels](/wholesale). ' + TRADE,
           'For a venue, the key numbers are cost per serve and consistency. A brisket or short rib costs far less per portion than a steak, and a burger patty gives a wagyu menu item at a controlled price. Talk to us about your specification and volume, and we can advise on which cuts give you the best margin.',
         ],
       },
@@ -249,7 +249,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Rump steak price: the everyday steak',
         body: [
-          'Rump is the best-value steak in our range. Our [Thick-Cut Rump Steaks](/shop/beef/thick-cut-rump-steaks-4-x-250g-bf-116/) are four 250g steaks, 1kg in total, at $32.00, which is $32.00 per kg, $8.00 a steak and $35.20 with GST. Rump has plenty of beef flavour, and when it is cut thick and cooked to medium-rare it eats well, though it is a little firmer than fillet or scotch.',
+          'Rump is the best-value steak in our range. Our [Thick-Cut Rump Steaks](/shop/beef/thick-cut-rump-steaks-4-x-250g-bf-116) are four 250g steaks, 1kg in total, at $32.00, which is $32.00 per kg, $8.00 a steak and $35.20 with GST. Rump has plenty of beef flavour, and when it is cut thick and cooked to medium-rare it eats well, though it is a little firmer than fillet or scotch.',
           'The trick with rump is slicing. Rest the cooked steak, then slice it across the grain, and it becomes noticeably more tender. If you prefer a very tender steak, step up to scotch or eye fillet, but if you want a good, honest steak at a low price, rump is it.',
           'Thickness is what separates a good rump steak from a disappointing one. A thick-cut steak lets you sear the outside hard while keeping the centre pink, whereas a thin steak overcooks before it browns. Pat the steak dry, season it well, and cook it in a very hot pan without moving it for the first couple of minutes so a crust can form. Then turn it once, add a knob of butter if you like, and let it rest for about as long as it cooked.',
         ],
@@ -257,7 +257,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Scotch fillet steak price and what is scotch fillet?',
         body: [
-          'Scotch fillet is a popular steak, and one of the most searched beef terms, because it combines tenderness with flavour. It is the boneless eye of the ribeye, cut from the rib section, and it carries more marbling than rump. Our [Southern Gold Angus Scotch Fillet Steaks](/shop/beef/southern-gold-angus-scotch-fillet-steaks-bf-101/) are two 300g steaks at $44.50, which is $22.25 a steak and $74.17 per kg.',
+          'Scotch fillet is a popular steak, and one of the most searched beef terms, because it combines tenderness with flavour. It is the boneless eye of the ribeye, cut from the rib section, and it carries more marbling than rump. Our [Southern Gold Angus Scotch Fillet Steaks](/shop/beef/southern-gold-angus-scotch-fillet-steaks-bf-101) are two 300g steaks at $44.50, which is $22.25 a steak and $74.17 per kg.',
           'Scotch fillet steak price sits at more than twice the price per kilogram of rump, and the extra is worth it if you value richness and tenderness. If you cook steak once a week, a mix works well: rump for most meals and scotch for the weekend.',
           'Scotch fillet and ribeye are close relatives. The scotch fillet is the boneless eye of the rib section, while a ribeye is usually the same muscle with its surrounding cap, sometimes sold on the bone. Both have generous marbling and cook well on a hot pan or grill. If you are choosing between them, the bone-in ribeye gives you more flavour from the bone and a nice presentation, while the boneless scotch is easier to carve and cook evenly.',
         ],
@@ -265,7 +265,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Beef steak price and price of rib eye steak',
         body: [
-          'Ribeye is the bone-in cousin of scotch fillet, and the price of rib eye steak depends on whether it is bone-in and how it has been aged. Our dry-aged [O\'Connor Ribeye Steak, Bone-In](/shop/beef/dry-aged-o-connor-ribeye-steak-bone-in-bf-100/) is 900g at $68.90, which is $76.56 per kg and $75.79 with GST, and is listed as 45 days dry-aged.',
+          'Ribeye is the bone-in cousin of scotch fillet, and the price of rib eye steak depends on whether it is bone-in and how it has been aged. Our dry-aged [O\'Connor Ribeye Steak, Bone-In](/shop/beef/dry-aged-o-connor-ribeye-steak-bone-in-bf-100) is 900g at $68.90, which is $76.56 per kg and $75.79 with GST, and is listed as 45 days dry-aged.',
           'A simple way to compare beef steak price across cuts is to work out the cost per serve. At 250g a serve, rump is $8.00, T-bone is about $13.13, porterhouse is $15.00, scotch fillet is about $18.54, bone-in ribeye is about $19.14, and eye fillet is about $28.35, all before GST. Fillet costs most because it is the most tender and the smallest muscle.',
           'Thickness and weight matter when you compare steaks. A 300g steak that is cut thick is a more substantial meal than two thin steaks of the same total weight, and bone-in steaks include the weight of the bone, so the price per kilogram of edible meat is higher than the headline figure. Check the weight on the product page, and when you compare suppliers, compare the same type of cut and the same trim.',
         ],
@@ -273,9 +273,9 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Steak price versus buying a primal: does it save money?',
         body: [
-          'A whole primal is a large cut that you portion yourself, and it is usually cheaper per kilogram than the same cut sold as individual steaks. Our [Whole Scotch Fillet Cube Roll Primal](/shop/beef/whole-scotch-fillet-cube-roll-primal-3-8kg-bf-114/) is 3.8kg at $215.00, which is $56.58 per kg, against $74.17 per kg for the scotch fillet steaks. That is a saving of $17.59 per kilogram, or about 24%.',
+          'A whole primal is a large cut that you portion yourself, and it is usually cheaper per kilogram than the same cut sold as individual steaks. Our [Whole Scotch Fillet Cube Roll Primal](/shop/beef/whole-scotch-fillet-cube-roll-primal-3-8kg-bf-114) is 3.8kg at $215.00, which is $56.58 per kg, against $74.17 per kg for the scotch fillet steaks. That is a saving of $17.59 per kilogram, or about 24%.',
           'The saving is real but not free. You must trim and portion the primal, and some weight is lost in trimming. Even if trimming costs you 15% of the weight, the effective cost is about $66.56 per kilogram of usable meat, which is still below the steak price. Our Whole Strip Loin Primal is 4kg at $189.00, or $47.25 per kilogram.',
-          'A primal only makes sense if you have a sharp knife, a way to vacuum-seal or wrap steaks, and freezer space. If not, buy the steaks, which come portioned and ready to cook. Our earlier guide to [how much meat a family of four needs](/blog/bulk-meat-packs-near-me-meat-box-australia/) helps you decide how much steak to buy at once.',
+          'A primal only makes sense if you have a sharp knife, a way to vacuum-seal or wrap steaks, and freezer space. If not, buy the steaks, which come portioned and ready to cook. Our earlier guide to [how much meat a family of four needs](/blog/bulk-meat-packs-near-me-meat-box-australia) helps you decide how much steak to buy at once.',
           'If you decide to cut your own, the process is simple. Chill the primal well so it is firm, trim the outer fat and silver skin, and cut steaks across the grain at the thickness you like, usually 2.5 to 3cm for pan cooking. Keep the trim for mince or stock. Wrap or vacuum-seal each steak individually, label it with the date, and freeze what you will not cook within a few days. Done once, it takes under half an hour and gives you several weeks of steak at a lower cost per kilogram.',
         ],
       },
@@ -290,7 +290,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'T-bone steak price and bone-in steaks',
         body: [
-          'T-bone and porterhouse combine two muscles on one bone, a strip loin and a fillet, so they suit people who like both textures. Our [T-Bone Classic Backyard Steaks](/shop/beef/t-bone-classic-backyard-steaks-2-x-400g-bf-135/) are two 400g steaks at $42.00, or $52.50 per kg, which is a lower T-bone steak price than most dry-aged options. The Dry-Aged Bistecca alla Fiorentina T-Bone is 1.1kg at $74.00, or $67.27 per kg, and is listed as 35 days dry-aged.',
+          'T-bone and porterhouse combine two muscles on one bone, a strip loin and a fillet, so they suit people who like both textures. Our [T-Bone Classic Backyard Steaks](/shop/beef/t-bone-classic-backyard-steaks-2-x-400g-bf-135) are two 400g steaks at $42.00, or $52.50 per kg, which is a lower T-bone steak price than most dry-aged options. The Dry-Aged Bistecca alla Fiorentina T-Bone is 1.1kg at $74.00, or $67.27 per kg, and is listed as 35 days dry-aged.',
           'Bone-in steaks cook more slowly near the bone, so give them a little extra time and let them rest. They are good for sharing: one large bistecca can serve two people with sides.',
           'The T-bone has a fillet on one side of the bone and a strip loin on the other. The fillet side cooks faster than the strip side, so if you are cooking on a barbecue, put the strip side nearer the heat and the fillet side further away. Let the steak rest, then slice both muscles off the bone and share them.',
         ],
@@ -299,14 +299,14 @@ export const BATCH7_POSTS: BlogPost[] = [
         heading: 'Ordering steak: minimum order, delivery and trade supply',
         body: [
           'Orders ship through our cold-chain courier network in insulated liners, with each product page stating the target of arriving below 2.5°C. The store has a $423 AUD minimum across the whole cart. For example, two scotch fillet packs ($89.00), four rump steak packs ($128.00), two porterhouse packs ($72.00), two T-bone packs ($84.00) and two flat iron packs ($57.00) come to $430.00 before GST. GST adds $43.00, and shipping is $25 under $2,000, giving $498.00.',
-          'Food Standards Australia New Zealand advises keeping raw meat at 5°C or colder and using separate boards and knives for raw meat and food eaten uncooked. Restaurants, hotels and caterers can order steak and primals in volume through our [trade supply for restaurants and hotels](/wholesale/). ' + TRADE + ' You can browse the full range in the [Beef category](/shop/beef/).',
+          'Food Standards Australia New Zealand advises keeping raw meat at 5°C or colder and using separate boards and knives for raw meat and food eaten uncooked. Restaurants, hotels and caterers can order steak and primals in volume through our [trade supply for restaurants and hotels](/wholesale). ' + TRADE + ' You can browse the full range in the [Beef category](/shop/beef).',
         ],
       },
       {
         heading: 'Common mistakes when comparing steak prices',
         body: [
           'The first mistake is comparing pack prices rather than price per kilogram. The second is ignoring the weight of bone. The third is comparing a primal price with a steak price without allowing for trimming. The fourth is buying an expensive steak and cooking it badly. The fifth is skipping the rest after cooking.',
-          'A sixth mistake is forgetting that steak is a perishable product. Buy only what you will cook within the use-by date and freeze the rest in its vacuum seal. If you plan to buy often, our guide to [bulk meat packs](/blog/bulk-meat-packs-near-me-meat-box-australia/) shows how to plan the freezer.',
+          'A sixth mistake is forgetting that steak is a perishable product. Buy only what you will cook within the use-by date and freeze the rest in its vacuum seal. If you plan to buy often, our guide to [bulk meat packs](/blog/bulk-meat-packs-near-me-meat-box-australia) shows how to plan the freezer.',
         ],
       },
     ],
@@ -414,7 +414,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Chicken breast on sale and the price of bulk packs',
         body: [
-          'Searches for chicken breast on sale and chicken breast sale show how price-sensitive this cut is, because breast is a staple for families, gyms and meal-preppers. Our [Free-Range Skinless Chicken Breast](/shop/chicken/free-range-skinless-chicken-breast-2kg-bulk-ck-400/) is a 2kg bulk pack at $29.90, which is $14.95 per kg and $32.89 with GST. That is a price you can hold every day, not just when there is a sale.',
+          'Searches for chicken breast on sale and chicken breast sale show how price-sensitive this cut is, because breast is a staple for families, gyms and meal-preppers. Our [Free-Range Skinless Chicken Breast](/shop/chicken/free-range-skinless-chicken-breast-2kg-bulk-ck-400) is a 2kg bulk pack at $29.90, which is $14.95 per kg and $32.89 with GST. That is a price you can hold every day, not just when there is a sale.',
           'Bulk packs reduce cost per kilogram and the number of orders, but they only save money if you portion and freeze them straight away. Open the pack, split it into meal-sized bags of 500g, label the date, and freeze flat. Thaw in the fridge and cook within a day.',
           'When you see a chicken breast special elsewhere, convert it to price per kilogram before you decide, and check what you are actually buying. Some packs are trimmed and skinless, others are not, and some are marinated, which changes the price. The most reliable comparison is the same product type, in the same state, at the same weight. With that approach, a price that looks like a bargain sometimes turns out to be an ordinary price, and an everyday price in a bulk pack can be the better value.',
         ],
@@ -430,7 +430,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Whole chicken price and buy whole chicken online',
         body: [
-          'Whole chicken price is often the lowest per kilogram, because you are buying the whole bird. Our [Whole Spatchcock Chicken with Lemon Pepper Herb](/shop/chicken/whole-spatchcock-chicken-with-lemon-pepper-herb-ck-402/) is 1.3kg at $18.50, which is $14.23 per kg, and it is flattened and seasoned so it cooks quickly and evenly on the barbecue or in the oven. Our Portuguese Peri-Peri Marinated Half Chickens are a 2 pack of 1.6kg at $25.00, or $15.63 per kg.',
+          'Whole chicken price is often the lowest per kilogram, because you are buying the whole bird. Our [Whole Spatchcock Chicken with Lemon Pepper Herb](/shop/chicken/whole-spatchcock-chicken-with-lemon-pepper-herb-ck-402) is 1.3kg at $18.50, which is $14.23 per kg, and it is flattened and seasoned so it cooks quickly and evenly on the barbecue or in the oven. Our Portuguese Peri-Peri Marinated Half Chickens are a 2 pack of 1.6kg at $25.00, or $15.63 per kg.',
           'People searching for the price for a whole chicken or whole chicken cost are often weighing a whole bird against cut-up pieces. A whole bird gives you breast, thigh, drumstick and carcass for stock, but you must cut it up or cook it whole. If you cook chicken most nights, buying breast and thigh in bulk is usually easier. If you like roasts and stock, buy whole.',
           'A spatchcock chicken, also called a butterflied chicken, has had its backbone removed and has been flattened. Because it is flat, it cooks evenly and quickly, usually in much less time than a whole bird, and the skin crisps well. It is a good choice for the barbecue or for a quick roast, and you can carve it into portions easily. The backbone, if you keep it, makes a good base for stock.',
         ],
@@ -438,7 +438,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Chicken thigh price and free range whole chicken',
         body: [
-          'Chicken thigh price is higher per kilogram than breast in our range, because the thigh is boneless and skinless, but it is more forgiving to cook and stays juicy. Our [Free-Range Boneless Skinless Chicken Thigh](/shop/chicken/free-range-boneless-skinless-chicken-thigh-2kg-ck-401/) is 2kg at $34.00, or $17.00 per kg. Drumsticks are the cheapest cut at $7.45 per kg because they are sold on the bone.',
+          'Chicken thigh price is higher per kilogram than breast in our range, because the thigh is boneless and skinless, but it is more forgiving to cook and stays juicy. Our [Free-Range Boneless Skinless Chicken Thigh](/shop/chicken/free-range-boneless-skinless-chicken-thigh-2kg-ck-401) is 2kg at $34.00, or $17.00 per kg. Drumsticks are the cheapest cut at $7.45 per kg because they are sold on the bone.',
           'The term free range matters for many shoppers. Our product names state it where it applies, and we keep the claim limited to what the names say; ask any supplier to explain what free range means for their birds, and look for a named standard. The right choice depends on your priorities: cost, convenience or the way the birds were raised.',
           'Thigh is the choice for slow dishes. It has more fat and connective tissue than breast, so it stays tender through long cooking and suits curries, stews, tagines and braises. It also works well in a hot pan or on the grill, and it is more forgiving if you overcook it by a few minutes. If you cook a lot of one-pot dishes, a bulk pack of thigh is often better value in practice than breast.',
         ],
@@ -456,7 +456,7 @@ export const BATCH7_POSTS: BlogPost[] = [
         heading: 'Ordering chicken: minimum order, delivery and trade supply',
         body: [
           'The store has a $423 AUD minimum across the whole cart. For example, four 2kg breast packs ($119.60), three 2kg thigh packs ($102.00), four drumstick packs ($59.60), two wingette packs ($44.00), four spatchcock chickens ($74.00) and one tenderloin pack ($27.00) come to $426.20 before GST. GST adds $42.62, and shipping is $25 under $2,000, giving $493.82. Crypto orders receive an automatic 10% discount, and you can also pay by PayID or bank transfer.',
-          'Restaurants, hotels, cafés and caterers can order chicken in volume through our [commercial supply accounts for kitchens](/wholesale/). ' + TRADE + ' You can browse the full range in the [Pasture-Raised Poultry category](/shop/chicken/), and our guide to [halal chicken, beef and steak](/blog/halal-chicken-beef-steak-near-me-australia/) explains how halal certification applies to poultry.',
+          'Restaurants, hotels, cafés and caterers can order chicken in volume through our [commercial supply accounts for kitchens](/wholesale). ' + TRADE + ' You can browse the full range in the [Pasture-Raised Poultry category](/shop/chicken), and our guide to [halal chicken, beef and steak](/blog/halal-chicken-beef-steak-near-me-australia) explains how halal certification applies to poultry.',
         ],
       },
       {
@@ -579,7 +579,7 @@ export const BATCH7_POSTS: BlogPost[] = [
       {
         heading: 'Aged beef near me and dry aged beef online: the price',
         body: [
-          'Dry aged beef costs more than fresh beef of the same cut, because the meat loses weight during ageing and the trim removes more, and because the process ties up cool-room space for weeks. Our [Dry-Aged O\'Connor Ribeye Steak, Bone-In](/shop/beef/dry-aged-o-connor-ribeye-steak-bone-in-bf-100/) is 900g at $68.90, which is $76.56 per kg and $75.79 with GST, aged 45 days and listed as MSA graded. Our [Dry-Aged Bistecca alla Fiorentina T-Bone](/shop/beef/dry-aged-bistecca-alla-fiorentina-t-bone-bf-103/) is 1.1kg at $74.00, which is $67.27 per kg, aged 35 days.',
+          'Dry aged beef costs more than fresh beef of the same cut, because the meat loses weight during ageing and the trim removes more, and because the process ties up cool-room space for weeks. Our [Dry-Aged O\'Connor Ribeye Steak, Bone-In](/shop/beef/dry-aged-o-connor-ribeye-steak-bone-in-bf-100) is 900g at $68.90, which is $76.56 per kg and $75.79 with GST, aged 45 days and listed as MSA graded. Our [Dry-Aged Bistecca alla Fiorentina T-Bone](/shop/beef/dry-aged-bistecca-alla-fiorentina-t-bone-bf-103) is 1.1kg at $74.00, which is $67.27 per kg, aged 35 days.',
           'For comparison, our fresh scotch fillet steaks are $74.17 per kg and our rump steaks are $32.00 per kg, so a dry-aged bone-in ribeye is priced close to fresh scotch fillet per kilogram, but it also includes the bone. If you want the dry-aged flavour without the higher price, a dry-aged steak shared between two people with sides is an economical way to enjoy it.',
           'To put the price in context, a 900g bone-in ribeye at $68.90 feeds two people comfortably with sides, which works out at about $34.45 per person before GST. A fresh scotch fillet pack at $44.50 for two 300g steaks costs $22.25 per steak. The dry-aged steak is the more expensive per person, but it is bigger, bone-in and aged for 45 days, so it is a different kind of meal from a weeknight steak.',
         ],
@@ -604,13 +604,13 @@ export const BATCH7_POSTS: BlogPost[] = [
         heading: 'Dry aged beef melbourne and Australia-wide delivery',
         body: [
           'Many people search for dry aged beef Melbourne or dry aged beef in their own city because they want a local specialist. If you cannot find one, ordering online works well: our dry-aged steaks are vacuum sealed and travel through our cold-chain courier network in insulated liners, with each product page stating the target of arriving below 2.5°C. The courier network covers every capital, though delivery takes longer over greater distances.',
-          'The store has a $423 AUD minimum across the whole cart. For example, two dry-aged ribeyes ($137.80), two dry-aged T-bones ($148.00), two scotch fillet packs ($89.00) and two rump packs ($64.00) come to $438.80 before GST. GST adds $43.88, and shipping is $25 under $2,000, giving $507.68. You can browse the full range in the [Beef category](/shop/beef/), and our guide to [steak prices per kg](/blog/rump-steak-price-per-kg-australia/) compares the whole steak range.',
+          'The store has a $423 AUD minimum across the whole cart. For example, two dry-aged ribeyes ($137.80), two dry-aged T-bones ($148.00), two scotch fillet packs ($89.00) and two rump packs ($64.00) come to $438.80 before GST. GST adds $43.88, and shipping is $25 under $2,000, giving $507.68. You can browse the full range in the [Beef category](/shop/beef), and our guide to [steak prices per kg](/blog/rump-steak-price-per-kg-australia) compares the whole steak range.',
         ],
       },
       {
         heading: 'Trade supply: dry aged beef for restaurants and hotels',
         body: [
-          'Restaurants, hotels and steakhouses can buy dry-aged cuts through our [wholesale supply for steakhouses and hotels](/wholesale/). ' + TRADE,
+          'Restaurants, hotels and steakhouses can buy dry-aged cuts through our [wholesale supply for steakhouses and hotels](/wholesale). ' + TRADE,
           'For a venue, dry aged beef is a menu differentiator, but only if the supply is consistent and the yield is understood. Ask us about the ageing time, the cut and the pack size you need, and we can advise on what is available.',
         ],
       },
