@@ -27,15 +27,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${post.title} | The Meat Agent`,
-    description: post.excerpt,
-    keywords: [post.primaryKeyword, ...post.supportingKeywords],
+    description: post.metaDescription || post.excerpt,
+    keywords: [post.primaryKeyword, ...post.supportingKeywords, ...(post.tags || [])],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       url: canonicalUrl,
       type: 'article',
-      images: [{ url: post.heroImage, width: 1600, height: 1200, alt: post.title }],
+      images: [{ url: post.heroImage, width: 1600, height: 1200, alt: post.heroImageAlt || post.title }],
       publishedTime: post.publishedDate,
     },
     twitter: {
@@ -64,11 +64,11 @@ export default async function BlogPostPage({ params }: PageProps) {
         '@type': 'BlogPosting',
         '@id': `https://themeatdirect.com.au/blog/${post.slug}/#article`,
         headline: post.title,
-        description: post.excerpt,
-        keywords: [post.primaryKeyword, ...post.supportingKeywords].join(', '),
+        description: post.metaDescription || post.excerpt,
+        keywords: [post.primaryKeyword, ...post.supportingKeywords, ...(post.tags || [])].join(', '),
         image: post.heroImage,
         datePublished: post.publishedDate,
-        dateModified: post.publishedDate,
+        dateModified: post.updatedDate || post.publishedDate,
         author: {
           '@type': 'Organization',
           name: 'The Meat Agent',

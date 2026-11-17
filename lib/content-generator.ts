@@ -71,6 +71,51 @@ const COOKING_PROFILES: Array<{ match: RegExp; profile: CookingProfile }> = [
     },
   },
   {
+    match: /goat leg|goat shoulder|mutton leg|whole duck/i,
+    profile: {
+      method: 'oven roast',
+      verb: 'roasted low and slow (bone-in cuts like this benefit from a longer, gentler roast than beef) and rested for 15–20 minutes before carving',
+      tip: 'marinate it a few hours ahead with garlic, lemon and warming spices — goat, mutton and duck all carry a stronger flavour than lamb or chicken and respond well to an acidic, aromatic marinade',
+      storageNote: 'refrigerate at 0–4°C and use within 2–3 days, or freeze in its vacuum seal for up to 6 months',
+    },
+  },
+  {
+    match: /goat diced|curry cuts/i,
+    profile: {
+      method: 'slow curry braise',
+      verb: 'browned first, then simmered gently in a curry base for 1.5–2 hours until fork-tender',
+      tip: 'don\'t rush this cut on high heat — goat meat has more connective tissue than lamb and needs time at a low simmer to become tender rather than tough',
+      storageNote: 'refrigerate at 0–4°C and use within 2–3 days, or freeze in its vacuum seal for up to 6 months',
+    },
+  },
+  {
+    match: /goat ribs/i,
+    profile: {
+      method: 'low-and-slow BBQ or oven braise',
+      verb: 'cooked gently over low heat or in a covered oven until the meat pulls easily from the bone',
+      tip: 'a dry rub followed by a low, covered cook (around 150°C) for 2–3 hours gives the best result — goat ribs are leaner than pork ribs so avoid cooking them uncovered at high heat',
+      storageNote: 'refrigerate at 0–4°C and use within 2–3 days, or freeze in its vacuum seal for up to 6 months',
+    },
+  },
+  {
+    match: /offal|tongue|tripe|kidney|heart|brain|trotters|paya/i,
+    profile: {
+      method: 'soak, blanch, then slow-cook',
+      verb: 'soaked in cold water (changed once or twice) for an hour, blanched briefly in boiling water, then simmered or braised until tender',
+      tip: 'the soak-and-blanch step isn\'t optional — it draws out residual blood and sharpens the final flavour, which matters more with offal than with muscle cuts',
+      storageNote: 'refrigerate at 0–4°C and use within 1–2 days given its perishability, or freeze immediately for up to 3 months',
+    },
+  },
+  {
+    match: /rendered duck fat|duck fat/i,
+    profile: {
+      method: 'use as a cooking fat, not a cut to cook itself',
+      verb: 'spooned into a hot pan to roast potatoes, confit vegetables, or sear meat — it has a high smoke point and a distinct savoury flavour',
+      tip: 'a tablespoon tossed through roasting potatoes before they go in the oven is the single highest-impact use of this product',
+      storageNote: 'keep refrigerated once opened and use within 6 months, or keep unopened at room temperature in a cool pantry for up to a year',
+    },
+  },
+  {
     match: /family essentials|fitness & prep|gourmet boxes|seasonal boxes|wholesale boxes/i,
     profile: {
       method: 'mixed — each cut inside follows its own best method',
@@ -117,10 +162,10 @@ export function generateProductDescription(p: ContentProductInput, primaryKeywor
   const openerIdx = hashIndex(p.name, OPENERS.length);
   const opener = OPENERS[openerIdx](p.name, p.category.toLowerCase());
 
-  const marblingBit = p.marbling && p.marbling.toLowerCase() !== 'n/a'
-    ? ` Graded ${p.marbling}, `
-    : ' ';
-  const agingBit = p.dryAging ? `finished with ${p.dryAging.toLowerCase()}.` : '.';
+  const hasMarbling = p.marbling && p.marbling.toLowerCase() !== 'n/a';
+  const hasAging = p.dryAging && p.dryAging.toLowerCase() !== 'n/a' && p.dryAging.toLowerCase() !== 'fresh raw';
+  const marblingBit = hasMarbling ? ` Graded ${p.marbling}, ` : (hasAging ? ' ' : '');
+  const agingBit = hasAging ? `finished with ${p.dryAging.toLowerCase()}.` : '';
 
   const sentences = [
     `${opener}.${marblingBit}${agingBit}`,
@@ -139,7 +184,7 @@ export interface FaqItem {
 const CATEGORY_LABEL: Record<string, string> = {
   beef: 'beef', chicken: 'chicken', lamb: 'lamb', smallgoods: 'smallgoods', meatboxes: 'box',
   pork: 'pork', seafood: 'seafood', wagyu: 'Wagyu beef', 'kangaroo-game': 'game meat', veal: 'veal',
-  equipment: 'item',
+  equipment: 'item', 'goat-mutton': 'goat/mutton', duck: 'duck',
 };
 
 export function generateProductFAQs(p: ContentProductInput, primaryKeyword: string, supporting: string[]): FaqItem[] {
@@ -254,6 +299,20 @@ const CATEGORY_FAQS: Record<string, FaqItem[]> = {
     { question: 'What is osso buco, and how should it be cooked?', answer: 'Osso buco is a cross-cut veal shank with the bone (and marrow) left in. It\'s a slow-braising cut — cooked low and slow in liquid for several hours until the connective tissue breaks down and the marrow becomes spoonable.' },
     { question: 'Is veal more expensive than regular beef, and why?', answer: 'Yes, generally — veal commands a premium due to the younger age at processing, more intensive rearing requirements, and lower yield per animal compared to mature beef cattle.' },
     { question: 'Can I substitute veal for beef in a recipe?', answer: 'In most recipes, yes, though expect a milder flavour and shorter cooking time given veal\'s leaner, more delicate composition — dishes designed around long, fatty beef braises may need adjusting to suit veal\'s faster-cooking nature.' },
+  ],
+  'goat-mutton': [
+    { question: 'Is your goat and mutton range Halal certified?', answer: 'Yes — we hold Halal certification from AFIC (our primary certifying body), with additional certification from IFANCA and HCA. This applies across our full goat and mutton range.' },
+    { question: 'What is the difference between goat and mutton?', answer: 'Goat meat comes from the goat species and has a slightly sweeter, leaner flavour profile. Mutton comes from mature sheep (over 12 months old) and has a stronger, richer flavour and firmer texture than lamb — both benefit from longer, slower cooking methods than young lamb.' },
+    { question: 'How do I stop goat or mutton from tasting too strong?', answer: 'Trimming excess surface fat, marinating ahead of time with acidic ingredients (lemon, yoghurt, vinegar) and aromatic spices, and cooking low-and-slow rather than quickly all help balance the stronger flavour of goat and mutton compared to lamb.' },
+    { question: 'What is the best way to cook bone-in goat or mutton leg?', answer: 'Bone-in leg cuts reward a long, low oven roast or slow braise — this breaks down the connective tissue around the bone and keeps the meat tender rather than tough. A quick high-heat cook is the main way to end up with a chewy result on this cut.' },
+    { question: 'Do you deliver Halal goat and mutton Australia-wide?', answer: 'Yes — this range ships through the same sub-zero 48-hour cold-chain courier network as the rest of our catalog, maintaining under 2.5°C core temperature on arrival anywhere in Australia.' },
+  ],
+  duck: [
+    { question: 'Is your duck free-range?', answer: 'Check the individual listing for sourcing detail on each duck product — our range is selected for consistent quality and genuine cold-chain freshness from processing through to delivery.' },
+    { question: 'How do I get crispy skin on a whole duck?', answer: 'Score the skin in a diamond pattern (without cutting into the meat), pat it completely dry, and start the roast at a lower oven temperature to render the fat slowly before increasing the heat for the final 15–20 minutes to crisp the skin.' },
+    { question: 'What can I use rendered duck fat for?', answer: 'Duck fat has a high smoke point and a distinct savoury flavour, making it ideal for roasting potatoes, confit vegetables, or searing meat — a spoonful tossed through roasting potatoes before they go in the oven is one of the simplest ways to use it.' },
+    { question: 'How long does rendered duck fat keep?', answer: 'Unopened, it keeps at room temperature in a cool pantry for up to a year. Once opened, refrigerate it and use within 6 months for best flavour.' },
+    { question: 'Do you deliver duck products Australia-wide?', answer: 'Yes — duck products ship through the same sub-zero 48-hour cold-chain courier network as the rest of our catalog, maintaining under 2.5°C core temperature on arrival.' },
   ],
   equipment: [
     { question: 'What steel should I look for in a butcher knife?', answer: 'High-carbon stainless steel is the standard choice for butcher and kitchen knives — it holds an edge well, resists corrosion, and is easier to sharpen than pure carbon steel while avoiding the softness of lower-grade stainless blades.' },

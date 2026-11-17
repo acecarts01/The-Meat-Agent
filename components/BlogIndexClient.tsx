@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ChevronRight, Clock, BookOpen } from 'lucide-react';
 import { BlogPost } from '@/lib/blog-data';
+import { TOTAL_CATALOG_COUNT } from '@/lib/products-160-data';
 import { useCart } from '@/lib/cart-store';
 import { Navbar, ActivePage } from '@/components/Navbar';
 import { CartAndCheckoutModal } from '@/components/CartAndCheckoutModal';
@@ -124,7 +125,7 @@ export function BlogIndexClient({ posts }: BlogIndexClientProps) {
             </Link>
             <span>•</span>
             <Link href="/shop/" className="hover:text-amber-400 transition-colors">
-              Full 160 Cuts Catalog
+              Full {TOTAL_CATALOG_COUNT} Cuts Catalog
             </Link>
           </div>
         </div>

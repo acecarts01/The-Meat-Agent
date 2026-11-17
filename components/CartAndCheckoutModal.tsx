@@ -19,6 +19,7 @@ import {
   CreditCard,
   Building
 } from 'lucide-react';
+import { CryptoWalletPicker } from './CryptoWalletPicker';
 
 export interface CartItem {
   product: Product160Item;
@@ -48,6 +49,7 @@ export function CartAndCheckoutModal({
   const [isSubmittingOrder, setIsSubmittingOrder] = useState(false);
   const [orderError, setOrderError] = useState('');
   const [orderRef, setOrderRef] = useState('');
+  const [wantsOtherCoin, setWantsOtherCoin] = useState(false);
 
   // Form Fields
   const [formData, setFormData] = useState({
@@ -98,7 +100,7 @@ export function CartAndCheckoutModal({
       `*Shipping:* ${isFreeShipping ? 'FREE (Over $2,000)' : '$' + shippingFee.toFixed(2) + ' AUD'}%0A` +
       (paymentMethod === 'crypto' ? `*Crypto Discount (10%):* -$${cryptoDiscount.toFixed(2)} AUD%0A` : '') +
       `*TOTAL:* $${total.toFixed(2)} AUD%0A%0A` +
-      `*Payment Method:* ${paymentMethod.toUpperCase()}%0A` +
+      `*Payment Method:* ${paymentMethod.toUpperCase()}${paymentMethod === 'crypto' && wantsOtherCoin ? ' (customer requests a coin not on our list — confirm before payment)' : ''}%0A` +
       `*Delivery Notes:* ${formData.deliveryNotes || 'Cold-Chain Express Delivery Requested'}`;
 
     window.open(`https://wa.me/61480804189?text=${msg}`, '_blank');
@@ -464,15 +466,10 @@ export function CartAndCheckoutModal({
                 )}
 
                 {paymentMethod === 'crypto' && (
-                  <div className="p-3 bg-purple-950/40 border border-purple-800/40 rounded-xl text-xs space-y-1">
-                    <div className="flex items-center justify-between text-purple-300 font-bold">
-                      <span>10% Crypto Discount Applied:</span>
-                      <span className="font-mono">-${cryptoDiscount.toFixed(2)} AUD</span>
-                    </div>
-                    <p className="text-[10px] text-purple-400">
-                      Wallet address will be generated upon confirmation, or checkout instantly via WhatsApp concierge.
-                    </p>
-                  </div>
+                  <CryptoWalletPicker
+                    cryptoDiscount={cryptoDiscount}
+                    onWantsOther={() => setWantsOtherCoin(true)}
+                  />
                 )}
               </div>
 

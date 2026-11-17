@@ -20,7 +20,7 @@ import {
   ArrowRight,
   BookOpen
 } from 'lucide-react';
-import { SHOP_CATEGORIES_160 } from '@/lib/products-160-data';
+import { SHOP_CATEGORIES_160, TOTAL_CATALOG_COUNT } from '@/lib/products-160-data';
 import { TopAnnouncementSlider } from '@/components/TopAnnouncementSlider';
 
 export type ActivePage = 'home' | 'shop' | 'blog' | 'about' | 'contact' | 'wholesale' | 'merchant-portal';
@@ -118,7 +118,7 @@ export function Navbar({
                     : 'text-stone-300 hover:text-white hover:bg-stone-900/80'
                 }`}
               >
-                Shop (160 Cuts)
+                Shop ({TOTAL_CATALOG_COUNT} Cuts)
               </Link>
               <button
                 onClick={() => setShopDropdownOpen(!shopDropdownOpen)}
@@ -145,7 +145,7 @@ export function Navbar({
                     href="/shop/"
                     className="text-[10px] text-stone-400 hover:text-white transition-colors cursor-pointer"
                   >
-                    View All 160
+                    View All {TOTAL_CATALOG_COUNT}
                   </Link>
                 </div>
 
@@ -154,9 +154,9 @@ export function Navbar({
                     href="/shop/"
                     className="w-full text-left px-3 py-2 rounded-lg text-xs font-bold text-white hover:bg-stone-800 flex items-center justify-between transition-colors cursor-pointer"
                   >
-                    <span>🥩 All 160 Wholesale Cuts</span>
+                    <span>🥩 All {TOTAL_CATALOG_COUNT} Wholesale Cuts</span>
                     <span className="text-[10px] bg-red-950 text-red-300 border border-red-800 px-1.5 py-0.2 rounded font-mono">
-                      160
+                      {TOTAL_CATALOG_COUNT}
                     </span>
                   </Link>
 
@@ -230,13 +230,15 @@ export function Navbar({
           </button>
 
           {/* Wholesale */}
-          <button
-            onClick={onOpenWholesale}
-            className="px-3 py-2 rounded-lg text-xs font-semibold text-stone-300 hover:text-white hover:bg-stone-900/80 transition-all cursor-pointer flex items-center gap-1.5"
+          <Link
+            href="/wholesale/"
+            className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+              currentPage === 'wholesale' ? 'text-white bg-stone-900/80' : 'text-stone-300 hover:text-white hover:bg-stone-900/80'
+            }`}
           >
             <Building2 className="w-3.5 h-3.5 text-cyan-400" />
             <span>Wholesale</span>
-          </button>
+          </Link>
         </nav>
 
         {/* Right Actions: WhatsApp + Cart + Mobile Toggle */}
@@ -301,9 +303,9 @@ export function Navbar({
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-left font-bold text-amber-400 flex items-center justify-between py-1"
               >
-                <span>Shop All 160 Cuts</span>
+                <span>Shop All {TOTAL_CATALOG_COUNT} Cuts</span>
                 <span className="text-[10px] font-mono bg-stone-800 px-2 py-0.5 rounded text-stone-300">
-                  160 Items
+                  {TOTAL_CATALOG_COUNT} Items
                 </span>
               </Link>
 
@@ -372,16 +374,14 @@ export function Navbar({
               <Mail className="w-3.5 h-3.5 text-stone-400" />
             </button>
 
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenWholesale();
-              }}
+            <Link
+              href="/wholesale/"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full text-left py-2.5 px-3 rounded-lg font-medium text-stone-300 hover:bg-stone-900 flex items-center justify-between"
             >
               <span>Wholesale Trade Desk</span>
               <Building2 className="w-3.5 h-3.5 text-cyan-400" />
-            </button>
+            </Link>
           </div>
 
           <div className="pt-2 border-t border-stone-800 flex items-center gap-2">

@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/`, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
     { url: `${BASE_URL}/shop/`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${BASE_URL}/blog/`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE_URL}/wholesale/`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
   ];
 
   const blogEntries: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({

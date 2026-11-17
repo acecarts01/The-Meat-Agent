@@ -127,7 +127,7 @@ function getTransporter() {
 const PAYMENT_LABELS: Record<OrderPayload['paymentMethod'], string> = {
   payid: 'PayID (Osko) — Instant AU Bank Transfer',
   bank: 'EFT Transfer — BSB & Account Invoice',
-  crypto: 'Crypto (BTC / USDT) — 10% Discount Applied',
+  crypto: 'Crypto (BTC, ETH, USDT, BNB, DOGE, LTC, BCH, XRP, SOL, TRX) — 10% Discount Applied',
 };
 
 function buildItemsText(items: OrderItem[]): string {

@@ -127,6 +127,9 @@ export const BEEF_IMAGES: string[] = [
   "/images/products/beef/Beef_0167.webp",
   "/images/products/beef/Beef_0168.webp",
   "/images/products/beef/Beef_0169.webp",
+  "/images/products/beef/Beef_0170.webp",
+  "/images/products/beef/Beef_0171.webp",
+  "/images/products/beef/Beef_0172.webp",
 ];
 
 export const CHICKEN_IMAGES: string[] = [
@@ -144,6 +147,8 @@ export const CHICKEN_IMAGES: string[] = [
   "/images/products/chicken/Chicken_0012.webp",
   "/images/products/chicken/Chicken_0013.webp",
   "/images/products/chicken/Chicken_0016.webp",
+  "/images/products/chicken/Chicken_0017.webp",
+  "/images/products/chicken/Chicken_0018.webp",
 ];
 
 export const LAMB_IMAGES: string[] = [
@@ -159,6 +164,28 @@ export const LAMB_IMAGES: string[] = [
   "/images/products/lamb/Lamb_0011.webp",
   "/images/products/lamb/Lamb_0012.webp",
   "/images/products/lamb/Lamb_0013.webp",
+  "/images/products/lamb/Lamb_0014.webp",
+  "/images/products/lamb/Lamb_0015.webp",
+  "/images/products/lamb/Lamb_0016.webp",
+  "/images/products/lamb/Lamb_0017.webp",
+];
+
+// New halal-certified Goat & Mutton range (8 products, 8 photos — 1:1, no cycling/wraparound).
+export const GOAT_MUTTON_IMAGES: string[] = [
+  "/images/products/goat-mutton/GoatMutton_0001.webp",
+  "/images/products/goat-mutton/GoatMutton_0002.webp",
+  "/images/products/goat-mutton/GoatMutton_0003.webp",
+  "/images/products/goat-mutton/GoatMutton_0004.webp",
+  "/images/products/goat-mutton/GoatMutton_0005.webp",
+  "/images/products/goat-mutton/GoatMutton_0006.webp",
+  "/images/products/goat-mutton/GoatMutton_0007.webp",
+  "/images/products/goat-mutton/GoatMutton_0008.webp",
+];
+
+// New Duck range (2 products, 2 photos — 1:1, no cycling/wraparound).
+export const DUCK_IMAGES: string[] = [
+  "/images/products/duck/Duck_0001.webp",
+  "/images/products/duck/Duck_0002.webp",
 ];
 
 export const SMALLGOODS_IMAGES: string[] = [

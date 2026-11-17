@@ -11,6 +11,7 @@ import {
 } from '@/lib/products-160-data';
 import { FaqItem } from '@/lib/content-generator';
 import { useCart } from '@/lib/cart-store';
+import { BLOG_POSTS } from '@/lib/blog-data';
 import { Navbar, ActivePage } from '@/components/Navbar';
 import { CartAndCheckoutModal } from '@/components/CartAndCheckoutModal';
 import { ContactModal } from '@/components/ContactModal';
@@ -346,6 +347,25 @@ export function CategoryPageClient({ category, products, faqs = [] }: CategoryPa
                 </details>
               ))}
             </div>
+          </section>
+        )}
+        {BLOG_POSTS.filter((b) => b.categorySlug === category.slug && b.publishedDate >= '2026-11-16').length > 0 && (
+          <section aria-labelledby="category-guides-heading" className="pt-8 border-t border-stone-800 space-y-3">
+            <h2 id="category-guides-heading" className="text-lg font-black text-white tracking-tight">
+              Buying guides for {category.name}
+            </h2>
+            <ul className="space-y-2 text-sm">
+              {BLOG_POSTS.filter((b) => b.categorySlug === category.slug && b.publishedDate >= '2026-11-16').map((b) => (
+                <li key={b.slug}>
+                  <Link
+                    href={`/blog/${b.slug}/`}
+                    className="text-amber-400 hover:text-amber-300 underline underline-offset-2"
+                  >
+                    {b.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         )}
       </main>

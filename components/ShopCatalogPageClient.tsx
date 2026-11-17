@@ -9,6 +9,7 @@ import {
   ShopCategory160,
   SHOP_CATEGORIES_160,
   generate160Catalog,
+  TOTAL_CATALOG_COUNT,
 } from '@/lib/products-160-data';
 import { useCart } from '@/lib/cart-store';
 import { Navbar, ActivePage } from '@/components/Navbar';
@@ -120,7 +121,7 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-600" />
           <span className="text-amber-400 font-semibold" aria-current="page">
-            Wholesale Butcher Catalog (160 Individual Cuts)
+            Wholesale Butcher Catalog ({TOTAL_CATALOG_COUNT} Individual Cuts)
           </span>
         </nav>
 
@@ -131,7 +132,7 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
               Farm-Gate Wholesale Allocations
             </span>
             <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
-              160 Australian Butcher Cuts &amp; Primals
+              {TOTAL_CATALOG_COUNT} Australian Butcher Cuts &amp; Primals
             </h1>
             <p className="text-sm text-stone-400 max-w-2xl">
               Each product features a dedicated page, full technical butchery specifications, dual-perspective stock photography, and direct cold-chain ordering.
@@ -171,7 +172,7 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
                   setSearchQuery(e.target.value);
                   setPage(1);
                 }}
-                placeholder="Search all 160 cuts..."
+                placeholder={`Search all ${TOTAL_CATALOG_COUNT} cuts...`}
                 className="bg-stone-900 border border-stone-800 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-red-500 w-44 sm:w-56 font-mono"
               />
             </div>

@@ -18,7 +18,7 @@ import {
   Building2,
   SlidersHorizontal
 } from 'lucide-react';
-import { SHOP_CATEGORIES_160, ShopCategory160 } from '@/lib/products-160-data';
+import { SHOP_CATEGORIES_160, ShopCategory160, TOTAL_CATALOG_COUNT } from '@/lib/products-160-data';
 
 export interface PriceRangeOption {
   id: string;
@@ -107,7 +107,7 @@ export function ShopSideFilter({
         <div className="flex items-center gap-2">
           <SlidersHorizontal className="w-4 h-4 text-amber-500" />
           <h2 className="font-bold text-sm text-white tracking-tight">
-            Filter 160 Cuts
+            Filter {TOTAL_CATALOG_COUNT} Cuts
           </h2>
           {activeFilterCount > 0 && (
             <span className="text-[10px] font-mono text-amber-400 font-bold">
@@ -156,7 +156,7 @@ export function ShopSideFilter({
             >
               <div className="flex items-center gap-2">
                 <span className="text-base">🥩</span>
-                <span className="truncate">All 160 Wholesale Cuts</span>
+                <span className="truncate">All {TOTAL_CATALOG_COUNT} Wholesale Cuts</span>
               </div>
               <span className="font-mono text-[10px] text-stone-400">
                 {allProductsCount}

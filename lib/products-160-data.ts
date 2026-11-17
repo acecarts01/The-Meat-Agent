@@ -1,6 +1,7 @@
 import {
   BEEF_IMAGES, CHICKEN_IMAGES, LAMB_IMAGES, SMALLGOODS_IMAGES, MEATBOXES_IMAGES,
   PORK_IMAGES, SEAFOOD_IMAGES, WAGYU_IMAGES, KANGAROO_GAME_IMAGES, VEAL_IMAGES, EQUIPMENT_IMAGES,
+  GOAT_MUTTON_IMAGES, DUCK_IMAGES,
 } from "./product-images";
 import { PRODUCT_KEYWORDS, CATEGORY_KEYWORDS } from "./seo-keywords";
 import { generateProductDescription, generateProductFAQs, FaqItem } from "./content-generator";
@@ -38,7 +39,7 @@ export interface Product160Item {
   sku: string;
   name: string;
   category: string;
-  categorySlug: 'beef' | 'chicken' | 'lamb' | 'smallgoods' | 'meatboxes' | 'pork' | 'seafood' | 'wagyu' | 'kangaroo-game' | 'veal' | 'equipment';
+  categorySlug: 'beef' | 'chicken' | 'lamb' | 'smallgoods' | 'meatboxes' | 'pork' | 'seafood' | 'wagyu' | 'kangaroo-game' | 'veal' | 'equipment' | 'goat-mutton' | 'duck';
   subcategory: string;
   price: number;
   weight: string;
@@ -62,7 +63,7 @@ export interface Product160Item {
 
 export interface ShopCategory160 {
   id: string;
-  slug: 'beef' | 'chicken' | 'lamb' | 'smallgoods' | 'meatboxes' | 'pork' | 'seafood' | 'wagyu' | 'kangaroo-game' | 'veal' | 'equipment';
+  slug: 'beef' | 'chicken' | 'lamb' | 'smallgoods' | 'meatboxes' | 'pork' | 'seafood' | 'wagyu' | 'kangaroo-game' | 'veal' | 'equipment' | 'goat-mutton' | 'duck';
   name: string;
   itemCount: number;
   heroTagline: string;
@@ -86,7 +87,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     id: "beef",
     slug: "beef",
     name: "Australian Beef",
-    itemCount: 39,
+    itemCount: 42,
     heroTagline: "MSA-Graded Scotch Fillets, Eye Fillets, Tomahawks & Dry-Aged Steaks",
     inelasticRank: 2,
     inelasticTier: "Maximum",
@@ -126,7 +127,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     id: "chicken",
     slug: "chicken",
     name: "Pasture-Raised Poultry",
-    itemCount: 14,
+    itemCount: 16,
     heroTagline: "100% Air-Chilled, Chemical-Free Skinless Breasts, Thighs & Roasting Birds",
     inelasticRank: 4,
     inelasticTier: "Maximum",
@@ -146,7 +147,7 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     id: "lamb",
     slug: "lamb",
     name: "Southern Pasture Lamb",
-    itemCount: 9,
+    itemCount: 13,
     heroTagline: "French-Trimmed Cutlets, Slow-Roast Lamb Shoulders & Shanks",
     inelasticRank: 7,
     inelasticTier: "Very High",
@@ -181,6 +182,26 @@ export const SHOP_CATEGORIES_160: ShopCategory160[] = [
     inelasticRank: 11,
     inelasticTier: "High",
     heroImage: EQUIPMENT_IMAGES[0]
+  },
+  {
+    id: "goat-mutton",
+    slug: "goat-mutton",
+    name: "Halal Goat & Mutton",
+    itemCount: 8,
+    heroTagline: "AFIC-Certified Halal Goat & Mutton — Bone-In, Mince, Curry Cuts & Offal",
+    inelasticRank: 12,
+    inelasticTier: "High",
+    heroImage: GOAT_MUTTON_IMAGES[0]
+  },
+  {
+    id: "duck",
+    slug: "duck",
+    name: "Duck",
+    itemCount: 2,
+    heroTagline: "Whole Duck & Rendered Duck Fat",
+    inelasticRank: 13,
+    inelasticTier: "Moderate",
+    heroImage: DUCK_IMAGES[0]
   }
 ];
 
@@ -227,7 +248,10 @@ export function generate160Catalog(): Product160Item[] {
     { name: "T-Bone Classic Backyard Steaks (2 x 400g)", sub: "Bistecca & T-Bone", price: 42.00, weight: "800g", badge: "Family BBQ", mb: "MB2+", age: "Fresh Cryo", kw: "meat" },
     { name: "Grass-Fed Beef Eye of Rump Rostbif", sub: "Sunday Roasts", price: 38.00, weight: "1.4kg", badge: "Lean Roast", mb: "Heart of Rump", age: "Tied Roast", kw: "eye fillet" },
     { name: "Beef Short Rib Single Bone Dinosaur Cut (800g)", sub: "American BBQ Primals", price: 39.50, weight: "800g", badge: "Single Portion", mb: "MB5+", age: "Primal Cut", kw: "bulk scotch fillet" },
-    { name: "Beef Chuck Roll Primal for DIY Pitmasters (5kg)", sub: "Wholesale Primals", price: 139.00, weight: "5kg", badge: "Pitmaster Bulk", mb: "MB3+", age: "Boneless Cryovac", kw: "bulk mince" }
+    { name: "Beef Chuck Roll Primal for DIY Pitmasters (5kg)", sub: "Wholesale Primals", price: 139.00, weight: "5kg", badge: "Pitmaster Bulk", mb: "MB3+", age: "Boneless Cryovac", kw: "bulk mince" },
+    { name: "Whole Beef Tongue (Ox Tongue)", sub: "Offal & Specialty", price: 28.79, weight: "1.2kg", badge: "Halal", mb: "N/A", age: "Fresh Raw", kw: "meat", img: "/images/products/beef/Beef_0170.webp" },
+    { name: "Beef Tripe", sub: "Offal & Specialty", price: 7.99, weight: "1kg", badge: "Halal", mb: "N/A", age: "Fresh Raw", kw: "meat", img: "/images/products/beef/Beef_0171.webp" },
+    { name: "Beef Heart", sub: "Offal & Specialty", price: 11.69, weight: "900g", badge: "Halal", mb: "N/A", age: "Fresh Raw", kw: "meat", img: "/images/products/beef/Beef_0172.webp" }
   ];
 
   beefCuts.forEach((c, idx) => {
@@ -253,7 +277,7 @@ export function generate160Catalog(): Product160Item[] {
       primaryKeywordKd: content.kw.primaryKd,
       supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: pickImages(BEEF_IMAGES, idx),
+      images: (c as any).img ? { rawFallback: (c as any).img, cookedFallback: (c as any).img } : pickImages(BEEF_IMAGES, idx),
       shortDescription: content.description,
       faqs: content.faqs,
     });
@@ -371,7 +395,9 @@ export function generate160Catalog(): Product160Item[] {
     { name: "Garlic Butter Kiev Stuffed Chicken Breasts (4 pack)", price: 26.00, weight: "900g", badge: "Oven Ready", kw: "meat" },
     { name: "Chicken Tenderloins Hand-Trimmed (1.5kg)", price: 27.00, weight: "1.5kg", badge: "Tenderloin", kw: "meat" },
     { name: "Portuguese Peri-Peri Marinated Half Chickens (2 pack)", price: 25.00, weight: "1.6kg", badge: "Charcoal Ready", kw: "bbq meat packs" },
-    { name: "Free-Range Chicken Bones & Necks for Broth (3kg)", price: 12.00, weight: "3kg", badge: "Bone Broth", kw: "meat" }
+    { name: "Free-Range Chicken Bones & Necks for Broth (3kg)", price: 12.00, weight: "3kg", badge: "Bone Broth", kw: "meat" },
+    { name: "Whole Halal Turkey", price: 220.50, weight: "4.5kg", badge: "Seasonal", kw: "meat", sub: "Turkey", img: "/images/products/chicken/Chicken_0017.webp" },
+    { name: "Turkey Breast Fillet", price: 29.00, weight: "1kg", badge: "Lean", kw: "meat", sub: "Turkey", img: "/images/products/chicken/Chicken_0018.webp" }
   ];
 
   chickenCuts.forEach((c, idx) => {
@@ -384,7 +410,7 @@ export function generate160Catalog(): Product160Item[] {
       name: c.name,
       category: "Pasture-Raised Poultry",
       categorySlug: "chicken",
-      subcategory: "Free-Range Poultry",
+      subcategory: (c as any).sub || "Free-Range Poultry",
       price: c.price,
       weight: c.weight,
       brand: "The Meat Agent — Valley Farms",
@@ -397,7 +423,7 @@ export function generate160Catalog(): Product160Item[] {
       primaryKeywordKd: content.kw.primaryKd,
       supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: pickImages(CHICKEN_IMAGES, idx),
+      images: (c as any).img ? { rawFallback: (c as any).img, cookedFallback: (c as any).img } : pickImages(CHICKEN_IMAGES, idx),
       shortDescription: content.description,
       faqs: content.faqs,
     });
@@ -413,7 +439,11 @@ export function generate160Catalog(): Product160Item[] {
     { name: "Pure Grass-Fed Lamb Mince (1kg)", price: 21.00, weight: "1kg", badge: "Kofta Ready", kw: "meat" },
     { name: "Whole Crown Roast of Lamb (16 Cutlets Tied)", price: 92.00, weight: "1.4kg", badge: "Dinner Party", kw: "meat" },
     { name: "Moroccan Spiced Lamb Rump Steaks (3 x 200g)", price: 29.00, weight: "600g", badge: "Tender Rump", kw: "meat" },
-    { name: "Diced Lamb Leg for Curry and Tagine (1kg)", price: 26.50, weight: "1kg", badge: "Lean Diced", kw: "meat" }
+    { name: "Diced Lamb Leg for Curry and Tagine (1kg)", price: 26.50, weight: "1kg", badge: "Lean Diced", kw: "meat" },
+    { name: "Lamb Kidney", price: 6.50, weight: "500g", badge: "Halal", kw: "meat", sub: "Offal & Specialty", img: "/images/products/lamb/Lamb_0014.webp" },
+    { name: "Lamb Brain", price: 12.99, weight: "600g", badge: "Halal", kw: "meat", sub: "Offal & Specialty", img: "/images/products/lamb/Lamb_0015.webp" },
+    { name: "Lamb Trotters (Paya)", price: 9.99, weight: "1kg", badge: "Halal", kw: "meat", sub: "Offal & Specialty — Trotters Paya", img: "/images/products/lamb/Lamb_0016.webp" },
+    { name: "Lamb Tongue", price: 13.99, weight: "700g", badge: "Halal", kw: "meat", sub: "Offal & Specialty", img: "/images/products/lamb/Lamb_0017.webp" }
   ];
 
   lambCuts.forEach((c, idx) => {
@@ -426,7 +456,7 @@ export function generate160Catalog(): Product160Item[] {
       name: c.name,
       category: "Southern Pasture Lamb",
       categorySlug: "lamb",
-      subcategory: "Pasture Lamb",
+      subcategory: (c as any).sub || "Pasture Lamb",
       price: c.price,
       weight: c.weight,
       brand: "The Meat Agent — Gippsland Pastures",
@@ -439,7 +469,7 @@ export function generate160Catalog(): Product160Item[] {
       primaryKeywordKd: content.kw.primaryKd,
       supportingKeywords: content.kw.supporting,
       inelastic: true,
-      images: pickImages(LAMB_IMAGES, idx),
+      images: (c as any).img ? { rawFallback: (c as any).img, cookedFallback: (c as any).img } : pickImages(LAMB_IMAGES, idx),
       shortDescription: content.description,
       faqs: content.faqs,
     });
@@ -710,6 +740,82 @@ export function generate160Catalog(): Product160Item[] {
     });
   });
 
+  // 12. HALAL GOAT & MUTTON (8 Items) — AFIC-certified (primary), also IFANCA & HCA
+  const goatMuttonCuts = [
+    { name: "Halal Goat Leg Bone-In (Whole)", sub: "Goat Leg & Shoulder Roasts", price: 44.00, weight: "2.2kg", badge: "Halal — AFIC" },
+    { name: "Halal Goat Mince", sub: "Minces & Burgers", price: 15.00, weight: "1kg", badge: "Halal — AFIC" },
+    { name: "Halal Goat Diced Curry Cuts", sub: "Goat Curry Cuts", price: 21.00, weight: "1kg", badge: "Halal — AFIC" },
+    { name: "Halal Goat Shoulder Bone-In", sub: "Goat Leg & Shoulder Roasts", price: 53.98, weight: "1.8kg", badge: "Halal — AFIC" },
+    { name: "Halal Goat Ribs Rack", sub: "Goat Ribs", price: 24.99, weight: "1kg", badge: "Halal — AFIC" },
+    { name: "Halal Mutton Leg Bone-In", sub: "Mutton Leg Roasts", price: 60.00, weight: "2.5kg", badge: "Halal — AFIC" },
+    { name: "Halal Mutton Mince", sub: "Minces & Burgers", price: 23.00, weight: "1kg", badge: "Halal — AFIC" },
+    { name: "Goat & Lamb Offal Trio (Liver, Kidney, Heart)", sub: "Offal & Specialty", price: 18.99, weight: "900g", badge: "Halal — AFIC" },
+  ];
+
+  goatMuttonCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Halal Goat & Mutton", categorySlug: "goat-mutton",
+      subcategory: c.sub, weight: c.weight, price: c.price, badge: c.badge, marbling: "", dryAging: "",
+    });
+    items.push({
+      sku: `GT-${1001 + idx}`,
+      name: c.name,
+      category: "Halal Goat & Mutton",
+      categorySlug: "goat-mutton",
+      subcategory: c.sub,
+      price: c.price,
+      weight: c.weight,
+      brand: "The Meat Agent — Halal Certified (AFIC)",
+      badge: c.badge,
+      marbling: "N/A",
+      dryAging: "Fresh Raw",
+      thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
+      inelastic: true,
+      images: pickImages(GOAT_MUTTON_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
+    });
+  });
+
+  // 13. DUCK (2 Items)
+  const duckCuts = [
+    { name: "Whole Duck", sub: "Whole Duck", price: 29.99, weight: "2.2kg", badge: "Fresh" },
+    { name: "Rendered Duck Fat (Jar)", sub: "Rendered Duck Fat", price: 8.99, weight: "300g Jar", badge: "Pantry Staple" },
+  ];
+
+  duckCuts.forEach((c, idx) => {
+    const content = buildProductContent({
+      name: c.name, category: "Duck", categorySlug: "duck",
+      subcategory: c.sub, weight: c.weight, price: c.price, badge: c.badge, marbling: "", dryAging: "",
+    });
+    items.push({
+      sku: `DK-${600 + idx + (idx === 1 ? 1 : 0)}`,
+      name: c.name,
+      category: "Duck",
+      categorySlug: "duck",
+      subcategory: c.sub,
+      price: c.price,
+      weight: c.weight,
+      brand: "The Meat Agent — Valley Farms",
+      badge: c.badge,
+      marbling: "N/A",
+      dryAging: "Fresh Raw",
+      thermalRetention: "<2.5°C 48-Hour Cold-Chain Guarantee",
+      targetKeyword: content.kw.primaryKeyword,
+      primaryKeywordVolume: content.kw.primaryVolume,
+      primaryKeywordKd: content.kw.primaryKd,
+      supportingKeywords: content.kw.supporting,
+      inelastic: false,
+      images: pickImages(DUCK_IMAGES, idx),
+      shortDescription: content.description,
+      faqs: content.faqs,
+    });
+  });
+
   return items.map((item) => ({
     ...item,
     slug: createProductSlug(item.name, item.sku),
@@ -776,3 +882,8 @@ export function getRelatedProducts(product: Product160Item, limit: number = 4): 
 export function getCategoryBySlug(slug: string): ShopCategory160 | undefined {
   return SHOP_CATEGORIES_160.find((c) => c.slug === slug || c.id === slug);
 }
+
+// Real, derived catalog size (160 original cuts + the halal goat/mutton, turkey,
+// offal and duck additions) — use this instead of hardcoding "160" in copy, since
+// the catalog has grown past that original number.
+export const TOTAL_CATALOG_COUNT = generate160Catalog().length;

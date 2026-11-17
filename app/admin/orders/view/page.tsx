@@ -8,7 +8,7 @@ export const metadata = { robots: { index: false, follow: false } };
 const PAYMENT_LABELS: Record<OrderTokenPayload['paymentMethod'], string> = {
   payid: 'PayID (Osko) — Instant AU Bank Transfer',
   bank: 'EFT Transfer — BSB & Account Invoice',
-  crypto: 'Crypto (BTC / USDT) — 10% Discount Applied',
+  crypto: 'Crypto (BTC, ETH, USDT, BNB, DOGE, LTC, BCH, XRP, SOL, TRX) — 10% Discount Applied',
 };
 
 export default async function AdminOrderViewPage({

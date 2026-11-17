@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight, Layers, Tag } from 'lucide-react';
-import { SHOP_CATEGORIES_160 } from '@/lib/products-160-data';
+import { SHOP_CATEGORIES_160, TOTAL_CATALOG_COUNT } from '@/lib/products-160-data';
 
 interface ShopCategorySliderProps {
   selectedCategory: string;
@@ -67,7 +67,7 @@ export function ShopCategorySlider({
                 : 'bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:bg-stone-850 hover:border-stone-700'
             }`}
           >
-            <span>All 160 Cuts</span>
+            <span>All {TOTAL_CATALOG_COUNT} Cuts</span>
             <span
               className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold ${
                 selectedCategory === 'all'
@@ -75,7 +75,7 @@ export function ShopCategorySlider({
                   : 'bg-stone-950 text-stone-400 border border-stone-800'
               }`}
             >
-              160
+              {TOTAL_CATALOG_COUNT}
             </span>
           </button>
 

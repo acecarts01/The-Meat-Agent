@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { SITE_KEYWORDS_ALL } from '@/lib/site-keywords';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://themeatdirect.com.au'),
+  keywords: SITE_KEYWORDS_ALL.map((k) => k.keyword),
   title: 'The Meat Agent — Meat Direct | Australian Wholesale Butcher & Wagyu',
   description: 'Direct farm-gate wholesale allocation of MSA-graded Wagyu MB9+, 45-day dry-aged steaks, and smoker primals. Delivered cold-chain across Australia.',
   openGraph: {

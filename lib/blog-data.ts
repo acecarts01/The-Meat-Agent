@@ -1,6 +1,25 @@
+import { BATCH1_POSTS } from './blog-posts-batch1';
+import { BATCH2_POSTS } from './blog-posts-batch2';
+import { BATCH3_POSTS } from './blog-posts-batch3';
+import { BATCH4_POSTS } from './blog-posts-batch4';
+import { BATCH5_POSTS } from './blog-posts-batch5';
+import { BATCH6_POSTS } from './blog-posts-batch6';
+import { BATCH7_POSTS } from './blog-posts-batch7';
+import { BATCH8_POSTS } from './blog-posts-batch8';
+import { RETIRED_BLOG_SLUGS } from './blog-redirects';
+
 export interface BlogFaq {
   question: string;
   answer: string;
+}
+
+/** An authoritative outbound source (gov/standards/producer/YouTube), verified before use. */
+export interface BlogOutboundLink {
+  url: string;
+  /** Anchor text as it appears in the post — describe the source honestly. */
+  label: string;
+  /** e.g. "Meat & Livestock Australia", "YouTube — <channel>" */
+  source: string;
 }
 
 export interface BlogPost {
@@ -8,20 +27,70 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   heroImage: string;
+  /** Hero alt text — must contain the focus keyword (blog rule 4). */
+  heroImageAlt?: string;
   niche: string;
   categorySlug: string;
   publishedDate: string;
+  /** Set only when the post is genuinely edited, so Article schema stays truthful. */
+  updatedDate?: string;
   readingMinutes: number;
+  /** ~150 char meta description containing the focus keyword. */
+  metaDescription?: string;
   /** Real Semrush keyword (AU dataset), chosen for topical and volume fit. */
   primaryKeyword: string;
   primaryKeywordVolume: number;
+  primaryKeywordKd?: number;
   /** Five real supporting Semrush keywords from the same niche cluster. */
   supportingKeywords: string[];
-  sections: { heading: string; body: string[] }[];
+  /** Exactly one Navigational and one Informational keyword (KD 1-28, real volume). */
+  navigationalKeyword?: string;
+  informationalKeyword?: string;
+  /** 10 indexable tags, unique across the whole site. */
+  tags?: string[];
+  /** 2-4 verified authoritative sources, including 1-2 verified YouTube videos. */
+  outboundLinks?: BlogOutboundLink[];
+  /** SKUs of products this post should link to (related-products block). */
+  relatedSkus?: string[];
+  sections: BlogSection[];
   faqs: BlogFaq[];
 }
 
-export const BLOG_POSTS: BlogPost[] = [
+export interface BlogTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}
+
+/**
+ * Body paragraphs and table cells accept [anchor text](url) inline links, so
+ * keyword-anchored internal links and verified outbound links sit inside sentences.
+ */
+export interface BlogInlineImage {
+  src: string;
+  /** Truthful description; use secondary keywords or natural wording, never the same phrase on every image. */
+  alt: string;
+  caption?: string;
+}
+
+export interface BlogSection {
+  heading: string;
+  body: string[];
+  table?: BlogTable;
+  image?: BlogInlineImage;
+}
+
+/** Stable anchor id for a section heading, used by the table of contents. */
+export function sectionAnchorId(heading: string): string {
+  return heading
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .slice(0, 60);
+}
+
+const LEGACY_BLOG_POSTS: BlogPost[] = [
   {
     slug: 'supermarket-mince-vs-farm-gate-beef-mince',
     title: 'The Truth About Supermarket Mince: Why Farm-Gate Beef Mince Changes Everything',
@@ -266,7 +335,8 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: 'Why wholesale minimums exist at all',
         body: [
           'A $423 minimum order isn\'t an arbitrary gate — it reflects the actual fixed cost of a single cold-chain dispatch: insulated packaging, dry ice, and a dedicated refrigerated courier run cost roughly the same whether the box weighs 5kg or 25kg. Below a certain order size, that fixed logistics cost eats the entire wholesale pricing advantage, which is why direct allocation models set a floor.',
-        ],
+        'If you are ordering a whole turkey for Christmas, our guide on [where to buy a turkey in Australia](/blog/where-can-i-buy-a-turkey-australia/) covers sizes, cooking times and how a single bird fits into a minimum order.',
+      ],
       },
       {
         heading: 'Running the actual numbers against supermarket pricing',
@@ -483,7 +553,8 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: 'The core problem: insulation alone is not enough',
         body: [
           'An insulated box slows heat transfer, but it does not stop it — eventually, ambient heat will equalise with whatever is inside. The actual mechanism that keeps a parcel cold for 48 hours is a combination of insulation that slows the rate of heat gain and a refrigerant mass (solid dry ice or gel ice blocks) that absorbs incoming heat through its own phase change before that heat ever reaches the meat.',
-        ],
+        'Cold-chain handling matters most for large, expensive items such as a Christmas bird; our [turkey buying guide](/blog/where-can-i-buy-a-turkey-australia/) explains how to plan delivery, thawing and food-safety limits around it.',
+      ],
       },
       {
         heading: 'Why packaging design matters more than ice quantity',
@@ -1545,6 +1616,18 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+];
+
+export const BLOG_POSTS: BlogPost[] = [
+  ...LEGACY_BLOG_POSTS.filter((p) => !RETIRED_BLOG_SLUGS.has(p.slug)),
+  ...BATCH1_POSTS,
+  ...BATCH2_POSTS,
+  ...BATCH3_POSTS,
+  ...BATCH4_POSTS,
+  ...BATCH5_POSTS,
+  ...BATCH6_POSTS,
+  ...BATCH7_POSTS,
+  ...BATCH8_POSTS,
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {

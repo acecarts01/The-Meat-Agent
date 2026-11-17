@@ -54,10 +54,11 @@ export function saveCartToStorage(cart: CartItem[]): void {
 }
 
 export function useCart() {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof window === 'undefined') return getDefaultCart();
-    return loadCartFromStorage();
-  });
+  // Always seed with the same deterministic default on the first render, on both
+  // server and client — reading localStorage here would make the client's first
+  // paint diverge from the server-rendered HTML and trigger a hydration mismatch.
+  // The effect below immediately re-syncs to the real localStorage cart post-mount.
+  const [cart, setCart] = useState<CartItem[]>(getDefaultCart);
 
   useEffect(() => {
     // Initial sync

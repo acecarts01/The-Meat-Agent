@@ -8,8 +8,10 @@ import {
   Product160Item,
   ShopCategory160,
   SHOP_CATEGORIES_160,
+  TOTAL_CATALOG_COUNT,
 } from '@/lib/products-160-data';
 import { useCart } from '@/lib/cart-store';
+import { BLOG_POSTS } from '@/lib/blog-data';
 import { Navbar, ActivePage } from '@/components/Navbar';
 import { CartAndCheckoutModal } from '@/components/CartAndCheckoutModal';
 import { ContactModal } from '@/components/ContactModal';
@@ -46,6 +48,27 @@ interface ProductDetailClientProps {
   product: Product160Item;
   category: ShopCategory160 | undefined;
   relatedProducts: Product160Item[];
+}
+
+// The "Butcher Cutting" note names a real species/accreditation per category — a
+// duck or a Halal goat cut should never read as "cut from prime cattle".
+const CUTTING_NOTE_BY_CATEGORY: Record<string, string> = {
+  beef: 'Hand-cut from MSA-accredited southern Australian prime cattle and heritage breeds. Every cut is individually pre-trimmed of heavy external tallow, inspected for intramuscular fat distribution, and precision vacuum-sealed in heavy-duty cryovac pouches to protect moisture and eliminate oxidation.',
+  wagyu: 'Hand-cut from MSA-accredited Wagyu cattle, graded on the Australian Marble Score (MBS) scale. Every cut is individually pre-trimmed of heavy external tallow, inspected for intramuscular fat distribution, and precision vacuum-sealed in heavy-duty cryovac pouches to protect moisture and eliminate oxidation.',
+  veal: 'Hand-cut from milk-fed Australian calves. Every cut is individually pre-trimmed, inspected for consistent grain and colour, and precision vacuum-sealed in heavy-duty cryovac pouches to protect moisture and eliminate oxidation.',
+  lamb: 'Hand-cut from MSA-accredited Southern Australian pasture-raised sheep. Every cut is individually pre-trimmed of excess surface fat, inspected for consistent colour and grain, and precision vacuum-sealed in heavy-duty cryovac pouches to protect moisture and eliminate oxidation.',
+  'goat-mutton': 'Hand-cut from Halal-certified (AFIC) goats and sheep. Every cut is individually pre-trimmed of excess surface fat, inspected for quality, and precision vacuum-sealed in heavy-duty cryovac pouches to protect moisture and eliminate oxidation.',
+  chicken: 'Hand-cut from free-range, air-chilled Australian poultry. Every cut is individually inspected for quality and precision vacuum-sealed or packed to protect moisture and eliminate freezer burn.',
+  duck: 'Hand-prepared from Australian duck. Every cut is individually inspected for quality and precision vacuum-sealed or packed to protect moisture and eliminate freezer burn.',
+  pork: 'Hand-cut from free-range, female-only Australian pork herds. Every cut is individually pre-trimmed of excess surface fat, inspected for quality, and precision vacuum-sealed in heavy-duty cryovac pouches to protect moisture and eliminate oxidation.',
+  'kangaroo-game': 'Hand-cut from wild, sustainably harvested Australian game. Every cut is individually inspected for quality and precision vacuum-sealed to protect moisture and eliminate freezer burn.',
+  seafood: 'Hand-prepared from wild-caught or responsibly farmed Australian seafood. Every item is individually inspected for quality and sealed or snap-frozen at the point of processing to protect freshness.',
+};
+
+const DEFAULT_CUTTING_NOTE = 'Hand-prepared and individually inspected for quality, then precision vacuum-sealed or packed to protect freshness and eliminate freezer burn.';
+
+function getCuttingNote(categorySlug: string): string {
+  return CUTTING_NOTE_BY_CATEGORY[categorySlug] || DEFAULT_CUTTING_NOTE;
 }
 
 export function ProductDetailClient({
@@ -520,7 +543,7 @@ export function ProductDetailClient({
                 <span>Butcher Cutting, Silver Skin Removal &amp; Marbling Notes</span>
               </h3>
               <p className="text-sm text-stone-300 leading-relaxed">
-                Hand-cut from MSA-accredited southern Australian prime cattle and heritage breeds. Every cut is individually pre-trimmed of heavy external tallow, inspected for intramuscular fat distribution, and precision vacuum-sealed in heavy-duty cryovac pouches to protect moisture and eliminate oxidation.
+                {getCuttingNote(product.categorySlug)}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
                 <div className="bg-stone-950 p-4 rounded-xl border border-stone-800 space-y-1">
@@ -654,6 +677,27 @@ export function ProductDetailClient({
           </section>
         )}
 
+        {/* Buying guides that feature this product (inbound links from the product page) */}
+        {BLOG_POSTS.filter((b) => b.relatedSkus?.includes(product.sku)).length > 0 && (
+          <section aria-labelledby="buying-guides-heading" className="pt-8 border-t border-stone-800 space-y-3">
+            <h2 id="buying-guides-heading" className="text-lg font-black text-white tracking-tight">
+              Buying guides featuring this cut
+            </h2>
+            <ul className="space-y-2 text-sm">
+              {BLOG_POSTS.filter((b) => b.relatedSkus?.includes(product.sku)).map((b) => (
+                <li key={b.slug}>
+                  <Link
+                    href={`/blog/${b.slug}/`}
+                    className="text-amber-400 hover:text-amber-300 underline underline-offset-2"
+                  >
+                    {b.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* ========================================================================= */}
         {/* RELATED BUTCHER CUTS & ALLOCATIONS */}
         {/* ========================================================================= */}
@@ -765,7 +809,7 @@ export function ProductDetailClient({
             </Link>
             <span>•</span>
             <Link href="/shop/" className="hover:text-amber-400 transition-colors">
-              Full 160 Cuts Catalog
+              Full {TOTAL_CATALOG_COUNT} Cuts Catalog
             </Link>
             <span>•</span>
             <button onClick={() => setIsWholesaleOpen(true)} className="hover:text-amber-400 transition-colors cursor-pointer">

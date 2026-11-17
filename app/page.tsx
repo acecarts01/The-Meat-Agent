@@ -6,7 +6,8 @@ import {
   generate160Catalog,
   SHOP_CATEGORIES_160,
   Product160Item,
-  ShopCategory160
+  ShopCategory160,
+  TOTAL_CATALOG_COUNT
 } from '@/lib/products-160-data';
 import { useCart } from '@/lib/cart-store';
 import {
@@ -400,7 +401,7 @@ export default function MeatStoreExperiencePage() {
                 }}
                 className="text-amber-400 hover:text-amber-300 text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
               >
-                <span>View All 160 Wholesale Cuts</span>
+                <span>View All {TOTAL_CATALOG_COUNT} Wholesale Cuts</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -650,7 +651,7 @@ export default function MeatStoreExperiencePage() {
                   }}
                   className="bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold px-6 py-2.5 rounded-lg text-xs flex items-center gap-2 shadow-lg cursor-pointer"
                 >
-                  <span>Explore 160-Cut Catalog</span>
+                  <span>Explore {TOTAL_CATALOG_COUNT}-Cut Catalog</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -678,7 +679,7 @@ export default function MeatStoreExperiencePage() {
                 Commercial Allocation Catalog
               </span>
               <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
-                Shop 160 Australian Wholesale Cuts
+                Shop {TOTAL_CATALOG_COUNT} Australian Wholesale Cuts
               </h1>
               <p className="text-xs text-stone-400 mt-1">
                 MSA-graded Wagyu MB9+, dry-aged primals, competition briskets, and family bulk packs direct to your door.
@@ -1437,7 +1438,7 @@ export default function MeatStoreExperiencePage() {
                   onClick={() => handleNavigate('shop')}
                   className="hover:text-amber-400 transition-colors cursor-pointer text-left"
                 >
-                  • Shop All Cuts (160 Products)
+                  • Shop All Cuts ({TOTAL_CATALOG_COUNT} Products)
                 </button>
               </li>
               <li>
@@ -1445,7 +1446,7 @@ export default function MeatStoreExperiencePage() {
                   onClick={() => handleNavigate('shop', 'beef')}
                   className="hover:text-amber-400 transition-colors cursor-pointer text-left"
                 >
-                  • Shop by Category (11 Departments)
+                  • Shop by Category ({SHOP_CATEGORIES_160.length} Departments)
                 </button>
               </li>
               <li>
