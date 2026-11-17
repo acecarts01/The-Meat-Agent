@@ -103,7 +103,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
         name: product.name,
         description: product.shortDescription,
         sku: product.sku,
-        image: [product.images.rawFallback, product.images.cookedFallback],
+        mpn: product.sku,
+        image: [`https://themeatdirect.com.au${product.images.rawFallback}`, `https://themeatdirect.com.au${product.images.cookedFallback}`],
         brand: {
           '@type': 'Brand',
           name: product.brand,
@@ -113,21 +114,46 @@ export default async function ProductDetailPage({ params }: PageProps) {
           '@type': 'Offer',
           priceCurrency: 'AUD',
           price: product.price.toFixed(2),
+          // Catalogue prices are shown before 10% GST; GST is added at checkout.
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            price: product.price.toFixed(2),
+            priceCurrency: 'AUD',
+            valueAddedTaxIncluded: false,
+          },
+          priceValidUntil: `${new Date().getFullYear()}-12-31`,
           itemCondition: 'https://schema.org/NewCondition',
           availability: 'https://schema.org/InStock',
           url: `https://themeatdirect.com.au/shop/${product.categorySlug}/${product.slug}`,
           seller: {
             '@type': 'Organization',
             name: 'The Meat Agent',
+            '@id': 'https://themeatdirect.com.au/#organization',
           },
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy',
+            applicableCountry: 'AU',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+            merchantReturnLink: 'https://themeatdirect.com.au/returns',
+          },
+          // Shipping per the live checkout rules: $25 under $2,000, free at $2,000 or more.
+          shippingDetails: [
+            {
+              '@type': 'OfferShippingDetails',
+              shippingRate: { '@type': 'MonetaryAmount', value: '25.00', currency: 'AUD' },
+              shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'AU' },
+              shippingLabel: 'Standard cold-chain courier (orders under $2,000)',
+            },
+            {
+              '@type': 'OfferShippingDetails',
+              shippingRate: { '@type': 'MonetaryAmount', value: '0.00', currency: 'AUD' },
+              shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'AU' },
+              shippingLabel: 'Free cold-chain courier (orders of $2,000 or more)',
+            },
+          ],
         },
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.4',
-          reviewCount: '2837',
-          bestRating: '5',
-          worstRating: '1',
-        },
+        // No AggregateRating: the previous 4.4 / 2,837 figure was a site-wide score copied onto every product,
+        // not a rating of this product. Add a real per-product rating here only when genuine reviews exist.
       },
       {
         '@type': 'BreadcrumbList',

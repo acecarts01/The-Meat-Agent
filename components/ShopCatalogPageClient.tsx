@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import {
   Product160Item,
   ShopCategory160,
@@ -35,16 +35,21 @@ import {
 
 interface ShopCatalogPageClientProps {
   initialProducts: Product160Item[];
+  faqSlot?: React.ReactNode;
 }
 
-export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClientProps) {
+export function ShopCatalogPageClient({ initialProducts, faqSlot }: ShopCatalogPageClientProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const { cart, cartCount, cartTotal, addToCart, updateQuantity, removeItem, clearCart } = useCart();
 
   const [viewMode, setViewMode] = useState<'raw' | 'cooked'>('raw');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>(searchParams.get('q') ?? '');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  // Read ?q= after mount (instead of useSearchParams) so the page is server-rendered into the initial HTML.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get('q');
+    if (q) setSearchQuery(q);
+  }, []);
   const [page, setPage] = useState<number>(1);
   const [addedSku, setAddedSku] = useState<string | null>(null);
 
@@ -353,6 +358,7 @@ export function ShopCatalogPageClient({ initialProducts }: ShopCatalogPageClient
           </div>
         )}
       </main>
+      {faqSlot}
 
       <CartAndCheckoutModal
         isOpen={isCartOpen}

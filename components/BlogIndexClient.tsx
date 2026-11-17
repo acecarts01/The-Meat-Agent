@@ -15,10 +15,11 @@ import { WholesaleModal } from '@/components/WholesaleModal';
 import { OrderTrackingModal } from '@/components/OrderTrackingModal';
 
 interface BlogIndexClientProps {
+  faqSlot?: React.ReactNode;
   posts: BlogPost[];
 }
 
-export function BlogIndexClient({ posts }: BlogIndexClientProps) {
+export function BlogIndexClient({ posts, faqSlot }: BlogIndexClientProps) {
   const router = useRouter();
   const { cart, cartCount, cartTotal, updateQuantity, removeItem, clearCart } = useCart();
 
@@ -115,6 +116,7 @@ export function BlogIndexClient({ posts }: BlogIndexClientProps) {
           ))}
         </div>
       </main>
+      {faqSlot}
 
       <footer className="mt-16 bg-stone-950 border-t border-stone-900 py-8 px-4 sm:px-6 lg:px-8 text-xs text-stone-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -126,6 +128,26 @@ export function BlogIndexClient({ posts }: BlogIndexClientProps) {
             <span>•</span>
             <Link href="/shop" className="hover:text-amber-400 transition-colors">
               Full {TOTAL_CATALOG_COUNT} Cuts Catalog
+            </Link>
+            <span>•</span>
+            <Link href="/about" className="hover:text-amber-400 transition-colors">
+              About
+            </Link>
+            <span>•</span>
+            <Link href="/shipping" className="hover:text-amber-400 transition-colors">
+              Shipping &amp; Delivery
+            </Link>
+            <span>•</span>
+            <Link href="/contact" className="hover:text-amber-400 transition-colors">
+              Contact
+            </Link>
+            <span>•</span>
+            <Link href="/returns" className="hover:text-amber-400 transition-colors">
+              Returns
+            </Link>
+            <span>•</span>
+            <Link href="/privacy" className="hover:text-amber-400 transition-colors">
+              Privacy
             </Link>
           </div>
         </div>

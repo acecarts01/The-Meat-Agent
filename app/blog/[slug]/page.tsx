@@ -66,7 +66,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         headline: post.title,
         description: post.metaDescription || post.excerpt,
         keywords: [post.primaryKeyword, ...post.supportingKeywords, ...(post.tags || [])].join(', '),
-        image: post.heroImage,
+        image: post.heroImage.startsWith('http') ? post.heroImage : `https://themeatdirect.com.au${post.heroImage}`,
         datePublished: post.publishedDate,
         dateModified: post.updatedDate || post.publishedDate,
         author: {

@@ -142,11 +142,25 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
           </h1>
           <div className="flex items-center gap-3 text-xs text-stone-500 font-mono">
             <span>
-              {new Date(post.publishedDate).toLocaleDateString('en-AU', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-              })}
+              Published{' '}
+              <time dateTime={post.publishedDate}>
+                {new Date(post.publishedDate).toLocaleDateString('en-AU', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </time>
+            </span>
+            <span>•</span>
+            <span>
+              Last updated{' '}
+              <time dateTime={post.updatedDate || post.publishedDate}>
+                {new Date(post.updatedDate || post.publishedDate).toLocaleDateString('en-AU', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </time>
             </span>
             <span>•</span>
             <span className="flex items-center gap-1">
@@ -431,6 +445,26 @@ export function BlogPostClient({ post, related }: BlogPostClientProps) {
             <span>•</span>
             <Link href="/shop" className="hover:text-amber-400 transition-colors">
               Full {TOTAL_CATALOG_COUNT} Cuts Catalog
+            </Link>
+            <span>•</span>
+            <Link href="/about" className="hover:text-amber-400 transition-colors">
+              About
+            </Link>
+            <span>•</span>
+            <Link href="/shipping" className="hover:text-amber-400 transition-colors">
+              Shipping &amp; Delivery
+            </Link>
+            <span>•</span>
+            <Link href="/contact" className="hover:text-amber-400 transition-colors">
+              Contact
+            </Link>
+            <span>•</span>
+            <Link href="/returns" className="hover:text-amber-400 transition-colors">
+              Returns
+            </Link>
+            <span>•</span>
+            <Link href="/privacy" className="hover:text-amber-400 transition-colors">
+              Privacy
             </Link>
           </div>
         </div>

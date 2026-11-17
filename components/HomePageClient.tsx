@@ -1474,6 +1474,31 @@ export function HomePageClient() {
                 </button>
               </li>
               <li>
+                <Link href="/shipping" className="hover:text-amber-400 transition-colors cursor-pointer text-left">
+                  • Shipping &amp; Delivery
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-amber-400 transition-colors cursor-pointer text-left">
+                  • About The Meat Agent
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-amber-400 transition-colors cursor-pointer text-left">
+                  • Contact &amp; Trade Desk
+                </Link>
+              </li>
+              <li>
+                <Link href="/returns" className="hover:text-amber-400 transition-colors cursor-pointer text-left">
+                  • Returns &amp; Refunds
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-amber-400 transition-colors cursor-pointer text-left">
+                  • Privacy Policy
+                </Link>
+              </li>
+              <li>
                 <button
                   onClick={() => setIsWholesaleOpen(true)}
                   className="hover:text-amber-400 transition-colors cursor-pointer text-left"

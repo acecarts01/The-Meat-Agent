@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { BLOG_POSTS } from '@/lib/blog-data';
 import { BlogIndexClient } from '@/components/BlogIndexClient';
+import { SiteFaqSection } from '@/components/SiteFaq';
+import { BLOG_FAQS } from '@/lib/site-faqs';
 
 export const metadata: Metadata = {
   title: 'The Butcher\'s Journal — Buying Guides & Meat Science | The Meat Agent',
@@ -40,7 +42,10 @@ export default function BlogIndexPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <BlogIndexClient posts={BLOG_POSTS} />
+      <BlogIndexClient
+        posts={BLOG_POSTS}
+        faqSlot={<SiteFaqSection title="About our buying guides" faqs={BLOG_FAQS} />}
+      />
     </>
   );
 }

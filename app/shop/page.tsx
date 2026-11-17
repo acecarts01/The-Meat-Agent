@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import { generate160Catalog, TOTAL_CATALOG_COUNT } from '@/lib/products-160-data';
 import { ShopCatalogPageClient } from '@/components/ShopCatalogPageClient';
+import { SiteFaqSection } from '@/components/SiteFaq';
+import { SHOP_FAQS } from '@/lib/site-faqs';
 
 export const metadata: Metadata = {
   title: `Australian Butcher Catalog — ${TOTAL_CATALOG_COUNT} Wholesale Cuts | The Meat Agent`,
@@ -19,9 +20,21 @@ export const metadata: Metadata = {
 
 export default function ShopIndexPage() {
   const products = generate160Catalog();
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://themeatdirect.com.au/' },
+      { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://themeatdirect.com.au/shop' },
+    ],
+  };
   return (
-    <Suspense fallback={null}>
-      <ShopCatalogPageClient initialProducts={products} />
-    </Suspense>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <ShopCatalogPageClient
+        initialProducts={products}
+        faqSlot={<SiteFaqSection title="Buying meat online: your questions answered" faqs={SHOP_FAQS} />}
+      />
+    </>
   );
 }
